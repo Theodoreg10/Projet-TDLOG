@@ -86,8 +86,8 @@
       </nav>
     </header>
     <!-- end header section -->
-    {% block content %}
     <!-- slider section -->
+    {% block carrousel %}
     <section class="slider_section long_section">
       <div id="customCarousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
@@ -189,8 +189,10 @@
         </ol>
       </div>
     </section>
+    {% endblock %}
     <!-- end slider section -->
   </div>
+  {% block content %}
 
   <!-- furniture section -->
 
