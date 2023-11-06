@@ -9,12 +9,12 @@
   <!-- Mobile Metas -->
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <!-- Site Metas -->
-  <link rel="icon" href="images/fevicon.png" type="image/gif" />
+  <link rel="icon" href="{% static 'img/icone.png' %}" type="image/gif" />
   <meta name="keywords" content="" />
   <meta name="description" content="" />
   <meta name="author" content="" />
 
-  <title>Edgecut</title>
+  <title>{% block title %}{% endblock %}</title>
 
 
   <!-- bootstrap core css -->
@@ -38,7 +38,7 @@
     <!-- header section strats -->
     <header class="header_section long_section px-0">
       <nav class="navbar navbar-expand-lg custom_nav-container ">
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="accueil">
           <span>
             <img src="{% static 'img/logo.png' %}" height="30rem">
           </span>
@@ -51,19 +51,19 @@
           <div class="d-flex mx-auto flex-column flex-lg-row align-items-center">
             <ul class="navbar-nav  ">
               <li class="nav-item active">
-                <a class="nav-link" href="index.html">Accueil <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{% url 'accueil' %}">Accueil <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="about.html"> A propos</a>
+                <a class="nav-link" href="{% url 'about' %}"> A propos</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="furniture.html">Données</a>
+                <a class="nav-link" href="data">Données</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="blog.html">Tablequ de bords</a>
+                <a class="nav-link" href="dashboard">Tableau de bords</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="contact.html">Nous contacter</a>
+                <a class="nav-link" href="contact">Nous contacter</a>
               </li>
             </ul>
           </div>
@@ -71,7 +71,7 @@
           <div class="quote_btn-container">
             <a href="">
               <span>
-                Login
+                Se connecter
               </span>
               <i class="fa fa-user" aria-hidden="true"></i>
             </a>
@@ -393,11 +393,11 @@
 
 
   <!-- jQery -->
-  <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
   <!-- bootstrap js -->
-  <script src="js/bootstrap.js"></script>
+  <script src="{% static 'js/bootstrap.js' %}"></script>
   <!-- custom js -->
-  <script src="js/custom.js"></script>
+  <script src="{% static 'js/custom.js' %}"></script>
   <!-- Google Map -->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
   <!-- End Google Map -->
