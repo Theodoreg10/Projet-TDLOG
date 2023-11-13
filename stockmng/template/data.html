@@ -3,8 +3,16 @@
 {% block title %}Gestion des données{% endblock %}
 {% block carrousel %}{% endblock%}
 {% block content %}
+<div class="container">
+    <div class="file-upload">
+        <div class="file-select">
+          <div class="file-select-button" id="fileName">Choose File</div>
+          <div class="file-select-name" id="noFile">No file chosen...</div> 
+          <input type="file" name="chooseFile" id="chooseFile">
+        </div>
+    </div>
+</div>
+    {% endblock %}
 
-{% endblock %}
-
-{% block footer %}
-{% endblock %}
+    {% block footer %}
+    {% endblock %}

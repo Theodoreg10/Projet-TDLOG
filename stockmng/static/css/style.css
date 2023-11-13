@@ -59,7 +59,7 @@ body {
 
 /*header section*/
 .hero_area {
-  min-height: 100vh;
+  min-height: 10vh;
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
