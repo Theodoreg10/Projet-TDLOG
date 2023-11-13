@@ -1,6 +1,6 @@
-# cu : coût unitaire
-# cp : coût passation
-# tp : taux de possetion
+# cu : unit cost
+# cp : cost of making an order
+# tp : possession rate
 
 from math import sqrt, exp, factorial
 from scipy.stats import norm
@@ -18,7 +18,7 @@ def S1(demande):
 def S2(demande, cu, cp, tp):
     Q_EOQ = sqrt((2 * demande * cp) / (tp * cu))
     return Q_EOQ
-
+ 
 
 # Date variable et Quantité fixe [ point de commande ]
 
@@ -40,7 +40,7 @@ def lambda_S4(demande, horizon):
     lamb = D / HT
     return lamb
 
-
+# k - peut être numero des ventes
 def S4(lamb, k):
     P = (((lamb**k) / (factorial(k)))) * (exp ** (-lamb))
     return P
