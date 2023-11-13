@@ -26,10 +26,7 @@ def Scenario2(demande: float, cout_unitaire: float, cout_passation: float,
 
 
 def Scenario3(demande: float, delai_livraison: int, temps_consommation: int):
-    D = demande
-    DL = delai_livraison
-    T = temps_consommation
-    Point_Commande = ((D) / (T)) * DL
+    Point_Commande = ((demande) / (temps_consommation)) * delai_livraison
     return Point_Commande
 
 
@@ -37,10 +34,7 @@ def Scenario3(demande: float, delai_livraison: int, temps_consommation: int):
 
 
 def lambda_Scenario4(demande: float, horizon: int):
-    D = demande
-    HT = horizon
-    lamb = D / HT
-    return lamb
+    return demande / horizon
 
 
 def Scenario4(lamb: float, k: float):
@@ -52,18 +46,13 @@ def Scenario4(lamb: float, k: float):
 
 
 def StockSecurite1(demande_moy: float, delai_livraison: int):
-    DL = delai_livraison
-    DM = demande_moy
-    SS1 = DL * DM
-    return SS1
+    Stock_Sec1 = delai_livraison * demande_moy
+    return Stock_Sec1
 
 
 def StockSecurite2(niveau_service: float, ecart_type_demande: float):
-    ETD = ecart_type_demande
-    NS = niveau_service
-    z = norm.ppf(NS)
-    SS2 = z * ETD
-    return SS2
+    Stock_Sec2 = norm.ppf(niveau_service) * ecart_type_demande
+    return Stock_Sec2
 
 
 # Vrai stock
