@@ -11,6 +11,57 @@
           <input type="file" name="chooseFile" id="chooseFile">
         </div>
     </div>
+    <div class="table_display">
+        <table>
+            <tr>
+                <th>Product Name</th>
+                <th>Quantité unitaire</th>
+                <th>Coût unitaire</th>
+                <th>Coût fixe de commande</th>
+                <th>Taux de possession</th>
+                <th>Niveau de service</th>
+
+            </tr>
+            {% for product in products %}
+                <tr>
+                    <td>{{ product.product_name }}</td>
+                    <td>{{ product.qte_unitaire }}</td>
+                    <td>{{ product.unit_cost }}</td>
+                    <td>{{ product.fixed_command_cost }}</td>
+                    <td>{{ product.holding_rate }}</td>
+                    <td>{{ product.service_level }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="3">No products available.</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    
+    <div class="add_form">
+    </div>
+    <div class="table_display">
+        <table>
+            <tr>
+                <th>Date</th>
+                <th>Produit</th>
+                <th>Quantité</th>
+
+            </tr>
+            {% for sale in sales %}
+                <tr>
+                    <td>{{ sale.date }}</td>
+                    <td>{{ sale.ref }}</td>
+                    <td>{{ sale.quantity }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="3">No products available.</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
 </div>
     {% endblock %}
 

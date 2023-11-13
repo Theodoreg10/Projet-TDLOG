@@ -11,3 +11,33 @@
 .file-upload .file-select.file-select-disabled:hover{cursor:default;display:block;border: 2px solid #dce4ec;color: #34495e;cursor:pointer;height:40px;line-height:40px;margin-top:5px;text-align:left;background:#FFFFFF;overflow:hidden;position:relative;}
 .file-upload .file-select.file-select-disabled:hover .file-select-button{background:#dce4ec;color:#666666;padding:0 10px;display:inline-block;height:40px;line-height:40px;}
 .file-upload .file-select.file-select-disabled:hover .file-select-name{line-height:40px;display:inline-block;padding:0 10px;}
+
+
+.table_display{
+    padding-top: 2rem;
+    max-height: 500px;
+    overflow-y: auto;
+    width:100%;
+}
+.table_display table{
+    width:98%;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+}
+
+.table_display table tr{
+    background-color: f2f2f2;
+}
+.table_display table tr:hover{
+    background-color: rgba(149, 189, 245, 0.604);
+}
+
+.table_display table th,.table_display table td{
+    padding: 0 15px;
+}
+
+.nav-link:hover{
+    background-color: rgba(149, 189, 245, 0.604);
+    border-radius: 5px;
+    text-decoration: underline;
+}
