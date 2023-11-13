@@ -1,0 +1,26 @@
+{% extends 'template.html' %}
+{% load static %}
+{% block title %}Se connecter ou s'inscrire{% endblock %}
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+{% endblock %}
+{% block carrousel %}{% endblock%}
+{% block content %}
+    <div class="login">
+        <div class="form">
+            <form class="registration-form" method="post">
+                {% csrf_token %}
+                {{ form.name.label_tag }}
+                {{ form.name }}
+                {{ form.password.label_tag }}
+                {{ form.password }}
+                {{ form.email.label_tag }}
+                {{ form.email }}
+                <button type="submit">Créer</button>
+                <p><a href="login">j'ai déjà un compte, me connecter</a></p>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+{% block footer %}
+{% endblock %}

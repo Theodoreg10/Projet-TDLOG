@@ -4,6 +4,11 @@
 {% block carrousel %}{% endblock%}
 {% block content %}
 
+{% if user.is_authenticated %}
+<p>Ok</p>
+{% else %}
+<p>Not ok</p>
+{% endif %}
 
 {% endblock %}
 

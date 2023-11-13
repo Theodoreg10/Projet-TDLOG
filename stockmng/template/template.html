@@ -30,6 +30,8 @@
   <!-- responsive style -->
   <link href="{% static 'css/responsive.css' %}" rel="stylesheet" />
   <link href="{% static 'css/main.css' %}" rel="stylesheet" />
+  {% block styles %}
+  {% endblock %}
 
 </head>
 
@@ -70,12 +72,19 @@
           </div>
           {% block quote_container %}
           <div class="quote_btn-container">
-            <a href="">
+            {% if user.is_authenticated %}
+              <span>Bienvenue, {{ user.username }}
+                <a href="{% url 'logout' %}">Se déconnecter</a></span>
+              <i class="fa fa-user" aria-hidden="true"></i>
+            
+            {% else %}
+            <a href="{% url 'login' %}">
               <span>
                 Se connecter
               </span>
               <i class="fa fa-user" aria-hidden="true"></i>
             </a>
+            {% endif %}
             <form class="form-inline">
               <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
                 <i class="fa fa-search" aria-hidden="true"></i>
@@ -404,6 +413,8 @@
   <!-- Google Map -->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
   <!-- End Google Map -->
+  {% block scripts %}
+  {% endblock %}
 
 </body>
 

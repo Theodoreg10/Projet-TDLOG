@@ -3,8 +3,75 @@
 {% block title %}Tableau de bord{% endblock %}
 {% block carrousel %}{% endblock%}
 {% block content %}
+<div class="container">
+    <div class="filter">
+        <h3>Selection</h3>
+    </div>
+    <div class="dashboard">
+        <h2>Etat de votre inventaire</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <canvas width="95%" id="chart2"></canvas>
+            </div>
+            <div class="col-md-6">
+                <canvas width="95%" id="chart1"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
 
 {% block footer %}
+{% endblock %}
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctx = document.getElementById('chart1');
+  
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+          label: '# of Votes',
+          data: [12, 19, 3, 5, 2, 3],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+    var chart2 = new Chart(document.getElementById('chart2'), {
+        type: 'line',
+        data: {
+            labels: ['Label1', 'Label2', 'Label3', 'Label4', 'Label5'],
+            datasets: [{
+                label: 'Chart 2',
+                data: [5, 15, 25, 35, 45],
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 2,
+                fill: false,
+            }],
+        },
+        options: {
+            scales: {
+                x: {
+                    grid: {
+                        display: false,
+                    },
+                },
+                y: {
+                    grid: {
+                        display: false,
+                    },
+                }
+            }
+    }});
+  </script>
 {% endblock %}
