@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from .models import Product, Sale
 from django.contrib.auth.models import User
-from .forms import LoginForm, RegistrationForm
+from .forms import LoginForm, RegistrationForm, ProductForm, SaleForm
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
@@ -13,11 +13,14 @@ def handle_home_page(request):
 
 @login_required(login_url='login')
 def handle_data_page(request):
-    products = Product.objects.all()
-    sales = Sale.objects.all()
-    products = Product.objects.all()
+    products = Product.objects.filter(user=request.user)
+    sales = Sale.objects.filter(user=request.user)
+    form_product = ProductForm()
+    form_sale = SaleForm()
     context = {'products': products,
-               'sales': sales
+               'sales': sales,
+               'form_product': form_product,
+               'form_sale': form_sale
                }
     return render(request, "data.html", context)
 
@@ -79,3 +82,41 @@ def handle_register_page(request):
         form = RegistrationForm()
 
     return render(request, 'register.html', {'form': form})
+
+
+@login_required(login_url='login')
+def add_product(request):
+    if request.method == 'POST':
+        form = ProductForm(request.POST)
+        if form.is_valid():
+            product = form.save(commit=False)
+            product.user = request.user
+            product.save()
+            return redirect('data')
+    else:
+        sale_form = SaleForm()
+        product_form = ProductForm()
+        context = {
+            'form_sale': sale_form,
+            'form_product': product_form
+        }
+    return render(request, 'data.html', context)
+
+
+@login_required(login_url='login')
+def add_sale(request):
+    if request.method == 'POST':
+        form = SaleForm(request.POST)
+        if form.is_valid():
+            sale = form.save(commit=False)
+            sale.user = request.user
+            sale.save()
+            return redirect('data')
+    else:
+        sale_form = SaleForm()
+        product_form = ProductForm()
+        context = {
+            'form_sale': sale_form,
+            'form_product': product_form
+        }
+    return render(request, 'data.html', context)

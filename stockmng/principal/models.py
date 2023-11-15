@@ -7,10 +7,10 @@ from django.contrib.auth.models import User
 class Product(models.Model):
     product_name = models.CharField(max_length=255)
     qte_unitaire = models.IntegerField()
-    unit_cost = models.FloatField(default=0.0)
-    fixed_command_cost = models.FloatField(default=0.0)
-    holding_rate = models.FloatField(default=0.0)
-    service_level = models.FloatField(default=0.0)
+    unit_cost = models.FloatField()
+    fixed_command_cost = models.FloatField()
+    holding_rate = models.FloatField()
+    service_level = models.FloatField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):

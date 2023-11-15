@@ -1,2 +1,5 @@
 django
 numpy
+reportlab
+openpyx
+pandas

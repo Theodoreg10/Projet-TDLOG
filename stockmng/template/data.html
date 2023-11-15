@@ -11,6 +11,43 @@
           <input type="file" name="chooseFile" id="chooseFile">
         </div>
     </div>
+    <h2>Add Product</h2>
+    <div class="add_data">
+        <form class="row add-form" method="POST" action="{% url 'add_product' %}">
+            {% csrf_token %}
+            <div class="col-md-4 datainput" id="add_product_product_name">
+                {{ form_product.product_name }}
+                <span class="highlight"></span><span class="bar"></span>
+                {{ form_product.product_name.label_tag }} 
+            </div>
+            <div class="col-md-4 datainput">
+                {{ form_product.qte_unitaire }}
+                <span class="highlight"></span><span class="bar"></span>
+                {{ form_product.qte_unitaire.label_tag }} 
+            </div>
+            <div class="col-md-4 datainput">
+                {{ form_product.unit_cost }}
+                <span class="highlight"></span><span class="bar"></span>
+                {{ form_product.unit_cost.label_tag }}
+            </div>
+            <div class="col-md-3 datainput">
+                {{ form_product.fixed_command_cost }}
+                <span class="highlight"></span><span class="bar"></span>
+                {{ form_product.fixed_command_cost.label_tag }} 
+            </div>
+            <div class="col-md-3 datainput">
+                {{ form_product.holding_rate }}
+                <span class="highlight"></span><span class="bar"></span>
+                {{ form_product.holding_rate.label_tag }} 
+            </div>
+            <div class="col-md-3 datainput">
+                {{ form_product.service_level }}
+                <span class="highlight"></span><span class="bar"></span>
+                {{ form_product.service_level.label_tag }}
+            </div>
+            <button class="col-md-3 custom-btn add-button" type="submit">Add Product</button>
+        </form>
+    </div>
     <div class="table_display">
         <table>
             <tr>
@@ -38,8 +75,19 @@
             {% endfor %}
         </table>
     </div>
-    
-    <div class="add_form">
+    <h2>Add Sales</h2>
+    <div class="add_data">
+        <form class="row add-form" method="POST" action="{% url 'add_sale' %}">
+            {% csrf_token %}
+            {% for field in form_sale %}
+                <div class="col-md-3 datainput">
+                    {{ field }}
+                    <span class="highlight"></span><span class="bar"></span>
+                    {{ field.label_tag }} 
+                </div>
+            {% endfor %}
+            <button class="col-md-3 custom-btn add-button" type="submit">Add Sale</button>
+        </form>
     </div>
     <div class="table_display">
         <table>
