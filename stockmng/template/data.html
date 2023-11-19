@@ -4,14 +4,27 @@
 {% block carrousel %}{% endblock%}
 {% block content %}
 <div class="container">
+    <h2>Add Product</h2>
+    <h3>from an excel or csv file</h3>
     <div class="file-upload">
         <div class="file-select">
-          <div class="file-select-button" id="fileName">Choose File</div>
-          <div class="file-select-name" id="noFile">No file chosen...</div> 
-          <input type="file" name="chooseFile" id="chooseFile">
+            <form method="POST" action="{% url 'upload_product' %}" enctype="multipart/form-data">
+                <div class="file-select-button" id="fileName">Choose File</div>
+                <div class="file-select-name" id="noFile">No file chosen...</div>
+                {% csrf_token %}
+                {% for field in file_upload_form %} 
+                {{ field }}
+                {% endfor %}
+                <button class="file-select-button" type="submit">Upload</button>
+            </form>
         </div>
     </div>
-    <h2>Add Product</h2>
+    <div class="table_display">
+        {% if table %}
+            {{ table|safe }}
+        {% endif %}
+    </div>
+    <h3>manually</h3>
     <div class="add_data">
         <form class="row add-form" method="POST" action="{% url 'add_product' %}">
             {% csrf_token %}
@@ -114,4 +127,20 @@
 {% endblock %}
 
 {% block footer %}
+{% endblock %}
+{% block scripts %}
+<script>
+    $('#id_file').bind('change', function () {
+        var filename = $("#id_file").val();
+        if (/^\s*$/.test(filename)) {
+        $(".file-upload").removeClass('active');
+        $("#noFile").text("No file chosen..."); 
+        }
+        else {
+        $(".file-upload").addClass('active');
+        $("#noFile").text(filename.replace("C:\\fakepath\\", "")); 
+        }
+    });
+</script>
+
 {% endblock %}

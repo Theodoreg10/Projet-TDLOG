@@ -1,110 +1,134 @@
 {% extends 'template.html' %}
 {% load static %}
 {% block title %}Accueil{% endblock %}
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+{% endblock %}
 {% block carrousel %}
+{% endblock %}
+{% block content %}
+<div class="container">
+  <section id="principal">
+    <img src="{% static 'img/logo.png' %}" alt="Stock bien organisé">
+    <p>Optimisez votre gestion de stock avec notre solution tout-en-un.</p>
+    <a href="login" class="cta-button">Commencer la Gestion des Stocks</a>
+  </section>
+
+  <!-- Pourquoi Choisir Notre Solution -->
+  <section id="reason-why">
+    <h2>Pourquoi Choisir Notre Solution</h2>
+    <div class="row">
+      <div class="col-md-4">
+        <img src="{% static 'img/home/avantage1.jpg'%}" alt="Avantage 1">
+        <p>Optimisation des processus de gestion</p>
+      </div>
+      <div class="col-md-4">
+        <img src="{% static 'img/home/avantage2.webp'%}" alt="Avantage 2">
+        <p>Réduction des coûts opérationnels</p>
+      </div>
+      <div class="col-md-4">
+        <img src="{% static 'img/home/avantage3.jpeg'%}" alt="Avantage 3">
+        <p>Gestion efficace des commandes</p>
+      </div>
+  </section>
+
+  <!-- Fonctionnalités Clés -->
+  <section id="functionality">
+    <h2>Fonctionnalités Clés</h2>
+    <div class="row">
+      <div class="col-md-4">
+        <img src="{% static 'img/home/data.png'%}" alt="Gestion des Produits">
+        <p>Gestion facile des produits</p>
+      </div>
+      <div class="col-md-4">
+        <img src="{% static 'img/home/choose_scenario.png'%}" alt="Alertes Automatisées">
+        <p>Alertes automatisées de niveaux de stock</p>
+      </div>
+      <div class="col-md-4">
+          <img src="{% static 'img/home/transform_data.png'%}" alt="Gestion des Commandes">
+          <p>Gestion simplifiée des commandes</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Témoignages -->
+  <section id="testimony">
+    <h2>Témoignages</h2>
+    <p>Découvrez ce que nos clients disent de notre solution.</p>
     <section class="slider_section long_section">
       <div id="customCarousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <div class="container ">
-              <div class="row">
-                <div class="col-md-5">
-                  <div class="detail-box">
-                    <h1>
-                      For All Your <br>
-                      Furniture Needs
-                    </h1>
-                    <p>
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus quidem maiores perspiciatis, illo maxime voluptatem a itaque suscipit.
-                    </p>
-                    <div class="btn-box">
-                      <a href="" class="btn1">
-                        Contact Us
-                      </a>
-                      <a href="" class="btn2">
-                        About Us
-                      </a>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="{% static 'img/testimonial1.jpg' %}" alt="Témoignage 1">
+                        <h3>John Doe</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nunc id aliquet ultricies, nisl nunc tincidunt arcu, ac lacinia nunc nunc nec nunc. Sed vitae nunc eget nunc aliquet ultricies.</p>
                     </div>
-                  </div>
+                    <div class="col-md-4">
+                        <img src="{% static 'img/testimonial2.jpg' %}" alt="Témoignage 2">
+                        <h3>John Doe 2</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nunc id aliquet ultricies, nisl nunc tincidunt arcu, ac lacinia nunc nunc nec nunc. Sed vitae nunc eget nunc aliquet ultricies.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="{% static 'img/testimonial3.jpg' %}" alt="Témoignage 3">
+                        <h3>John Doe 3</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nunc id aliquet ultricies, nisl nunc tincidunt arcu, ac lacinia nunc nunc nec nunc. Sed vitae nunc eget nunc aliquet ultricies.</p>
+                    </div>
                 </div>
-                <div class="col-md-7">
-                  <div class="img-box">
-                    <img src="{% static 'img/carrousel1.png' %}" alt="">
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
           <div class="carousel-item">
-            <div class="container ">
-              <div class="row">
-                <div class="col-md-5">
-                  <div class="detail-box">
-                    <h1>
-                      For All Your <br>
-                      Furniture Needs
-                    </h1>
-                    <p>
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus quidem maiores perspiciatis, illo maxime voluptatem a itaque suscipit.
-                    </p>
-                    <div class="btn-box">
-                      <a href="" class="btn1">
-                        Contact Us
-                      </a>
-                      <a href="" class="btn2">
-                        About Us
-                      </a>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="{% static 'img/testimonial1.jpg' %}" alt="Témoignage 1">
+                        <h3>John Doe 4</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nunc id aliquet ultricies, nisl nunc tincidunt arcu, ac lacinia nunc nunc nec nunc. Sed vitae nunc eget nunc aliquet ultricies.</p>
                     </div>
-                  </div>
-                </div>
-                <div class="col-md-7">
-                  <div class="img-box">
-                    <img src="images/slider-img.png" alt="">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="container ">
-              <div class="row">
-                <div class="col-md-5">
-                  <div class="detail-box">
-                    <h1>
-                      For All Your <br>
-                      Furniture Needs
-                    </h1>
-                    <p>
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus quidem maiores perspiciatis, illo maxime voluptatem a itaque suscipit.
-                    </p>
-                    <div class="btn-box">
-                      <a href="" class="btn1">
-                        Contact Us
-                      </a>
-                      <a href="" class="btn2">
-                        About Us
-                      </a>
+                    <div class="col-md-4">
+                        <img src="{% static 'img/testimonial2.jpg' %}" alt="Témoignage 2">
+                        <h3>John Doe 5</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nunc id aliquet ultricies, nisl nunc tincidunt arcu, ac lacinia nunc nunc nec nunc. Sed vitae nunc eget nunc aliquet ultricies.</p>
                     </div>
-                  </div>
+                    <div class="col-md-4">
+                        <img src="{% static 'img/testimonial3.jpg' %}" alt="Témoignage 3">
+                        <h3>John Doe 6</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nunc id aliquet ultricies, nisl nunc tincidunt arcu, ac lacinia nunc nunc nec nunc. Sed vitae nunc eget nunc aliquet ultricies.</p>
+                    </div>
                 </div>
-                <div class="col-md-7">
-                  <div class="img-box">
-                    <img src="images/slider-img.png" alt="">
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
         <ol class="carousel-indicators">
           <li data-target="#customCarousel" data-slide-to="0" class="active"></li>
           <li data-target="#customCarousel" data-slide-to="1"></li>
-          <li data-target="#customCarousel" data-slide-to="2"></li>
         </ol>
       </div>
     </section>
-    {% endblock %}
-{% block content %}
+  </section>
+
+  <!-- Appel à l'Action Principal -->
+  <section id="login_recommandation">
+    <a href="login" class="cta-button">Commencer la Gestion des Stocks</a>
+  </section>
+
+  <!-- Dernières Mises à Jour -->
+  <section id="latest-update">
+    <h2>Dernières Mises à Jour</h2>
+    <p>Explorez nos dernières fonctionnalités pour une gestion de stock encore plus efficace.</p>
+    <a href="about">Découvrir les Nouvelles Fonctionnalités</a>
+  </section>
+
+  <!-- Contact et Support -->
+  <section id="contact-support">
+    <h2>Contactez-nous</h2>
+    <p>Besoin d'aide? Contactez notre support client.</p>
+    <a href="mailto:support@votresociete.com">support@votresociete.com</a>
+  </section>
+</div>
+
 {% endblock %}
 
 {% block footer %}

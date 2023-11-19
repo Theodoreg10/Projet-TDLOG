@@ -12,6 +12,13 @@
 .file-upload .file-select.file-select-disabled:hover .file-select-button{background:#dce4ec;color:#666666;padding:0 10px;display:inline-block;height:40px;line-height:40px;}
 .file-upload .file-select.file-select-disabled:hover .file-select-name{line-height:40px;display:inline-block;padding:0 10px;}
 
+.file-select form button{
+    position: absolute;
+    right: 0;
+    width: 5rem;
+    min-width: 50px;
+    z-index: 101;
+}
 
 .table_display{
     margin-top: 1rem;
