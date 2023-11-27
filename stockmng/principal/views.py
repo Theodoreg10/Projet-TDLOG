@@ -141,6 +141,16 @@ def handle_file_upload(request):
             elif file.name.endswith('.xlsx'):
                 df = pd.read_excel(file)
             table = df.to_html()
+            
+            for _, row in df.iterrows():
+                Product.objects.create(
+                    product_name=row['product_name'],
+                    qte_unitaire=row['qte_unitaire'],
+                    unit_cost=row['unit_cost'],
+                    fixed_command_cost=row['fixed_command_cost'],
+                    holding_rate=row['holding_rate'],
+                    service_level=row['service_level']
+                )
             return render(request, 'data.html', {'table': table})
     else:
         form = FileUploadForm()
