@@ -78,3 +78,8 @@ def django_to_df(model):
     django_data = model.objects.values()
     df = pd.DataFrame.from_records(django_data)
     return df
+
+if __name__ == "__main__":
+    from models import Product
+    products = Product.Objects
+    print(django_to_df(products))
