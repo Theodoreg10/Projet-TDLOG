@@ -4,8 +4,9 @@ from django.contrib.auth import authenticate, login, logout
 from .models import Product, Sale
 from django.contrib.auth.models import User
 from .forms import LoginForm, RegistrationForm, ProductForm, SaleForm
-from .forms import FileUploadForm, ProductSelectionForm
+from .forms import FileUploadForm, ProductSelectionForm, ContactForm
 from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
 import pandas as pd
 # Create your views here.
 
@@ -141,7 +142,7 @@ def handle_file_upload(request):
             elif file.name.endswith('.xlsx'):
                 df = pd.read_excel(file)
             table = df.to_html()
-            
+
             for _, row in df.iterrows():
                 Product.objects.create(
                     product_name=row['product_name'],
@@ -167,3 +168,20 @@ def get_product_details(request, product_name):
         'holding_rate': str(product.holding_rate),
         'service_level': str(product.service_level),
     })
+
+
+@login_required(login_url='login')
+def handle_contact_page(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            send_mail(
+                'Contact Form Submission',  # subject
+                form.cleaned_data['message'],  # message
+                form.cleaned_data['email'],  # from email
+                ['theodoregnimavo6@gmail.com'],  # to email
+            )
+            return redirect('contact')
+    else:
+        form = ContactForm()
+    return render(request, 'contact.html', {'contact_form': form})

@@ -15,4 +15,5 @@ urlpatterns = [
     path("upload_product", views.handle_file_upload, name="upload_product"),
     path('get_product_details/<str:product_name>',
          views.get_product_details, name='get_product_details'),
+    path("contact", views.handle_contact_page, name="upload_product"),
 ]

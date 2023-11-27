@@ -52,11 +52,11 @@ def verify_sales_table(data):
         # Vérification des colonnes nécessaires
         required_columns = ['Date', 'Quantité', 'Reference']
         if all(col in data.columns for col in required_columns):
-            # Vérification des types de données et de format 
+            # Vérification des types de données et de format
             # pour les colonnes spécifiques
             date_check = all(
                 isinstance(data['Date'],
-                           pd.Series) 
+                           pd.Series)
                 and data['Date'].dtype == 'datetime64[ns]')
             quantity_check = all(data['Quantité'].apply(
                 lambda x: isinstance(x, float)))
@@ -69,7 +69,7 @@ def verify_sales_table(data):
                 return """Les données dans la table de
             ventes ne respectent pas les critères spécifiés."""
         else:
-            return """La table de ventes ne contient 
+            return """La table de ventes ne contient
         pas toutes les colonnes nécessaires (Date, Quantité, Reference)."""
     else:
         return """Entrée non valide.
