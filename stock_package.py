@@ -4,6 +4,7 @@
 
 from math import sqrt, exp, factorial
 from scipy.stats import norm
+import pandas as pd
 
 
 def scenario1(demand: float):
@@ -69,3 +70,11 @@ def stock_alert(stock_min: float, security_stock: float):
     the level is low. 
     """
     return stock_min + security_stock
+
+def django_to_df(model):
+    """
+    Function that transforms the model given in Django into Pandas
+    """
+    django_data = model.objects.values()
+    df = pd.DataFrame.from_records(django_data)
+    return df
