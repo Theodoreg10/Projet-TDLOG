@@ -12,7 +12,15 @@ urlpatterns = [
     path("register", views.handle_register_page, name="register"),
     path("add_product", views.add_product, name="add_product"),
     path("add_sale", views.add_sale, name="add_sale"),
-    path("upload_product", views.handle_file_upload, name="upload_product"),
+    path(
+        "upload_product",
+        views.handle_file_product_upload,
+        name="upload_product"),
     path('get_product_details/<str:product_name>',
          views.get_product_details, name='get_product_details'),
+    path("contact", views.handle_contact_page, name="contact"),
+    path(
+        "upload_sales",
+        views.handle_file_sales_upload,
+        name="upload_sales"),
 ]

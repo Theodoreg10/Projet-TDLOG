@@ -19,11 +19,6 @@
             </form>
         </div>
     </div>
-    <div class="table_display">
-        {% if table %}
-            {{ table|safe }}
-        {% endif %}
-    </div>
     <h3>manually</h3>
     <div class="add_data">
         <form class="row add-form" method="POST" action="{% url 'add_product' %}">
@@ -89,6 +84,20 @@
         </table>
     </div>
     <h2>Add Sales</h2>
+    <h3>from an excel or csv file</h3>
+    <div class="file-upload">
+        <div class="file-select">
+            <form method="POST" action="{% url 'upload_sales' %}" enctype="multipart/form-data">
+                <div class="file-select-button" id="fileName">Choose File</div>
+                <div class="file-select-name" id="noFile">No file chosen...</div>
+                {% csrf_token %}
+                {% for field in file_upload_form %} 
+                {{ field }}
+                {% endfor %}
+                <button class="file-select-button" type="submit">Upload</button>
+            </form>
+        </div>
+    </div>
     <div class="add_data">
         <form class="row add-form" method="POST" action="{% url 'add_sale' %}">
             {% csrf_token %}

@@ -65,3 +65,19 @@ class ProductSelectionForm(forms.Form):
         queryset=Product.objects.all(),
         to_field_name="product_name"
         )
+
+
+class ContactForm(forms.Form):
+    name = forms.CharField(max_length=100)
+    email = forms.EmailField()
+    message = forms.CharField(widget=forms.Textarea)
+
+
+class ScenarioForm(forms.Form):
+    SCENARIO_CHOICES = [
+        ('scenario1', 'Scenario 1'),
+        ('scenario2', 'Scenario 2'),
+        ('scenario3', 'Scenario 3'),
+        ('scenario4', 'Scenario 4'),
+    ]
+    scenario = forms.ChoiceField(choices=SCENARIO_CHOICES, label='Scenario')
