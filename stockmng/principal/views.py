@@ -5,6 +5,7 @@ from .models import Product, Sale
 from django.contrib.auth.models import User
 from .forms import LoginForm, RegistrationForm, ProductForm, SaleForm
 from .forms import FileUploadForm, ProductSelectionForm, ContactForm
+from .forms import ScenarioForm
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 import pandas as pd
@@ -38,8 +39,10 @@ def handle_about_page(request):
 @login_required(login_url='login')
 def handle_dashboard_page(request):
     product_selection_form = ProductSelectionForm()
+    scenario_form = ScenarioForm()
     context = {
-        'product_selection_form': product_selection_form
+        'product_selection_form': product_selection_form,
+        'scenario_form': scenario_form
     }
     return render(request, "dashboard.html", context)
 
