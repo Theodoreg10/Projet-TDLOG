@@ -5,6 +5,7 @@ from .models import Product, Sale
 from django.contrib.auth.models import User
 from .forms import LoginForm, RegistrationForm, ProductForm, SaleForm
 from .forms import FileUploadForm, ProductSelectionForm, ContactForm
+from .forms import ScenarioForm
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 import pandas as pd
@@ -38,8 +39,10 @@ def handle_about_page(request):
 @login_required(login_url='login')
 def handle_dashboard_page(request):
     product_selection_form = ProductSelectionForm()
+    scenario_form = ScenarioForm()
     context = {
-        'product_selection_form': product_selection_form
+        'product_selection_form': product_selection_form,
+        'scenario_form': scenario_form
     }
     return render(request, "dashboard.html", context)
 
@@ -132,7 +135,7 @@ def add_sale(request):
     return render(request, 'data.html', context)
 
 
-def handle_file_upload(request):
+def handle_file_product_upload(request):
     if request.method == 'POST':
         form = FileUploadForm(request.POST, request.FILES)
         if form.is_valid():
@@ -141,18 +144,42 @@ def handle_file_upload(request):
                 df = pd.read_csv(file)
             elif file.name.endswith('.xlsx'):
                 df = pd.read_excel(file)
-            table = df.to_html()
 
             for _, row in df.iterrows():
                 Product.objects.create(
-                    product_name=row['product_name'],
-                    qte_unitaire=row['qte_unitaire'],
-                    unit_cost=row['unit_cost'],
-                    fixed_command_cost=row['fixed_command_cost'],
-                    holding_rate=row['holding_rate'],
-                    service_level=row['service_level']
+                    product_name=row['Product name'],
+                    qte_unitaire=row['Qte unitaire'],
+                    unit_cost=row['Unit cost'],
+                    fixed_command_cost=row['Fixed command cost'],
+                    holding_rate=row['Holding rate'],
+                    service_level=row['Service level'],
+                    user=request.user
                 )
-            return render(request, 'data.html', {'table': table})
+            return redirect('data')
+    else:
+        form = FileUploadForm()
+    return render(request, 'data.html', {'form': form})
+
+
+def handle_file_sales_upload(request):
+    if request.method == 'POST':
+        form = FileUploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            file = request.FILES['file']
+            if file.name.endswith('.csv'):
+                df = pd.read_csv(file, sep=";")
+            elif file.name.endswith('.xlsx'):
+                df = pd.read_excel(file)
+            df['Date'] = pd.to_datetime(df['Date']).dt.strftime('%Y-%m-%d')
+            for _, row in df.iterrows():
+                product = Product.objects.get(product_name=row['Ref'])
+                Sale.objects.create(
+                    date=row['Date'],
+                    quantity=row['Quantity'],
+                    ref=product,
+                    user=request.user
+                )
+            return redirect('data')
     else:
         form = FileUploadForm()
     return render(request, 'data.html', {'form': form})
@@ -185,3 +212,7 @@ def handle_contact_page(request):
     else:
         form = ContactForm()
     return render(request, 'contact.html', {'contact_form': form})
+
+
+def handle_scenario(request):
+    pass
