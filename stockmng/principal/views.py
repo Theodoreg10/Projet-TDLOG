@@ -209,3 +209,7 @@ def handle_contact_page(request):
     else:
         form = ContactForm()
     return render(request, 'contact.html', {'contact_form': form})
+
+
+def handle_scenario(request):
+    
