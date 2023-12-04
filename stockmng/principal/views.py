@@ -9,6 +9,7 @@ from .forms import ScenarioForm
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 import pandas as pd
+from stock_package import django_to_df
 # Create your views here.
 
 
@@ -215,4 +216,14 @@ def handle_contact_page(request):
 
 
 def handle_scenario(request):
-    pass
+    products_query = Product.objects.all()
+    sales_query = Sale.objects.all()  
+    products_dataframe = django_to_df(products_query)
+    sales_dataframe = django_to_df(sales_query)
+
+    # Affichez les DataFrames
+    print("Products DataFrame:")
+    print(products_dataframe)
+
+    print("\nSales DataFrame:")
+    print(sales_dataframe)
