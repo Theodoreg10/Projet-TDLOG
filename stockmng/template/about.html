@@ -3,7 +3,86 @@
 {% block title %}A propos{% endblock %}
 {% block carrousel %}{% endblock%}
 {% block content %}
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+{% endblock %}
+<style>
+      .container {
+        display: flex;
+      }
+  
+      .coluna {
+        flex: 1;
+        padding: 10px;
+      }
+  
+      .coluna img {
+        max-width: 100%; 
+        height: auto; 
+        display: block; 
+        margin: 0 auto; 
+    }
 
+    .cta-button {
+        display: inline-block;
+        background-color: #3498db;
+        color: #fff;
+        text-decoration: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+    }
+    
+</style>
+<div class="container">
+    <section id="intro">
+        <div style="margin: 40px 0;">
+            <h1>Que faisons-nous?</h1>
+            <p>Stock Mng vous fournit des analyses efficaces, utiles et importantes sur vos inventaires. Vous avez simplement besoin de nous fournir des données de vente, comprenant la date, la quantité et le produit dans un tableau, ainsi que d'autres informations supplémentaires, et voilà ! Vous pouvez également sélectionner les produits que vous souhaitez analyser. Nous vous fournissons des graphiques montrant le comportement des stocks de ces produits sur la période fournie, conformément à la politique de stock souhaitée</p>
+        </div>
+        <div>
+            <section id="utilisation">
+                <h1>Comment utiliser notre site?</h1>
+                <p> C'est vraiment simple à utiliser et en 3 étapes, vous aurez accès aux résultats de notre analyse ! Intéressé ? Consultez ci-dessous comment effectuer ce processus !</p>
+                <div style="background-color: #f8f8f8; padding: 20px;">
+                    <h3> Etape 1: Faire le login</h3>
+                    <p>Entrez vos informations d'utilisateur et de mot de passe, ou créez un nouveau compte en ajoutant vos informations personnelles.</p> 
+                    <div style="margin: 40px 0;" >
+                        <div class="container">
+                            <div class="coluna">
+                                <img src="{% static 'img/Login.png' %}" alt="Login"  style="width: 1000px;">
+                            </div>
+                            <div class="coluna">
+                                <img src="{% static 'img/NCompte.png' %}" alt="Login"  style="width: 1000px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin: 40px 0; background-color: #f2f2f2; padding: 20px;" >
+                    <h3> Etape 2: Fournissez les informations nécessaires </h3>
+                    <p>Choisissez le fichier Excel avec les informations de votre inventaire et fournissez les informations supplémentaires demandées. </p> 
+                    <div>
+                        <img src="{% static 'img/Excel.png' %}" alt="Login"  style="width: 1000px;">
+                    </div>
+                </div>
+                <div style="margin: 40px 0; background-color: #e8e8e8; padding: 20px;">
+                    <h3> Etape 3: Accédez à les analyses</h3>
+                    <p>Ajustez les informations selon vos besoins et consultez toutes les analyses dont vous avez besoin ! </p> 
+                    <div>
+                        <img src="{% static 'img/Graphiques.png' %}" alt="Login"  style="width: 1000px;">
+                    </div>
+                </div>
+                <div style="margin: 40px 0" >
+                    <a href="contact" class="cta-button"> Encore des doutes ? Contactez-nous ! </a>
+                </div>
+                
+                
+            </section>
+
+
+        </div>
+
+    </section>
 {% endblock %}
 
 {% block footer %}
