@@ -1,0 +1,27 @@
+{% extends 'template.html' %}
+{% load static %}
+{% block title %}A propos{% endblock %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/contact.css'%}">
+{% endblock %}
+{% block carrousel %}{% endblock%}
+{% block content %}
+<div class="container">
+    <form method="post">
+        {% csrf_token %}
+        <h2>CONTACT US</h2>
+        <p type="Name:"><input name="name" placeholder="Write your name here.." required value="{{ contact_form.name.value }}"></input></p>
+        <p type="Email:"><input name="email" type="email" placeholder="Let us know how to contact you back.." required value="{{ contact_form.email.value }}"></input></p>
+        <p type="Message:"><textarea name="message" placeholder="What would you like to tell us.." required>{{ contact_form.message.value }}</textarea></p>
+        <button type="submit">Send Message</button>
+        <div class="form-div">
+            <span class="fa fa-phone"></span>001 1023 567
+            <span class="fa fa-envelope-o"></span> contact@company.com
+        </div>
+    </form>
+</div>
+
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
