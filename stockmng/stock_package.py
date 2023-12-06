@@ -55,7 +55,8 @@ def security_stock_simple(avg_demand: float, lead_time: int):
     return lead_time * avg_demand
 
 
-def security_stock_probabilistic(service_level: float, std_deviation_demand: float):
+def security_stock_probabilistic(service_level: float,
+                                 std_deviation_demand: float):
     """
     Function of one other possible method to calculate the security stock.
     This method takes probabilistic into consideration.
