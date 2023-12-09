@@ -1,13 +1,58 @@
+
+.selection form {
+    display: inline-block;
+}
+
+.selection-container {
+    display: flex;
+    justify-content: space-between;
+}
+
 .selection {
     display: flex;
     align-items: center;
-    display: inline-block;
 }
 
 .selection h3 {
     margin-right: 10px;
 }
 
-.selection form {
-    display: inline-block;
+.filter{
+    justify-content: space-around;
 }
+
+.selection form label{
+    font-size: 2rem;
+    font-family: math;
+    font-weight: bold;
+}
+
+      
+.selection form select{
+  position:relative;
+  display: inline-block;
+  margin-bottom: 15px;
+  width: auto;}
+
+.selection form select{
+    cursor: pointer;
+    padding: 10px 15px;
+    outline: 0;
+    border: 1px;
+    border-radius: 3px;
+    background: rgba(169, 169, 169, 0.352);
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;}
+    
+.selection form select::-ms-expand{
+      display: none;}
+    
+.selection form select:hover,
+.selection form select:focus{
+      color: black;
+      background: rgba(0, 94, 255, 0.386)}
+  
+.selection form select:disabled{
+      opacity: 0.5;
+      pointer-events: none;}
