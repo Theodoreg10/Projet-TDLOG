@@ -152,3 +152,6 @@ def get_product_details(request, product_name):
             "service_level": str(product.service_level),
         }
     )
+
+
+

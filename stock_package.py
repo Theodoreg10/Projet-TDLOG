@@ -26,7 +26,7 @@ def scenario2(demand: float, uc: float, fc: float, hr: float):
 def scenario3(demand: float, lead_time: int, consumption_time: int):
     """
     Function for the scenario where the date for ordering is variable 
-    and the quantity ordered is fixed.
+    and the quantity ordered is fixehd.
     This is called "point of command"
     """
     return ((demand) / (consumption_time)) * lead_time
