@@ -12,6 +12,15 @@ document.getElementById('id_product').addEventListener('change', function() {
     });
 });
 
+var select = document.querySelector("#scenario-selection-form select");
+
+select.onchange = function() {
+    // Code to be executed when the selected option changes
+    var selectedOption = this.options[this.selectedIndex].value;
+    console.log("Selected option: " + selectedOption);
+    
+};
+
 
 const ctx = document.getElementById('chart1');
   
