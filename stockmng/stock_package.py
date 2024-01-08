@@ -15,12 +15,16 @@ def scenario1(demand: float):
     return demand
 
 
-def scenario2(demand: float, uc: float, fc: float, hr: float):
+def scenario2(demand: float, unit_cost: float, fixed_cost: float, holding_rate: float):
     """
     Function for the scenario where the date for ordering is fixed
     and the quantity ordered is variable.
     """
-    return sqrt((2 * demand * fc) / (hr * uc))
+    if holding_rate == 0:
+        raise("The holding rate mustn't be null")
+    if unit_cost == 0:
+        raise("The unit cost mustn't be null")
+    return sqrt((2 * demand * fixed_cost) / (holding_rate * unit_cost))
 
 
 def scenario3(demand: float, lead_time: int, consumption_time: int):
@@ -29,30 +33,28 @@ def scenario3(demand: float, lead_time: int, consumption_time: int):
     and the quantity ordered is fixed.
     This is called "point of command"
     """
+    if consumption_time == 0:
+        raise("the consumption time mustn't be null")
     return ((demand) / (consumption_time)) * lead_time
 
 
-def lambda_scenario4(demand: float, horizon: int):
-    """
-    Function that calculates the average rate of demand.
-    """
-    return demand / horizon
-
-
-def scenario4(lamb, k):
+def scenario4(demand, horizon, k):
     """
     Function for the scenario where the date and the quantity ordered
-    is are variables.
+    are variables.
     """
-    return (((lamb**k) / (factorial(k)))) * (exp ** (-lamb))
+    lambd = demand / horizon
+    if k <= 0:
+        raise("the number of events k must be positive")
+    return (((lambd**k) / (factorial(k)))) * (exp(-lambd))
 
 
-def security_stock_simple(avg_demand: float, lead_time: int):
+def security_stock_simple(average_demand: float, lead_time: int):
     """
     Function of one of the possible methods to calculate the security stock.
     This method is simpler and does not take probabilistic into consideration.
     """
-    return lead_time * avg_demand
+    return lead_time * average_demand
 
 
 def security_stock_probabilistic(service_level: float, std_deviation_demand: float):
@@ -60,7 +62,9 @@ def security_stock_probabilistic(service_level: float, std_deviation_demand: flo
     Function of one other possible method to calculate the security stock.
     This method takes probabilistic into consideration.
     """
-    return norm.ppf(service_level) * std_deviation_demand
+    if service_level > 1:
+        raise("the service level cannot exceed 100%")
+    return service_level * std_deviation_demand
 
 
 def stock_final(stock: float, security_stock: float):
