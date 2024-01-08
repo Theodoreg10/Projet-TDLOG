@@ -79,16 +79,20 @@ def stock_alert(stock_min: float, security_stock: float):
     return stock_min + security_stock
 
 
-def django_to_df(model, product=None):
+def django_to_df(model, product=None, is_product=True):
     """
     Function that transforms the model given in Django into Pandas
     """
     if product != None:
-        django_data = model.filter(product_name=product)
-    else:
+        if is_product:
+            django_data = model.filter(product_name=product)
+        else:
+            django_data = model.filter(ref=product)
+    else:    
         django_data = model.objects.values()
     df = pd.DataFrame.from_records(django_data)
     return df
+
 
 
 if __name__ == "__main__":
