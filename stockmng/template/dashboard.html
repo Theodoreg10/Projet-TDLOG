@@ -2,13 +2,22 @@
 {% load static %}
 {% block title %}Tableau de bord{% endblock %}
 {% block carrousel %}{% endblock%}
+{% block styles%}
+<link rel="stylesheet" type="text/css" href="{% static 'css/dashboard.css' %}">
+{% endblock %}
 {% block content %}
 <div class="container">
-    <div class="filter">
-        <h3>Selection</h3>
-        <form id="product-selection-form">
-            {{ product_selection_form }}
-        </form>
+    <div class="filter row">
+        <div class="col-sd-5 product-selection selection">
+            <form id="product-selection-form">
+                {{ product_selection_form }}
+            </form>
+        </div>
+        <div class="col-sd-5 scenarion-selection selection ">
+            <form id="scenario-selection-form">
+                {{ scenario_form }}
+            </form>
+        </div>
     </div>
         <div class="add_data">
             <form class="row add-form " id="product-details-form">
