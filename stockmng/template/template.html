@@ -75,7 +75,14 @@
             {% if user.is_authenticated %}
               <span>Bienvenue, {{ user.username }}
                 <a href="{% url 'logout' %}">Se déconnecter</a></span>
-              <i class="fa fa-user" aria-hidden="true"></i>
+              <!--<i class="fa fa-user" aria-hidden="true"></i>-->
+              <lord-icon
+                  src="https://cdn.lordicon.com/kthelypq.json"
+                  trigger="in"
+                  delay="1500"
+                  state="in-account"
+                  colors="primary:#16a9c7">
+              </lord-icon>
             
             {% else %}
             <a href="{% url 'login' %}">
@@ -402,7 +409,7 @@
   </footer>
   {% endblock %}
   <!-- footer section -->
-
+  <script src="https://cdn.lordicon.com/lordicon.js"></script>
 
   <!-- jQery -->
   <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
