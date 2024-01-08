@@ -9,15 +9,15 @@ import pandas as pd
 
 def scenario1(demand: float):
     """
-    Function for the scenario where the date for ordering and the 
+    Function for the scenario where the date for ordering and the
     quantity ordered are fixed.
     """
     return demand
 
 
-def scenario2(demand: float, uc: float, fc: float, hr: float): 
+def scenario2(demand: float, uc: float, fc: float, hr: float):
     """
-    Function for the scenario where the date for ordering is fixed 
+    Function for the scenario where the date for ordering is fixed
     and the quantity ordered is variable.
     """
     return sqrt((2 * demand * fc) / (hr * uc))
@@ -25,8 +25,13 @@ def scenario2(demand: float, uc: float, fc: float, hr: float):
 
 def scenario3(demand: float, lead_time: int, consumption_time: int):
     """
+<<<<<<< HEAD:stock_package.py
     Function for the scenario where the date for ordering is variable 
     and the quantity ordered is fixehd.
+=======
+    Function for the scenario where the date for ordering is variable
+    and the quantity ordered is fixed.
+>>>>>>> 7df9737e4d0f9387ae99863f01b824795c58fa0d:stockmng/stock_package.py
     This is called "point of command"
     """
     return ((demand) / (consumption_time)) * lead_time
@@ -41,7 +46,7 @@ def lambda_scenario4(demand: float, horizon: int):
 
 def scenario4(lamb, k):
     """
-    Function for the scenario where the date and the quantity ordered 
+    Function for the scenario where the date and the quantity ordered
     is are variables.
     """
     return (((lamb**k) / (factorial(k)))) * (exp ** (-lamb))
@@ -49,7 +54,7 @@ def scenario4(lamb, k):
 
 def security_stock_simple(avg_demand: float, lead_time: int):
     """
-    Function of one of the possible methods to calculate the security stock. 
+    Function of one of the possible methods to calculate the security stock.
     This method is simpler and does not take probabilistics into consideration.
     """
     return lead_time * avg_demand
@@ -57,7 +62,7 @@ def security_stock_simple(avg_demand: float, lead_time: int):
 
 def security_stock_probabilistic(service_level: float, std_deviation_demand: float):
     """
-    Function of one other possible method to calculate the security stock. 
+    Function of one other possible method to calculate the security stock.
     This method takes probabilistics into consideration.
     """
     return norm.ppf(service_level) * std_deviation_demand
@@ -65,7 +70,7 @@ def security_stock_probabilistic(service_level: float, std_deviation_demand: flo
 
 def stock_final(stock: float, security_stock: float):
     """"
-    Function that calculates the total stock level taking into account the 
+    Function that calculates the total stock level taking into account the
     security stock.
     """
     return stock + security_stock
@@ -73,8 +78,8 @@ def stock_final(stock: float, security_stock: float):
 
 def stock_alert(stock_min: float, security_stock: float):
     """
-    Function that sets the stock level that triggers an alert that 
-    the level is low. 
+    Function that sets the stock level that triggers an alert that
+    the level is low.
     """
     return stock_min + security_stock
 
@@ -86,6 +91,7 @@ def django_to_df(model):
     django_data = model.objects.values()
     df = pd.DataFrame.from_records(django_data)
     return df
+
 
 if __name__ == "__main__":
     from models import Product

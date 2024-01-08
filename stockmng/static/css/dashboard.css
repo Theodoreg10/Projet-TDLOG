@@ -1,0 +1,13 @@
+.selection {
+    display: flex;
+    align-items: center;
+    display: inline-block;
+}
+
+.selection h3 {
+    margin-right: 10px;
+}
+
+.selection form {
+    display: inline-block;
+}

@@ -4,10 +4,12 @@ from django.contrib.auth import authenticate, login, logout
 from .models import Product, Sale
 from django.contrib.auth.models import User
 from .forms import LoginForm, RegistrationForm, ProductForm, SaleForm
-from .forms import FileUploadForm, ProductSelectionForm
+from .forms import FileUploadForm, ProductSelectionForm, ContactForm
+from .forms import ScenarioForm
 from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
 import pandas as pd
-
+from stock_package import django_to_df
 # Create your views here.
 
 
@@ -39,7 +41,11 @@ def handle_about_page(request):
 @login_required(login_url="login")
 def handle_dashboard_page(request):
     product_selection_form = ProductSelectionForm()
-    context = {"product_selection_form": product_selection_form}
+    scenario_form = ScenarioForm()
+    context = {
+        'product_selection_form': product_selection_form,
+        'scenario_form': scenario_form
+    }
     return render(request, "dashboard.html", context)
 
 
@@ -124,8 +130,8 @@ def add_sale(request):
     return render(request, "data.html", context)
 
 
-def handle_file_upload(request):
-    if request.method == "POST":
+def handle_file_product_upload(request):
+    if request.method == 'POST':
         form = FileUploadForm(request.POST, request.FILES)
         if form.is_valid():
             file = request.FILES["file"]
@@ -133,8 +139,41 @@ def handle_file_upload(request):
                 df = pd.read_csv(file)
             elif file.name.endswith(".xlsx"):
                 df = pd.read_excel(file)
-            table = df.to_html()
-            return render(request, "data.html", {"table": table})
+            for _, row in df.iterrows():
+                Product.objects.create(
+                    product_name=row['Product name'],
+                    qte_unitaire=row['Qte unitaire'],
+                    unit_cost=row['Unit cost'],
+                    fixed_command_cost=row['Fixed command cost'],
+                    holding_rate=row['Holding rate'],
+                    service_level=row['Service level'],
+                    user=request.user
+                )
+            return redirect('data')
+    else:
+        form = FileUploadForm()
+    return render(request, 'data.html', {'form': form})
+
+
+def handle_file_sales_upload(request):
+    if request.method == 'POST':
+        form = FileUploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            file = request.FILES['file']
+            if file.name.endswith('.csv'):
+                df = pd.read_csv(file, sep=";")
+            elif file.name.endswith('.xlsx'):
+                df = pd.read_excel(file)
+            df['Date'] = pd.to_datetime(df['Date']).dt.strftime('%Y-%m-%d')
+            for _, row in df.iterrows():
+                product = Product.objects.get(product_name=row['Ref'])
+                Sale.objects.create(
+                    date=row['Date'],
+                    quantity=row['Quantity'],
+                    ref=product,
+                    user=request.user
+                )
+            return redirect('data')
     else:
         form = FileUploadForm()
     return render(request, "data.html", {"form": form})
@@ -142,6 +181,7 @@ def handle_file_upload(request):
 
 def get_product_details(request, product_name):
     product = Product.objects.get(product_name=product_name)
+<<<<<<< HEAD
     return JsonResponse(
         {
             "product_name": product.product_name,
@@ -155,3 +195,44 @@ def get_product_details(request, product_name):
 
 
 
+=======
+    return JsonResponse({
+        'product_name': product.product_name,
+        'qte_unitaire': product.qte_unitaire,
+        'unit_cost': str(product.unit_cost),
+        'fixed_command_cost': str(product.fixed_command_cost),
+        'holding_rate': str(product.holding_rate),
+        'service_level': str(product.service_level),
+    })
+
+
+@login_required(login_url='login')
+def handle_contact_page(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            send_mail(
+                'Contact Form Submission',  # subject
+                form.cleaned_data['message'],  # message
+                form.cleaned_data['email'],  # from email
+                ['theodoregnimavo6@gmail.com'],  # to email
+            )
+            return redirect('contact')
+    else:
+        form = ContactForm()
+    return render(request, 'contact.html', {'contact_form': form})
+
+
+def handle_scenario(request):
+    products_query = Product.objects.all()
+    sales_query = Sale.objects.all()
+    products_dataframe = django_to_df(products_query)
+    sales_dataframe = django_to_df(sales_query)
+
+    # Affichez les DataFrames
+    print("Products DataFrame:")
+    print(products_dataframe)
+
+    print("\nSales DataFrame:")
+    print(sales_dataframe)
+>>>>>>> 7df9737e4d0f9387ae99863f01b824795c58fa0d

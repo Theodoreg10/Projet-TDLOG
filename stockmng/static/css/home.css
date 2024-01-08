@@ -64,3 +64,14 @@ footer {
 }
 
 /* Ajoutez ici d'autres styles selon vos besoins */
+.temoignages-item div div div div img{
+    width: 95%;
+    height: 10rem;
+}
+
+.temoignages-item div div div div p{
+    height: 20rem;
+}
+.temoignages-item div div div div h3{
+    height: 5rem;
+}
