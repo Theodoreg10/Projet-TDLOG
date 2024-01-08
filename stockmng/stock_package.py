@@ -52,15 +52,16 @@ def scenario4(demand, horizon, k):
 def security_stock_simple(average_demand: float, lead_time: int):
     """
     Function of one of the possible methods to calculate the security stock.
-    This method is simpler and does not take probabilistic into consideration.
+    This method is simpler and does not take probabilistics into consideration.
     """
     return lead_time * average_demand
 
 
-def security_stock_probabilistic(service_level: float, std_deviation_demand: float):
+def security_stock_probabilistic(service_level: float,
+                                 std_deviation_demand: float):
     """
     Function of one other possible method to calculate the security stock.
-    This method takes probabilistic into consideration.
+    This method takes probabilistics into consideration.
     """
     if service_level > 1:
         raise("the service level cannot exceed 100%")
@@ -93,6 +94,6 @@ def django_to_df(model):
 
 
 if __name__ == "__main__":
-    from principal.models import Product
-    products = Product.Objects()
+    from models import Product
+    products = Product.Objects
     print(django_to_df(products))
