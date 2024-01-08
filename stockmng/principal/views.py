@@ -10,6 +10,9 @@ from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 import pandas as pd
 from stock_package import django_to_df
+import stock_package as st
+
+
 # Create your views here.
 
 
@@ -181,6 +184,7 @@ def handle_file_sales_upload(request):
 
 def get_product_details(request, product_name):
     product = Product.objects.get(product_name=product_name)
+
     return JsonResponse({
         'product_name': product.product_name,
         'qte_unitaire': product.qte_unitaire,
@@ -220,3 +224,27 @@ def handle_scenario(request):
 
     print("\nSales DataFrame:")
     print(sales_dataframe)
+
+
+def handle_scenario1(request, product):
+    sales_data = django_to_df(Sale, product=product)
+    date = sales_data["date"]
+    qte= st.scenario1(sales_data["quantity"])
+
+
+def handle_scenario2(request, product):
+    sales_data = django_to_df(Sale, product=product)
+    product_data = django_to_df(Product, product=product)
+    date = sales_data["date"]
+    uc = product_data["unit_cost"]
+    fc = product_data["fixed_command_cost"]
+    hr = product_data["holding_rate"]
+    qte = st.scenario2(sales_data["quantity"], uc, fc, hr)
+
+
+def handle_scenario3(request, product):
+    sales_data = django_to_df(Sale, product=product)
+    date = sales_data["date"]
+    qte = st.scenario3(sales_data["quantity"])
+    t = qte / sales_data["quantity"]
+

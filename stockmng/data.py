@@ -2,10 +2,9 @@ import os
 import re
 import pandas as pd
 
-
 def read_excel_or_csv(file_path):
     _, file_extension = os.path.splitext(file_path)
-
+    
     if file_extension == '.csv':
         # Lecture d'un fichier CSV
         try:
@@ -44,6 +43,7 @@ def verify_product_table(data):
             return "La table de produits ne contient pas toutes les colonnes nécessaires (product_name, Qte_unitaire)."
     else:
         return "Entrée non valide. Veuillez fournir une DataFrame (table de données)."
+
 
 
 def verify_sales_table(data):
