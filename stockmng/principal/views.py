@@ -249,19 +249,17 @@ def handle_scenario1(request, product_name):
     return JsonResponse(data, safe=False)
 
 
-def handle_scenario2(request, product):
+def handle_scenario2(request, product, date=date):
     sales_data = django_to_df(Sale, product=product)
     product_data = django_to_df(Product, product=product)
     date = sales_data["date"]
     uc = product_data["unit_cost"]
     fc = product_data["fixed_command_cost"]
     hr = product_data["holding_rate"]
-
     qte = st.scenario2(sales_data["quantity"], uc, fc, hr)
 
 
 def handle_scenario3(request, product):
-    sales_data = django_to_df(Sale, product=product)
+    sales_data = django_to_df(Sale, product=product, date=date)
     date = sales_data["date"]
-    qte = st.scenario3(sales_data["quantity"])
-    t = qte / sales_data["quantity"]
+    qte = sales_data["quantity"]
