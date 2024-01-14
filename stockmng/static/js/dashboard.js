@@ -48,6 +48,7 @@ const ctx = document.getElementById('chart1');
 
     document.getElementById('id_product').addEventListener('change', function() {
       var productName = this.options[this.selectedIndex].text;
+        var yearName = document.getElementById('year-input').value;
   
       // Première requête Fetch
       fetch('/get_product_details/' + productName)
@@ -61,16 +62,26 @@ const ctx = document.getElementById('chart1');
           document.getElementById('service-level').value = data.service_level;
   
           // Deuxième requête Fetch dans la chaîne
-          return fetch('/handle_scenario1/' + productName);
+          return fetch('/handle_scenario2/' + productName + "/" + yearName);
       })
       .then(response => response.json())
-      .then(data => {
-          // Mise à jour du graphique après que la deuxième requête soit terminée
-          chart2.data.labels = data.date;
-          chart2.data.datasets[0].data = data.quantité;
-          chart2.data.datasets[0].label = "quantité " + productName;
-          chart2.update();
-      });
+    .then(data => {
+        // Mise à jour du graphique après que la deuxième requête soit terminée
+        chart2.data.labels = data.date;
+        chart2.data.datasets[0].data = data.quantité;
+        chart2.data.datasets[0].label = "quantité " + productName;
+
+        // Ajouter une nouvelle courbe
+        chart2.data.datasets.push({
+            label: "stock",
+            data: data.order,
+            borderColor: 'rgba(0, 240, 100, 1)',
+            borderWidth: 2,
+            fill: false,
+        });
+
+        chart2.update();
+    });
   });
 
 $(document).ready(function() {

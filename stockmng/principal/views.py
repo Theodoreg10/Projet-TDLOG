@@ -11,6 +11,8 @@ from django.core.mail import send_mail
 import pandas as pd
 from stock_package import django_to_df
 import stock_package as st
+from datetime import date
+import numpy as np
 
 
 # Create your views here.
@@ -249,14 +251,52 @@ def handle_scenario1(request, product_name):
     return JsonResponse(data, safe=False)
 
 
-def handle_scenario2(request, product, date=date):
-    sales_data = django_to_df(Sale, product=product)
-    product_data = django_to_df(Product, product=product)
+def handle_scenario2(request, product_name, period=date.today().year):
+    sales_data = django_to_df(Sale, request.user,
+                              product=product_name, is_product=False)
+    product_data = django_to_df(Product, request.user,
+                                product=product_name, is_product=True)
+    sales_data['date'] = pd.to_datetime(sales_data['date'])
+    sales_in_year = sales_data[sales_data['date'].dt.year == period]
+    sales_in_year = sales_in_year.sort_values(by='date', ascending=True)
+    demand = sales_in_year['quantity'].sum()
     date = sales_data["date"]
-    uc = product_data["unit_cost"]
-    fc = product_data["fixed_command_cost"]
-    hr = product_data["holding_rate"]
-    qte = st.scenario2(sales_data["quantity"], uc, fc, hr)
+    unit_cost = product_data.at[0, "unit_cost"]
+    fixed_cost = product_data.at[0, "fixed_command_cost"]
+    holding_rate = product_data.at[0, "holding_rate"]
+    qte_unitaire = product_data.at[0, "qte_unitaire"]
+    qty_economic = st.scenario2(demand, unit_cost, fixed_cost, holding_rate)
+    stock_level = np.zeros(len(sales_in_year))
+    order = np.zeros(len(sales_in_year))
+    if qte_unitaire - sales_in_year.iloc[0]['quantity'] < 0:
+        order[0] = qty_economic * (
+            ((sales_in_year.iloc[0]['quantity'] - qte_unitaire)
+             // qty_economic)
+            + 1
+        )
+    stock_level[0] = (
+        qte_unitaire - sales_in_year.iloc[0]['quantity'] + order[0]
+    )
+    for i in range(1, len(sales_in_year)):
+        if stock_level[i-1] - sales_in_year.iloc[i]['quantity'] < 0:
+            order[i] = qty_economic * (
+                ((sales_in_year.iloc[i]['quantity'] - stock_level[i-1])
+                 // qty_economic)
+                + 1
+                )
+        stock_level[i] = (
+            stock_level[i-1] - sales_in_year.iloc[i]['quantity'] + order[i]
+        )
+    sales_in_year['stock_level'] = stock_level
+    sales_in_year['order'] = order
+    date = sales_in_year["date"]
+    data = {
+        "date": list(date),
+        "quantité": list(sales_in_year['quantity']),
+        "stock_level": list(sales_in_year['stock_level']),
+        "order": list(sales_in_year['order'])
+    }
+    return JsonResponse(data, safe=False)
 
 
 def handle_scenario3(request, product):
