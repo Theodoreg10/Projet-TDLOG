@@ -71,7 +71,6 @@ def security_stock_probabilistic(service_level: float,
     return service_level * std_deviation_demand
 
 
-
 def stock_final(stock: float, security_stock: float):
     """"
     Function that calculates the total stock level taking into account the
@@ -94,14 +93,21 @@ def django_to_df(model, product=None, is_product=True):
     """
     if product != None:
         if is_product:
-            django_data = model.filter(product_name=product)
+            product_exists = model.objects.filter(product_name=product).exists()
+            if product_exists:
+                django_data = model.objects.get(product_name=product).values()
+            else:
+                return None
         else:
-            django_data = model.filter(ref=product)
-    else:    
+            sale_exists = model.objects.filter(ref__product_name=product).exists()
+            if sale_exists:
+                django_data = model.objects.filter(ref__product_name=product).values()
+            else:
+                return None
+    else:
         django_data = model.objects.values()
     df = pd.DataFrame.from_records(django_data)
     return df
-
 
 
 if __name__ == "__main__":
