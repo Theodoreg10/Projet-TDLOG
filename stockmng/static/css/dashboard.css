@@ -53,6 +53,47 @@
       color: black;
       background: rgba(0, 94, 255, 0.386)}
   
-.selection form select:disabled{
+.selection form input:disabled{
       opacity: 0.5;
       pointer-events: none;}
+
+.selection form input{
+    position:relative;
+    display: inline-block;
+    margin-bottom: 15px;
+    width: auto;}
+      
+.selection form input{
+    cursor: pointer;
+    padding: 10px 15px;
+    outline: 0;
+    border: 1px;
+    border-radius: 3px;
+    background: rgba(169, 169, 169, 0.352);
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;}
+    
+.selection form input::-ms-expand{
+    display: none;}
+    
+.selection form input:hover,
+.selection form input:focus{
+    color: black;
+    background: rgba(0, 94, 255, 0.386)}
+
+.selection form input:disabled{
+    opacity: 0.5;
+    pointer-events: none;}
+
+canvas{
+    width: 100% !important;
+    height: 100%;
+    margin: 0 auto;
+    display: block;
+    position: relative;
+    z-index: 1;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,.1);
+}
