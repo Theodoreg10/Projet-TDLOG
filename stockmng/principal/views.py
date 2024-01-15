@@ -1,3 +1,7 @@
+"""
+Django views for handling various pages and scenarios in the application.
+"""
+
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.contrib.auth import authenticate, login, logout
@@ -24,11 +28,30 @@ locale.setlocale(locale.LC_TIME, "fr_FR.UTF-8")
 
 
 def handle_home_page(request):
+    """
+    Renders the home page.
+
+    Args:
+        Request: Http Request.
+
+    Returns:
+        The rendered home page.
+    """
     return render(request, "home.html")
 
 
 @login_required(login_url="login")
 def handle_data_page(request):
+    """
+    Renders the data page for logged in users.
+    Shows products and sales related to the user.
+
+    Args:
+        Request: Http Request.
+
+    Returns:
+        Rendered data page containing products, sales, and forms.
+    """
     products = Product.objects.filter(user=request.user)
     sales = Sale.objects.filter(user=request.user)
     form_product = ProductForm()
@@ -50,6 +73,15 @@ def handle_about_page(request):
 
 @login_required(login_url="login")
 def handle_dashboard_page(request):
+    """
+    View function for handling the dashboard page.
+
+    Args:
+        Request: Http Request.
+
+    Returns:
+        Rendered dashboard page.
+    """
     product_selection_form = ProductSelectionForm()
     scenario_form = ScenarioForm()
     context = {
@@ -60,7 +92,11 @@ def handle_dashboard_page(request):
 
 
 def handle_login_page(request):
-    if request.method == "POST":
+    """View function for the login page and handling login actions. Args:
+    Request: Http Request.
+    Returns:
+    Rendered login page."""
+    if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
             username = form.cleaned_data["username"]
@@ -79,12 +115,31 @@ def handle_login_page(request):
 
 
 def handle_logout_view(request):
+    """
+    Logs the user out and redirects to the login page.
+
+    Args:
+        Request: Http Request.
+
+    Returns:
+        Redirected login page.
+    """
+
     logout(request)
     return redirect("login")
 
 
 def handle_register_page(request):
-    if request.method == "POST":
+    """
+    Renders the registration page and handles user registration.
+
+    Args:
+        Request: Http Request.
+
+    Returns:
+        Rendered registration page.
+    """
+    if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():
             name = form.cleaned_data["name"]
@@ -110,7 +165,16 @@ def handle_register_page(request):
 
 @login_required(login_url="login")
 def add_product(request):
-    if request.method == "POST":
+    """
+    Adds a product and renders the data page.
+
+    Args:
+        Request: Http Request.
+
+    Returns:
+        Rendered data page.
+    """
+    if request.method == 'POST':
         form = ProductForm(request.POST)
         if form.is_valid():
             product = form.save(commit=False)
@@ -151,7 +215,16 @@ def handle_update_product(request):
 
 @login_required(login_url="login")
 def add_sale(request):
-    if request.method == "POST":
+    """
+    Adds a sale and renders the data page.
+
+    Args:
+        Request: Http Request.
+
+    Returns:
+        Rendered data page.
+    """
+    if request.method == 'POST':
         form = SaleForm(request.POST)
         if form.is_valid():
             sale = form.save(commit=False)
@@ -166,7 +239,16 @@ def add_sale(request):
 
 
 def handle_file_product_upload(request):
-    if request.method == "POST":
+    """
+    Handles file upload of product data and renders the data page.
+
+    Args:
+        Request: Http Request.
+
+    Returns:
+        Rendered data page.
+    """
+    if request.method == 'POST':
         form = FileUploadForm(request.POST, request.FILES)
         if form.is_valid():
             file = request.FILES["file"]
@@ -191,8 +273,19 @@ def handle_file_product_upload(request):
     return render(request, "data.html", {"form": form})
 
 
+@login_required(login_url='login')
 def handle_file_sales_upload(request):
-    if request.method == "POST":
+    """
+    Handles the download of sales data from a file uploaded by the user,
+    and updates the database.
+
+    Args:
+        request: The HTTP request object.
+
+    Returns:
+        HttpResponse: Redirects to the 'data' page upon successful upload.
+    """
+    if request.method == 'POST':
         form = FileUploadForm(request.POST, request.FILES)
         if form.is_valid():
             file = request.FILES["file"]
@@ -218,6 +311,16 @@ def handle_file_sales_upload(request):
 
 
 def get_product_details(request, product_name):
+    """
+    Returns product details in JSON format.
+
+    Args:
+        request: The HTTP request object.
+        product_name: The name of the product.
+
+    Returns:
+        JsonResponse: JSON response containing product details.
+    """
     product = Product.objects.get(product_name=product_name, user=request.user)
     return JsonResponse(
         {
@@ -231,9 +334,19 @@ def get_product_details(request, product_name):
     )
 
 
-@login_required(login_url="login")
+@login_required(login_url='login')
 def handle_contact_page(request):
-    if request.method == "POST":
+    """
+    Handles the submission of the contact form and sends an email.
+
+    Args:
+        request: The HTTP request object.
+
+    Returns:
+        HttpResponse: Redirects to the 'contact' page
+        upon successful form submission.
+    """
+    if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
             name = form.cleaned_data.get("name", "")
@@ -254,6 +367,13 @@ def handle_contact_page(request):
 
 
 def handle_scenario(request, scenario, product_name, period):
+    """
+    Handles a scenario by querying product and sales data,
+    and displaying DataFrames.
+
+    Args:
+        request: The HTTP request object.
+    """
     sales_data = django_to_df(
         Sale, request.user, product=product_name, is_product=False
     )
