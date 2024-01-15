@@ -29,7 +29,14 @@ const ctx = document.getElementById('chart1');
                 borderColor: 'rgba(255, 99, 132, 1)',
                 borderWidth: 2,
                 fill: false,
-            }],
+            },
+            {
+              label: 'Quantité commandé',
+              data: [0],
+              borderColor: 'rgba(255, 99, 132, 1)',
+              borderWidth: 2,
+              fill: false,
+          }],
         },
         options: {
             scales: {
@@ -70,16 +77,8 @@ const ctx = document.getElementById('chart1');
         chart2.data.labels = data.date;
         chart2.data.datasets[0].data = data.quantité;
         chart2.data.datasets[0].label = "quantité " + productName;
-
-        // Ajouter une nouvelle courbe
-        chart2.data.datasets.push({
-            label: "stock",
-            data: data.order,
-            borderColor: 'rgba(0, 240, 100, 1)',
-            borderWidth: 2,
-            fill: false,
-        });
-
+        chart2.data.datasets[1].data = data.order;
+        chart2.data.datasets[0].label = "quantité commandé " + productName;
         chart2.update();
     });
   });
