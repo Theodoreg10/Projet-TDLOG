@@ -1,0 +1,1379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module principal.forms</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title"><a href="principal.html" class="white">principal</a>.forms</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Couali%5Cprojet-tdlog%5Cstockmng%5Cprincipal%5Cforms.py">c:\users\ouali\projet-tdlog\stockmng\principal\forms.py</a></td></tr></table>
+    <p></p>
+<p>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Modules</strong></td></tr>
+    
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="django.forms.html">django.forms</a><br>
+</td><td class="multicolumn"></td><td class="multicolumn"></td><td class="multicolumn"></td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor index-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Classes</strong></td></tr>
+    
+<tr><td class="decor index-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl>
+<dt class="heading-text"><a href="django.forms.forms.html#Form">django.forms.forms.Form</a>(<a href="django.forms.forms.html#BaseForm">django.forms.forms.BaseForm</a>)
+</dt><dd>
+<dl>
+<dt class="heading-text"><a href="principal.forms.html#ContactForm">ContactForm</a>
+</dt><dt class="heading-text"><a href="principal.forms.html#FileUploadForm">FileUploadForm</a>
+</dt><dt class="heading-text"><a href="principal.forms.html#LoginForm">LoginForm</a>
+</dt><dt class="heading-text"><a href="principal.forms.html#ProductSelectionForm">ProductSelectionForm</a>
+</dt><dt class="heading-text"><a href="principal.forms.html#RegistrationForm">RegistrationForm</a>
+</dt><dt class="heading-text"><a href="principal.forms.html#ScenarioForm">ScenarioForm</a>
+</dt></dl>
+</dd>
+<dt class="heading-text"><a href="django.forms.models.html#ModelForm">django.forms.models.ModelForm</a>(<a href="django.forms.models.html#BaseModelForm">django.forms.models.BaseModelForm</a>)
+</dt><dd>
+<dl>
+<dt class="heading-text"><a href="principal.forms.html#ProductForm">ProductForm</a>
+</dt><dt class="heading-text"><a href="principal.forms.html#SaleForm">SaleForm</a>
+</dt></dl>
+</dd>
+</dl>
+ <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="ContactForm">class <strong>ContactForm</strong></a>(<a href="django.forms.forms.html#Form">django.forms.forms.Form</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#ContactForm">ContactForm</a>(data=None,&nbsp;files=None,&nbsp;auto_id='id_%s',&nbsp;prefix=None,&nbsp;initial=None,&nbsp;error_class=&amp;lt;class&nbsp;'django.forms.utils.ErrorList'&amp;gt;,&nbsp;label_suffix=None,&nbsp;empty_permitted=False,&nbsp;field_order=None,&nbsp;use_required_attribute=None,&nbsp;renderer=None)<br>
+&nbsp;<br>
+<a href="django.forms.forms.html#Form">Form</a>&nbsp;for&nbsp;contacting&nbsp;support&nbsp;or&nbsp;users.<br>
+&nbsp;<br>
+Fields:<br>
+-&nbsp;name&nbsp;(CharField):&nbsp;User's&nbsp;name.<br>
+-&nbsp;email&nbsp;(EmailField):&nbsp;User's&nbsp;email&nbsp;address.<br>
+-&nbsp;message&nbsp;(CharField):&nbsp;Message&nbsp;to&nbsp;send.<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="principal.forms.html#ContactForm">ContactForm</a></dd>
+<dd><a href="django.forms.forms.html#Form">django.forms.forms.Form</a></dd>
+<dd><a href="django.forms.forms.html#BaseForm">django.forms.forms.BaseForm</a></dd>
+<dd><a href="django.forms.utils.html#RenderableFormMixin">django.forms.utils.RenderableFormMixin</a></dd>
+<dd><a href="django.forms.utils.html#RenderableMixin">django.forms.utils.RenderableMixin</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Readonly properties defined here:<br>
+<dl><dt><strong>media</strong></dt>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>base_fields</strong> = {'email': &lt;django.forms.fields.EmailField object&gt;, 'message': &lt;django.forms.fields.CharField object&gt;, 'name': &lt;django.forms.fields.CharField object&gt;}</dl>
+
+<dl><dt><strong>declared_fields</strong> = {'email': &lt;django.forms.fields.EmailField object&gt;, 'message': &lt;django.forms.fields.CharField object&gt;, 'name': &lt;django.forms.fields.CharField object&gt;}</dl>
+
+<hr>
+Methods inherited from <a href="django.forms.forms.html#BaseForm">django.forms.forms.BaseForm</a>:<br>
+<dl><dt><a name="ContactForm-__getitem__"><strong>__getitem__</strong></a>(self, name)</dt><dd><span class="code">Return&nbsp;a&nbsp;BoundField&nbsp;with&nbsp;the&nbsp;given&nbsp;name.</span></dd></dl>
+
+<dl><dt><a name="ContactForm-__init__"><strong>__init__</strong></a>(self, data=None, files=None, auto_id='id_%s', prefix=None, initial=None, error_class=&lt;class 'django.forms.utils.ErrorList'&gt;, label_suffix=None, empty_permitted=False, field_order=None, use_required_attribute=None, renderer=None)</dt><dd><span class="code">Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</span></dd></dl>
+
+<dl><dt><a name="ContactForm-__iter__"><strong>__iter__</strong></a>(self)</dt><dd><span class="code">Yield&nbsp;the&nbsp;form's&nbsp;fields&nbsp;as&nbsp;BoundField&nbsp;objects.</span></dd></dl>
+
+<dl><dt><a name="ContactForm-__repr__"><strong>__repr__</strong></a>(self)</dt><dd><span class="code">Return&nbsp;repr(self).</span></dd></dl>
+
+<dl><dt><a name="ContactForm-add_error"><strong>add_error</strong></a>(self, field, error)</dt><dd><span class="code">Update&nbsp;the&nbsp;content&nbsp;of&nbsp;`self.<strong>_errors</strong>`.<br>
+&nbsp;<br>
+The&nbsp;`field`&nbsp;argument&nbsp;is&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;field&nbsp;to&nbsp;which&nbsp;the&nbsp;errors<br>
+should&nbsp;be&nbsp;added.&nbsp;If&nbsp;it's&nbsp;None,&nbsp;treat&nbsp;the&nbsp;errors&nbsp;as&nbsp;NON_FIELD_ERRORS.<br>
+&nbsp;<br>
+The&nbsp;`error`&nbsp;argument&nbsp;can&nbsp;be&nbsp;a&nbsp;single&nbsp;error,&nbsp;a&nbsp;list&nbsp;of&nbsp;errors,&nbsp;or&nbsp;a<br>
+dictionary&nbsp;that&nbsp;maps&nbsp;field&nbsp;names&nbsp;to&nbsp;lists&nbsp;of&nbsp;errors.&nbsp;An&nbsp;"error"&nbsp;can&nbsp;be<br>
+either&nbsp;a&nbsp;simple&nbsp;string&nbsp;or&nbsp;an&nbsp;instance&nbsp;of&nbsp;ValidationError&nbsp;with&nbsp;its<br>
+message&nbsp;attribute&nbsp;set&nbsp;and&nbsp;a&nbsp;"list&nbsp;or&nbsp;dictionary"&nbsp;can&nbsp;be&nbsp;an&nbsp;actual<br>
+`list`&nbsp;or&nbsp;`dict`&nbsp;or&nbsp;an&nbsp;instance&nbsp;of&nbsp;ValidationError&nbsp;with&nbsp;its<br>
+`error_list`&nbsp;or&nbsp;`error_dict`&nbsp;attribute&nbsp;set.<br>
+&nbsp;<br>
+If&nbsp;`error`&nbsp;is&nbsp;a&nbsp;dictionary,&nbsp;the&nbsp;`field`&nbsp;argument&nbsp;*must*&nbsp;be&nbsp;None&nbsp;and<br>
+errors&nbsp;will&nbsp;be&nbsp;added&nbsp;to&nbsp;the&nbsp;fields&nbsp;that&nbsp;correspond&nbsp;to&nbsp;the&nbsp;keys&nbsp;of&nbsp;the<br>
+dictionary.</span></dd></dl>
+
+<dl><dt><a name="ContactForm-add_initial_prefix"><strong>add_initial_prefix</strong></a>(self, field_name)</dt><dd><span class="code">Add&nbsp;an&nbsp;'initial'&nbsp;prefix&nbsp;for&nbsp;checking&nbsp;dynamic&nbsp;initial&nbsp;values.</span></dd></dl>
+
+<dl><dt><a name="ContactForm-add_prefix"><strong>add_prefix</strong></a>(self, field_name)</dt><dd><span class="code">Return&nbsp;the&nbsp;field&nbsp;name&nbsp;with&nbsp;a&nbsp;prefix&nbsp;appended,&nbsp;if&nbsp;this&nbsp;<a href="django.forms.forms.html#Form">Form</a>&nbsp;has&nbsp;a<br>
+prefix&nbsp;set.<br>
+&nbsp;<br>
+Subclasses&nbsp;may&nbsp;wish&nbsp;to&nbsp;override.</span></dd></dl>
+
+<strong>changed_data</strong> = &lt;django.utils.functional.cached_property object&gt;
+<dl><dt><a name="ContactForm-clean"><strong>clean</strong></a>(self)</dt><dd><span class="code">Hook&nbsp;for&nbsp;doing&nbsp;any&nbsp;extra&nbsp;form-wide&nbsp;cleaning&nbsp;after&nbsp;Field.<a href="#ContactForm-clean">clean</a>()&nbsp;has&nbsp;been<br>
+called&nbsp;on&nbsp;every&nbsp;field.&nbsp;Any&nbsp;ValidationError&nbsp;raised&nbsp;by&nbsp;this&nbsp;method&nbsp;will<br>
+not&nbsp;be&nbsp;associated&nbsp;with&nbsp;a&nbsp;particular&nbsp;field;&nbsp;it&nbsp;will&nbsp;have&nbsp;a&nbsp;special-case<br>
+association&nbsp;with&nbsp;the&nbsp;field&nbsp;named&nbsp;'__all__'.</span></dd></dl>
+
+<dl><dt><a name="ContactForm-full_clean"><strong>full_clean</strong></a>(self)</dt><dd><span class="code">Clean&nbsp;all&nbsp;of&nbsp;self.<strong>data</strong>&nbsp;and&nbsp;populate&nbsp;self.<strong>_errors</strong>&nbsp;and&nbsp;self.<strong>cleaned_data</strong>.</span></dd></dl>
+
+<dl><dt><a name="ContactForm-get_context"><strong>get_context</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="ContactForm-get_initial_for_field"><strong>get_initial_for_field</strong></a>(self, field, field_name)</dt><dd><span class="code">Return&nbsp;initial&nbsp;data&nbsp;for&nbsp;field&nbsp;on&nbsp;form.&nbsp;Use&nbsp;initial&nbsp;data&nbsp;from&nbsp;the&nbsp;form<br>
+or&nbsp;the&nbsp;field,&nbsp;in&nbsp;that&nbsp;order.&nbsp;Evaluate&nbsp;callable&nbsp;values.</span></dd></dl>
+
+<dl><dt><a name="ContactForm-has_changed"><strong>has_changed</strong></a>(self)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;data&nbsp;differs&nbsp;from&nbsp;initial.</span></dd></dl>
+
+<dl><dt><a name="ContactForm-has_error"><strong>has_error</strong></a>(self, field, code=None)</dt></dl>
+
+<dl><dt><a name="ContactForm-hidden_fields"><strong>hidden_fields</strong></a>(self)</dt><dd><span class="code">Return&nbsp;a&nbsp;list&nbsp;of&nbsp;all&nbsp;the&nbsp;BoundField&nbsp;objects&nbsp;that&nbsp;are&nbsp;hidden&nbsp;fields.<br>
+Useful&nbsp;for&nbsp;manual&nbsp;form&nbsp;layout&nbsp;in&nbsp;templates.</span></dd></dl>
+
+<dl><dt><a name="ContactForm-is_multipart"><strong>is_multipart</strong></a>(self)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;form&nbsp;needs&nbsp;to&nbsp;be&nbsp;multipart-encoded,&nbsp;i.e.&nbsp;it&nbsp;has<br>
+FileInput,&nbsp;or&nbsp;False&nbsp;otherwise.</span></dd></dl>
+
+<dl><dt><a name="ContactForm-is_valid"><strong>is_valid</strong></a>(self)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;form&nbsp;has&nbsp;no&nbsp;errors,&nbsp;or&nbsp;False&nbsp;otherwise.</span></dd></dl>
+
+<dl><dt><a name="ContactForm-non_field_errors"><strong>non_field_errors</strong></a>(self)</dt><dd><span class="code">Return&nbsp;an&nbsp;ErrorList&nbsp;of&nbsp;errors&nbsp;that&nbsp;aren't&nbsp;associated&nbsp;with&nbsp;a&nbsp;particular<br>
+field&nbsp;--&nbsp;i.e.,&nbsp;from&nbsp;<a href="django.forms.forms.html#Form">Form</a>.<a href="#ContactForm-clean">clean</a>().&nbsp;Return&nbsp;an&nbsp;empty&nbsp;ErrorList&nbsp;if&nbsp;there<br>
+are&nbsp;none.</span></dd></dl>
+
+<dl><dt><a name="ContactForm-order_fields"><strong>order_fields</strong></a>(self, field_order)</dt><dd><span class="code">Rearrange&nbsp;the&nbsp;fields&nbsp;according&nbsp;to&nbsp;field_order.<br>
+&nbsp;<br>
+field_order&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;field&nbsp;names&nbsp;specifying&nbsp;the&nbsp;order.&nbsp;Append&nbsp;fields<br>
+not&nbsp;included&nbsp;in&nbsp;the&nbsp;list&nbsp;in&nbsp;the&nbsp;default&nbsp;order&nbsp;for&nbsp;backward&nbsp;compatibility<br>
+with&nbsp;subclasses&nbsp;not&nbsp;overriding&nbsp;field_order.&nbsp;If&nbsp;field_order&nbsp;is&nbsp;None,<br>
+keep&nbsp;all&nbsp;fields&nbsp;in&nbsp;the&nbsp;order&nbsp;defined&nbsp;in&nbsp;the&nbsp;class.&nbsp;Ignore&nbsp;unknown<br>
+fields&nbsp;in&nbsp;field_order&nbsp;to&nbsp;allow&nbsp;disabling&nbsp;fields&nbsp;in&nbsp;form&nbsp;subclasses<br>
+without&nbsp;redefining&nbsp;ordering.</span></dd></dl>
+
+<dl><dt><a name="ContactForm-visible_fields"><strong>visible_fields</strong></a>(self)</dt><dd><span class="code">Return&nbsp;a&nbsp;list&nbsp;of&nbsp;BoundField&nbsp;objects&nbsp;that&nbsp;aren't&nbsp;hidden&nbsp;fields.<br>
+The&nbsp;opposite&nbsp;of&nbsp;the&nbsp;<a href="#ContactForm-hidden_fields">hidden_fields</a>()&nbsp;method.</span></dd></dl>
+
+<hr>
+Readonly properties inherited from <a href="django.forms.forms.html#BaseForm">django.forms.forms.BaseForm</a>:<br>
+<dl><dt><strong>errors</strong></dt>
+<dd><span class="code">Return&nbsp;an&nbsp;ErrorDict&nbsp;for&nbsp;the&nbsp;data&nbsp;provided&nbsp;for&nbsp;the&nbsp;form.</span></dd>
+</dl>
+<dl><dt><strong>template_name</strong></dt>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="django.forms.forms.html#BaseForm">django.forms.forms.BaseForm</a>:<br>
+<dl><dt><strong>default_renderer</strong> = None</dl>
+
+<dl><dt><strong>field_order</strong> = None</dl>
+
+<dl><dt><strong>prefix</strong> = None</dl>
+
+<dl><dt><strong>template_name_div</strong> = 'django/forms/div.html'</dl>
+
+<dl><dt><strong>template_name_label</strong> = 'django/forms/label.html'</dl>
+
+<dl><dt><strong>template_name_p</strong> = 'django/forms/p.html'</dl>
+
+<dl><dt><strong>template_name_table</strong> = 'django/forms/table.html'</dl>
+
+<dl><dt><strong>template_name_ul</strong> = 'django/forms/ul.html'</dl>
+
+<dl><dt><strong>use_required_attribute</strong> = True</dl>
+
+<hr>
+Methods inherited from <a href="django.forms.utils.html#RenderableFormMixin">django.forms.utils.RenderableFormMixin</a>:<br>
+<dl><dt><a name="ContactForm-as_div"><strong>as_div</strong></a>(self)</dt><dd><span class="code">Render&nbsp;as&nbsp;&lt;div&gt;&nbsp;elements.</span></dd></dl>
+
+<dl><dt><a name="ContactForm-as_p"><strong>as_p</strong></a>(self)</dt><dd><span class="code">Render&nbsp;as&nbsp;&lt;p&gt;&nbsp;elements.</span></dd></dl>
+
+<dl><dt><a name="ContactForm-as_table"><strong>as_table</strong></a>(self)</dt><dd><span class="code">Render&nbsp;as&nbsp;&lt;tr&gt;&nbsp;elements&nbsp;excluding&nbsp;the&nbsp;surrounding&nbsp;&lt;table&gt;&nbsp;tag.</span></dd></dl>
+
+<dl><dt><a name="ContactForm-as_ul"><strong>as_ul</strong></a>(self)</dt><dd><span class="code">Render&nbsp;as&nbsp;&lt;li&gt;&nbsp;elements&nbsp;excluding&nbsp;the&nbsp;surrounding&nbsp;&lt;ul&gt;&nbsp;tag.</span></dd></dl>
+
+<hr>
+Methods inherited from <a href="django.forms.utils.html#RenderableMixin">django.forms.utils.RenderableMixin</a>:<br>
+<dl><dt><a name="ContactForm-__html__"><strong>__html__</strong></a> = <a href="#ContactForm-render">render</a>(self, template_name=None, context=None, renderer=None)</dt></dl>
+
+<dl><dt><a name="ContactForm-__str__"><strong>__str__</strong></a> = <a href="#ContactForm-render">render</a>(self, template_name=None, context=None, renderer=None)</dt></dl>
+
+<dl><dt><a name="ContactForm-render"><strong>render</strong></a>(self, template_name=None, context=None, renderer=None)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="django.forms.utils.html#RenderableMixin">django.forms.utils.RenderableMixin</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</span></dd>
+</dl>
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="FileUploadForm">class <strong>FileUploadForm</strong></a>(<a href="django.forms.forms.html#Form">django.forms.forms.Form</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#FileUploadForm">FileUploadForm</a>(data=None,&nbsp;files=None,&nbsp;auto_id='id_%s',&nbsp;prefix=None,&nbsp;initial=None,&nbsp;error_class=&amp;lt;class&nbsp;'django.forms.utils.ErrorList'&amp;gt;,&nbsp;label_suffix=None,&nbsp;empty_permitted=False,&nbsp;field_order=None,&nbsp;use_required_attribute=None,&nbsp;renderer=None)<br>
+&nbsp;<br>
+<a href="django.forms.forms.html#Form">Form</a>&nbsp;for&nbsp;uploading&nbsp;files.<br>
+&nbsp;<br>
+Fields:<br>
+-&nbsp;file&nbsp;(FileField):&nbsp;Uploaded&nbsp;file.<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="principal.forms.html#FileUploadForm">FileUploadForm</a></dd>
+<dd><a href="django.forms.forms.html#Form">django.forms.forms.Form</a></dd>
+<dd><a href="django.forms.forms.html#BaseForm">django.forms.forms.BaseForm</a></dd>
+<dd><a href="django.forms.utils.html#RenderableFormMixin">django.forms.utils.RenderableFormMixin</a></dd>
+<dd><a href="django.forms.utils.html#RenderableMixin">django.forms.utils.RenderableMixin</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Readonly properties defined here:<br>
+<dl><dt><strong>media</strong></dt>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>base_fields</strong> = {'file': &lt;django.forms.fields.FileField object&gt;}</dl>
+
+<dl><dt><strong>declared_fields</strong> = {'file': &lt;django.forms.fields.FileField object&gt;}</dl>
+
+<hr>
+Methods inherited from <a href="django.forms.forms.html#BaseForm">django.forms.forms.BaseForm</a>:<br>
+<dl><dt><a name="FileUploadForm-__getitem__"><strong>__getitem__</strong></a>(self, name)</dt><dd><span class="code">Return&nbsp;a&nbsp;BoundField&nbsp;with&nbsp;the&nbsp;given&nbsp;name.</span></dd></dl>
+
+<dl><dt><a name="FileUploadForm-__init__"><strong>__init__</strong></a>(self, data=None, files=None, auto_id='id_%s', prefix=None, initial=None, error_class=&lt;class 'django.forms.utils.ErrorList'&gt;, label_suffix=None, empty_permitted=False, field_order=None, use_required_attribute=None, renderer=None)</dt><dd><span class="code">Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</span></dd></dl>
+
+<dl><dt><a name="FileUploadForm-__iter__"><strong>__iter__</strong></a>(self)</dt><dd><span class="code">Yield&nbsp;the&nbsp;form's&nbsp;fields&nbsp;as&nbsp;BoundField&nbsp;objects.</span></dd></dl>
+
+<dl><dt><a name="FileUploadForm-__repr__"><strong>__repr__</strong></a>(self)</dt><dd><span class="code">Return&nbsp;repr(self).</span></dd></dl>
+
+<dl><dt><a name="FileUploadForm-add_error"><strong>add_error</strong></a>(self, field, error)</dt><dd><span class="code">Update&nbsp;the&nbsp;content&nbsp;of&nbsp;`self.<strong>_errors</strong>`.<br>
+&nbsp;<br>
+The&nbsp;`field`&nbsp;argument&nbsp;is&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;field&nbsp;to&nbsp;which&nbsp;the&nbsp;errors<br>
+should&nbsp;be&nbsp;added.&nbsp;If&nbsp;it's&nbsp;None,&nbsp;treat&nbsp;the&nbsp;errors&nbsp;as&nbsp;NON_FIELD_ERRORS.<br>
+&nbsp;<br>
+The&nbsp;`error`&nbsp;argument&nbsp;can&nbsp;be&nbsp;a&nbsp;single&nbsp;error,&nbsp;a&nbsp;list&nbsp;of&nbsp;errors,&nbsp;or&nbsp;a<br>
+dictionary&nbsp;that&nbsp;maps&nbsp;field&nbsp;names&nbsp;to&nbsp;lists&nbsp;of&nbsp;errors.&nbsp;An&nbsp;"error"&nbsp;can&nbsp;be<br>
+either&nbsp;a&nbsp;simple&nbsp;string&nbsp;or&nbsp;an&nbsp;instance&nbsp;of&nbsp;ValidationError&nbsp;with&nbsp;its<br>
+message&nbsp;attribute&nbsp;set&nbsp;and&nbsp;a&nbsp;"list&nbsp;or&nbsp;dictionary"&nbsp;can&nbsp;be&nbsp;an&nbsp;actual<br>
+`list`&nbsp;or&nbsp;`dict`&nbsp;or&nbsp;an&nbsp;instance&nbsp;of&nbsp;ValidationError&nbsp;with&nbsp;its<br>
+`error_list`&nbsp;or&nbsp;`error_dict`&nbsp;attribute&nbsp;set.<br>
+&nbsp;<br>
+If&nbsp;`error`&nbsp;is&nbsp;a&nbsp;dictionary,&nbsp;the&nbsp;`field`&nbsp;argument&nbsp;*must*&nbsp;be&nbsp;None&nbsp;and<br>
+errors&nbsp;will&nbsp;be&nbsp;added&nbsp;to&nbsp;the&nbsp;fields&nbsp;that&nbsp;correspond&nbsp;to&nbsp;the&nbsp;keys&nbsp;of&nbsp;the<br>
+dictionary.</span></dd></dl>
+
+<dl><dt><a name="FileUploadForm-add_initial_prefix"><strong>add_initial_prefix</strong></a>(self, field_name)</dt><dd><span class="code">Add&nbsp;an&nbsp;'initial'&nbsp;prefix&nbsp;for&nbsp;checking&nbsp;dynamic&nbsp;initial&nbsp;values.</span></dd></dl>
+
+<dl><dt><a name="FileUploadForm-add_prefix"><strong>add_prefix</strong></a>(self, field_name)</dt><dd><span class="code">Return&nbsp;the&nbsp;field&nbsp;name&nbsp;with&nbsp;a&nbsp;prefix&nbsp;appended,&nbsp;if&nbsp;this&nbsp;<a href="django.forms.forms.html#Form">Form</a>&nbsp;has&nbsp;a<br>
+prefix&nbsp;set.<br>
+&nbsp;<br>
+Subclasses&nbsp;may&nbsp;wish&nbsp;to&nbsp;override.</span></dd></dl>
+
+<strong>changed_data</strong> = &lt;django.utils.functional.cached_property object&gt;
+<dl><dt><a name="FileUploadForm-clean"><strong>clean</strong></a>(self)</dt><dd><span class="code">Hook&nbsp;for&nbsp;doing&nbsp;any&nbsp;extra&nbsp;form-wide&nbsp;cleaning&nbsp;after&nbsp;Field.<a href="#FileUploadForm-clean">clean</a>()&nbsp;has&nbsp;been<br>
+called&nbsp;on&nbsp;every&nbsp;field.&nbsp;Any&nbsp;ValidationError&nbsp;raised&nbsp;by&nbsp;this&nbsp;method&nbsp;will<br>
+not&nbsp;be&nbsp;associated&nbsp;with&nbsp;a&nbsp;particular&nbsp;field;&nbsp;it&nbsp;will&nbsp;have&nbsp;a&nbsp;special-case<br>
+association&nbsp;with&nbsp;the&nbsp;field&nbsp;named&nbsp;'__all__'.</span></dd></dl>
+
+<dl><dt><a name="FileUploadForm-full_clean"><strong>full_clean</strong></a>(self)</dt><dd><span class="code">Clean&nbsp;all&nbsp;of&nbsp;self.<strong>data</strong>&nbsp;and&nbsp;populate&nbsp;self.<strong>_errors</strong>&nbsp;and&nbsp;self.<strong>cleaned_data</strong>.</span></dd></dl>
+
+<dl><dt><a name="FileUploadForm-get_context"><strong>get_context</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="FileUploadForm-get_initial_for_field"><strong>get_initial_for_field</strong></a>(self, field, field_name)</dt><dd><span class="code">Return&nbsp;initial&nbsp;data&nbsp;for&nbsp;field&nbsp;on&nbsp;form.&nbsp;Use&nbsp;initial&nbsp;data&nbsp;from&nbsp;the&nbsp;form<br>
+or&nbsp;the&nbsp;field,&nbsp;in&nbsp;that&nbsp;order.&nbsp;Evaluate&nbsp;callable&nbsp;values.</span></dd></dl>
+
+<dl><dt><a name="FileUploadForm-has_changed"><strong>has_changed</strong></a>(self)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;data&nbsp;differs&nbsp;from&nbsp;initial.</span></dd></dl>
+
+<dl><dt><a name="FileUploadForm-has_error"><strong>has_error</strong></a>(self, field, code=None)</dt></dl>
+
+<dl><dt><a name="FileUploadForm-hidden_fields"><strong>hidden_fields</strong></a>(self)</dt><dd><span class="code">Return&nbsp;a&nbsp;list&nbsp;of&nbsp;all&nbsp;the&nbsp;BoundField&nbsp;objects&nbsp;that&nbsp;are&nbsp;hidden&nbsp;fields.<br>
+Useful&nbsp;for&nbsp;manual&nbsp;form&nbsp;layout&nbsp;in&nbsp;templates.</span></dd></dl>
+
+<dl><dt><a name="FileUploadForm-is_multipart"><strong>is_multipart</strong></a>(self)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;form&nbsp;needs&nbsp;to&nbsp;be&nbsp;multipart-encoded,&nbsp;i.e.&nbsp;it&nbsp;has<br>
+FileInput,&nbsp;or&nbsp;False&nbsp;otherwise.</span></dd></dl>
+
+<dl><dt><a name="FileUploadForm-is_valid"><strong>is_valid</strong></a>(self)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;form&nbsp;has&nbsp;no&nbsp;errors,&nbsp;or&nbsp;False&nbsp;otherwise.</span></dd></dl>
+
+<dl><dt><a name="FileUploadForm-non_field_errors"><strong>non_field_errors</strong></a>(self)</dt><dd><span class="code">Return&nbsp;an&nbsp;ErrorList&nbsp;of&nbsp;errors&nbsp;that&nbsp;aren't&nbsp;associated&nbsp;with&nbsp;a&nbsp;particular<br>
+field&nbsp;--&nbsp;i.e.,&nbsp;from&nbsp;<a href="django.forms.forms.html#Form">Form</a>.<a href="#FileUploadForm-clean">clean</a>().&nbsp;Return&nbsp;an&nbsp;empty&nbsp;ErrorList&nbsp;if&nbsp;there<br>
+are&nbsp;none.</span></dd></dl>
+
+<dl><dt><a name="FileUploadForm-order_fields"><strong>order_fields</strong></a>(self, field_order)</dt><dd><span class="code">Rearrange&nbsp;the&nbsp;fields&nbsp;according&nbsp;to&nbsp;field_order.<br>
+&nbsp;<br>
+field_order&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;field&nbsp;names&nbsp;specifying&nbsp;the&nbsp;order.&nbsp;Append&nbsp;fields<br>
+not&nbsp;included&nbsp;in&nbsp;the&nbsp;list&nbsp;in&nbsp;the&nbsp;default&nbsp;order&nbsp;for&nbsp;backward&nbsp;compatibility<br>
+with&nbsp;subclasses&nbsp;not&nbsp;overriding&nbsp;field_order.&nbsp;If&nbsp;field_order&nbsp;is&nbsp;None,<br>
+keep&nbsp;all&nbsp;fields&nbsp;in&nbsp;the&nbsp;order&nbsp;defined&nbsp;in&nbsp;the&nbsp;class.&nbsp;Ignore&nbsp;unknown<br>
+fields&nbsp;in&nbsp;field_order&nbsp;to&nbsp;allow&nbsp;disabling&nbsp;fields&nbsp;in&nbsp;form&nbsp;subclasses<br>
+without&nbsp;redefining&nbsp;ordering.</span></dd></dl>
+
+<dl><dt><a name="FileUploadForm-visible_fields"><strong>visible_fields</strong></a>(self)</dt><dd><span class="code">Return&nbsp;a&nbsp;list&nbsp;of&nbsp;BoundField&nbsp;objects&nbsp;that&nbsp;aren't&nbsp;hidden&nbsp;fields.<br>
+The&nbsp;opposite&nbsp;of&nbsp;the&nbsp;<a href="#FileUploadForm-hidden_fields">hidden_fields</a>()&nbsp;method.</span></dd></dl>
+
+<hr>
+Readonly properties inherited from <a href="django.forms.forms.html#BaseForm">django.forms.forms.BaseForm</a>:<br>
+<dl><dt><strong>errors</strong></dt>
+<dd><span class="code">Return&nbsp;an&nbsp;ErrorDict&nbsp;for&nbsp;the&nbsp;data&nbsp;provided&nbsp;for&nbsp;the&nbsp;form.</span></dd>
+</dl>
+<dl><dt><strong>template_name</strong></dt>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="django.forms.forms.html#BaseForm">django.forms.forms.BaseForm</a>:<br>
+<dl><dt><strong>default_renderer</strong> = None</dl>
+
+<dl><dt><strong>field_order</strong> = None</dl>
+
+<dl><dt><strong>prefix</strong> = None</dl>
+
+<dl><dt><strong>template_name_div</strong> = 'django/forms/div.html'</dl>
+
+<dl><dt><strong>template_name_label</strong> = 'django/forms/label.html'</dl>
+
+<dl><dt><strong>template_name_p</strong> = 'django/forms/p.html'</dl>
+
+<dl><dt><strong>template_name_table</strong> = 'django/forms/table.html'</dl>
+
+<dl><dt><strong>template_name_ul</strong> = 'django/forms/ul.html'</dl>
+
+<dl><dt><strong>use_required_attribute</strong> = True</dl>
+
+<hr>
+Methods inherited from <a href="django.forms.utils.html#RenderableFormMixin">django.forms.utils.RenderableFormMixin</a>:<br>
+<dl><dt><a name="FileUploadForm-as_div"><strong>as_div</strong></a>(self)</dt><dd><span class="code">Render&nbsp;as&nbsp;&lt;div&gt;&nbsp;elements.</span></dd></dl>
+
+<dl><dt><a name="FileUploadForm-as_p"><strong>as_p</strong></a>(self)</dt><dd><span class="code">Render&nbsp;as&nbsp;&lt;p&gt;&nbsp;elements.</span></dd></dl>
+
+<dl><dt><a name="FileUploadForm-as_table"><strong>as_table</strong></a>(self)</dt><dd><span class="code">Render&nbsp;as&nbsp;&lt;tr&gt;&nbsp;elements&nbsp;excluding&nbsp;the&nbsp;surrounding&nbsp;&lt;table&gt;&nbsp;tag.</span></dd></dl>
+
+<dl><dt><a name="FileUploadForm-as_ul"><strong>as_ul</strong></a>(self)</dt><dd><span class="code">Render&nbsp;as&nbsp;&lt;li&gt;&nbsp;elements&nbsp;excluding&nbsp;the&nbsp;surrounding&nbsp;&lt;ul&gt;&nbsp;tag.</span></dd></dl>
+
+<hr>
+Methods inherited from <a href="django.forms.utils.html#RenderableMixin">django.forms.utils.RenderableMixin</a>:<br>
+<dl><dt><a name="FileUploadForm-__html__"><strong>__html__</strong></a> = <a href="#FileUploadForm-render">render</a>(self, template_name=None, context=None, renderer=None)</dt></dl>
+
+<dl><dt><a name="FileUploadForm-__str__"><strong>__str__</strong></a> = <a href="#FileUploadForm-render">render</a>(self, template_name=None, context=None, renderer=None)</dt></dl>
+
+<dl><dt><a name="FileUploadForm-render"><strong>render</strong></a>(self, template_name=None, context=None, renderer=None)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="django.forms.utils.html#RenderableMixin">django.forms.utils.RenderableMixin</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</span></dd>
+</dl>
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="LoginForm">class <strong>LoginForm</strong></a>(<a href="django.forms.forms.html#Form">django.forms.forms.Form</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#LoginForm">LoginForm</a>(data=None,&nbsp;files=None,&nbsp;auto_id='id_%s',&nbsp;prefix=None,&nbsp;initial=None,&nbsp;error_class=&amp;lt;class&nbsp;'django.forms.utils.ErrorList'&amp;gt;,&nbsp;label_suffix=None,&nbsp;empty_permitted=False,&nbsp;field_order=None,&nbsp;use_required_attribute=None,&nbsp;renderer=None)<br>
+&nbsp;<br>
+<a href="django.forms.forms.html#Form">Form</a>&nbsp;for&nbsp;user&nbsp;login.<br>
+&nbsp;<br>
+Fields:<br>
+-&nbsp;username&nbsp;(CharField):&nbsp;User's&nbsp;username.<br>
+-&nbsp;password&nbsp;(CharField):&nbsp;User's&nbsp;password&nbsp;(masked).<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="principal.forms.html#LoginForm">LoginForm</a></dd>
+<dd><a href="django.forms.forms.html#Form">django.forms.forms.Form</a></dd>
+<dd><a href="django.forms.forms.html#BaseForm">django.forms.forms.BaseForm</a></dd>
+<dd><a href="django.forms.utils.html#RenderableFormMixin">django.forms.utils.RenderableFormMixin</a></dd>
+<dd><a href="django.forms.utils.html#RenderableMixin">django.forms.utils.RenderableMixin</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Readonly properties defined here:<br>
+<dl><dt><strong>media</strong></dt>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>base_fields</strong> = {'password': &lt;django.forms.fields.CharField object&gt;, 'username': &lt;django.forms.fields.CharField object&gt;}</dl>
+
+<dl><dt><strong>declared_fields</strong> = {'password': &lt;django.forms.fields.CharField object&gt;, 'username': &lt;django.forms.fields.CharField object&gt;}</dl>
+
+<hr>
+Methods inherited from <a href="django.forms.forms.html#BaseForm">django.forms.forms.BaseForm</a>:<br>
+<dl><dt><a name="LoginForm-__getitem__"><strong>__getitem__</strong></a>(self, name)</dt><dd><span class="code">Return&nbsp;a&nbsp;BoundField&nbsp;with&nbsp;the&nbsp;given&nbsp;name.</span></dd></dl>
+
+<dl><dt><a name="LoginForm-__init__"><strong>__init__</strong></a>(self, data=None, files=None, auto_id='id_%s', prefix=None, initial=None, error_class=&lt;class 'django.forms.utils.ErrorList'&gt;, label_suffix=None, empty_permitted=False, field_order=None, use_required_attribute=None, renderer=None)</dt><dd><span class="code">Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</span></dd></dl>
+
+<dl><dt><a name="LoginForm-__iter__"><strong>__iter__</strong></a>(self)</dt><dd><span class="code">Yield&nbsp;the&nbsp;form's&nbsp;fields&nbsp;as&nbsp;BoundField&nbsp;objects.</span></dd></dl>
+
+<dl><dt><a name="LoginForm-__repr__"><strong>__repr__</strong></a>(self)</dt><dd><span class="code">Return&nbsp;repr(self).</span></dd></dl>
+
+<dl><dt><a name="LoginForm-add_error"><strong>add_error</strong></a>(self, field, error)</dt><dd><span class="code">Update&nbsp;the&nbsp;content&nbsp;of&nbsp;`self.<strong>_errors</strong>`.<br>
+&nbsp;<br>
+The&nbsp;`field`&nbsp;argument&nbsp;is&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;field&nbsp;to&nbsp;which&nbsp;the&nbsp;errors<br>
+should&nbsp;be&nbsp;added.&nbsp;If&nbsp;it's&nbsp;None,&nbsp;treat&nbsp;the&nbsp;errors&nbsp;as&nbsp;NON_FIELD_ERRORS.<br>
+&nbsp;<br>
+The&nbsp;`error`&nbsp;argument&nbsp;can&nbsp;be&nbsp;a&nbsp;single&nbsp;error,&nbsp;a&nbsp;list&nbsp;of&nbsp;errors,&nbsp;or&nbsp;a<br>
+dictionary&nbsp;that&nbsp;maps&nbsp;field&nbsp;names&nbsp;to&nbsp;lists&nbsp;of&nbsp;errors.&nbsp;An&nbsp;"error"&nbsp;can&nbsp;be<br>
+either&nbsp;a&nbsp;simple&nbsp;string&nbsp;or&nbsp;an&nbsp;instance&nbsp;of&nbsp;ValidationError&nbsp;with&nbsp;its<br>
+message&nbsp;attribute&nbsp;set&nbsp;and&nbsp;a&nbsp;"list&nbsp;or&nbsp;dictionary"&nbsp;can&nbsp;be&nbsp;an&nbsp;actual<br>
+`list`&nbsp;or&nbsp;`dict`&nbsp;or&nbsp;an&nbsp;instance&nbsp;of&nbsp;ValidationError&nbsp;with&nbsp;its<br>
+`error_list`&nbsp;or&nbsp;`error_dict`&nbsp;attribute&nbsp;set.<br>
+&nbsp;<br>
+If&nbsp;`error`&nbsp;is&nbsp;a&nbsp;dictionary,&nbsp;the&nbsp;`field`&nbsp;argument&nbsp;*must*&nbsp;be&nbsp;None&nbsp;and<br>
+errors&nbsp;will&nbsp;be&nbsp;added&nbsp;to&nbsp;the&nbsp;fields&nbsp;that&nbsp;correspond&nbsp;to&nbsp;the&nbsp;keys&nbsp;of&nbsp;the<br>
+dictionary.</span></dd></dl>
+
+<dl><dt><a name="LoginForm-add_initial_prefix"><strong>add_initial_prefix</strong></a>(self, field_name)</dt><dd><span class="code">Add&nbsp;an&nbsp;'initial'&nbsp;prefix&nbsp;for&nbsp;checking&nbsp;dynamic&nbsp;initial&nbsp;values.</span></dd></dl>
+
+<dl><dt><a name="LoginForm-add_prefix"><strong>add_prefix</strong></a>(self, field_name)</dt><dd><span class="code">Return&nbsp;the&nbsp;field&nbsp;name&nbsp;with&nbsp;a&nbsp;prefix&nbsp;appended,&nbsp;if&nbsp;this&nbsp;<a href="django.forms.forms.html#Form">Form</a>&nbsp;has&nbsp;a<br>
+prefix&nbsp;set.<br>
+&nbsp;<br>
+Subclasses&nbsp;may&nbsp;wish&nbsp;to&nbsp;override.</span></dd></dl>
+
+<strong>changed_data</strong> = &lt;django.utils.functional.cached_property object&gt;
+<dl><dt><a name="LoginForm-clean"><strong>clean</strong></a>(self)</dt><dd><span class="code">Hook&nbsp;for&nbsp;doing&nbsp;any&nbsp;extra&nbsp;form-wide&nbsp;cleaning&nbsp;after&nbsp;Field.<a href="#LoginForm-clean">clean</a>()&nbsp;has&nbsp;been<br>
+called&nbsp;on&nbsp;every&nbsp;field.&nbsp;Any&nbsp;ValidationError&nbsp;raised&nbsp;by&nbsp;this&nbsp;method&nbsp;will<br>
+not&nbsp;be&nbsp;associated&nbsp;with&nbsp;a&nbsp;particular&nbsp;field;&nbsp;it&nbsp;will&nbsp;have&nbsp;a&nbsp;special-case<br>
+association&nbsp;with&nbsp;the&nbsp;field&nbsp;named&nbsp;'__all__'.</span></dd></dl>
+
+<dl><dt><a name="LoginForm-full_clean"><strong>full_clean</strong></a>(self)</dt><dd><span class="code">Clean&nbsp;all&nbsp;of&nbsp;self.<strong>data</strong>&nbsp;and&nbsp;populate&nbsp;self.<strong>_errors</strong>&nbsp;and&nbsp;self.<strong>cleaned_data</strong>.</span></dd></dl>
+
+<dl><dt><a name="LoginForm-get_context"><strong>get_context</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="LoginForm-get_initial_for_field"><strong>get_initial_for_field</strong></a>(self, field, field_name)</dt><dd><span class="code">Return&nbsp;initial&nbsp;data&nbsp;for&nbsp;field&nbsp;on&nbsp;form.&nbsp;Use&nbsp;initial&nbsp;data&nbsp;from&nbsp;the&nbsp;form<br>
+or&nbsp;the&nbsp;field,&nbsp;in&nbsp;that&nbsp;order.&nbsp;Evaluate&nbsp;callable&nbsp;values.</span></dd></dl>
+
+<dl><dt><a name="LoginForm-has_changed"><strong>has_changed</strong></a>(self)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;data&nbsp;differs&nbsp;from&nbsp;initial.</span></dd></dl>
+
+<dl><dt><a name="LoginForm-has_error"><strong>has_error</strong></a>(self, field, code=None)</dt></dl>
+
+<dl><dt><a name="LoginForm-hidden_fields"><strong>hidden_fields</strong></a>(self)</dt><dd><span class="code">Return&nbsp;a&nbsp;list&nbsp;of&nbsp;all&nbsp;the&nbsp;BoundField&nbsp;objects&nbsp;that&nbsp;are&nbsp;hidden&nbsp;fields.<br>
+Useful&nbsp;for&nbsp;manual&nbsp;form&nbsp;layout&nbsp;in&nbsp;templates.</span></dd></dl>
+
+<dl><dt><a name="LoginForm-is_multipart"><strong>is_multipart</strong></a>(self)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;form&nbsp;needs&nbsp;to&nbsp;be&nbsp;multipart-encoded,&nbsp;i.e.&nbsp;it&nbsp;has<br>
+FileInput,&nbsp;or&nbsp;False&nbsp;otherwise.</span></dd></dl>
+
+<dl><dt><a name="LoginForm-is_valid"><strong>is_valid</strong></a>(self)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;form&nbsp;has&nbsp;no&nbsp;errors,&nbsp;or&nbsp;False&nbsp;otherwise.</span></dd></dl>
+
+<dl><dt><a name="LoginForm-non_field_errors"><strong>non_field_errors</strong></a>(self)</dt><dd><span class="code">Return&nbsp;an&nbsp;ErrorList&nbsp;of&nbsp;errors&nbsp;that&nbsp;aren't&nbsp;associated&nbsp;with&nbsp;a&nbsp;particular<br>
+field&nbsp;--&nbsp;i.e.,&nbsp;from&nbsp;<a href="django.forms.forms.html#Form">Form</a>.<a href="#LoginForm-clean">clean</a>().&nbsp;Return&nbsp;an&nbsp;empty&nbsp;ErrorList&nbsp;if&nbsp;there<br>
+are&nbsp;none.</span></dd></dl>
+
+<dl><dt><a name="LoginForm-order_fields"><strong>order_fields</strong></a>(self, field_order)</dt><dd><span class="code">Rearrange&nbsp;the&nbsp;fields&nbsp;according&nbsp;to&nbsp;field_order.<br>
+&nbsp;<br>
+field_order&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;field&nbsp;names&nbsp;specifying&nbsp;the&nbsp;order.&nbsp;Append&nbsp;fields<br>
+not&nbsp;included&nbsp;in&nbsp;the&nbsp;list&nbsp;in&nbsp;the&nbsp;default&nbsp;order&nbsp;for&nbsp;backward&nbsp;compatibility<br>
+with&nbsp;subclasses&nbsp;not&nbsp;overriding&nbsp;field_order.&nbsp;If&nbsp;field_order&nbsp;is&nbsp;None,<br>
+keep&nbsp;all&nbsp;fields&nbsp;in&nbsp;the&nbsp;order&nbsp;defined&nbsp;in&nbsp;the&nbsp;class.&nbsp;Ignore&nbsp;unknown<br>
+fields&nbsp;in&nbsp;field_order&nbsp;to&nbsp;allow&nbsp;disabling&nbsp;fields&nbsp;in&nbsp;form&nbsp;subclasses<br>
+without&nbsp;redefining&nbsp;ordering.</span></dd></dl>
+
+<dl><dt><a name="LoginForm-visible_fields"><strong>visible_fields</strong></a>(self)</dt><dd><span class="code">Return&nbsp;a&nbsp;list&nbsp;of&nbsp;BoundField&nbsp;objects&nbsp;that&nbsp;aren't&nbsp;hidden&nbsp;fields.<br>
+The&nbsp;opposite&nbsp;of&nbsp;the&nbsp;<a href="#LoginForm-hidden_fields">hidden_fields</a>()&nbsp;method.</span></dd></dl>
+
+<hr>
+Readonly properties inherited from <a href="django.forms.forms.html#BaseForm">django.forms.forms.BaseForm</a>:<br>
+<dl><dt><strong>errors</strong></dt>
+<dd><span class="code">Return&nbsp;an&nbsp;ErrorDict&nbsp;for&nbsp;the&nbsp;data&nbsp;provided&nbsp;for&nbsp;the&nbsp;form.</span></dd>
+</dl>
+<dl><dt><strong>template_name</strong></dt>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="django.forms.forms.html#BaseForm">django.forms.forms.BaseForm</a>:<br>
+<dl><dt><strong>default_renderer</strong> = None</dl>
+
+<dl><dt><strong>field_order</strong> = None</dl>
+
+<dl><dt><strong>prefix</strong> = None</dl>
+
+<dl><dt><strong>template_name_div</strong> = 'django/forms/div.html'</dl>
+
+<dl><dt><strong>template_name_label</strong> = 'django/forms/label.html'</dl>
+
+<dl><dt><strong>template_name_p</strong> = 'django/forms/p.html'</dl>
+
+<dl><dt><strong>template_name_table</strong> = 'django/forms/table.html'</dl>
+
+<dl><dt><strong>template_name_ul</strong> = 'django/forms/ul.html'</dl>
+
+<dl><dt><strong>use_required_attribute</strong> = True</dl>
+
+<hr>
+Methods inherited from <a href="django.forms.utils.html#RenderableFormMixin">django.forms.utils.RenderableFormMixin</a>:<br>
+<dl><dt><a name="LoginForm-as_div"><strong>as_div</strong></a>(self)</dt><dd><span class="code">Render&nbsp;as&nbsp;&lt;div&gt;&nbsp;elements.</span></dd></dl>
+
+<dl><dt><a name="LoginForm-as_p"><strong>as_p</strong></a>(self)</dt><dd><span class="code">Render&nbsp;as&nbsp;&lt;p&gt;&nbsp;elements.</span></dd></dl>
+
+<dl><dt><a name="LoginForm-as_table"><strong>as_table</strong></a>(self)</dt><dd><span class="code">Render&nbsp;as&nbsp;&lt;tr&gt;&nbsp;elements&nbsp;excluding&nbsp;the&nbsp;surrounding&nbsp;&lt;table&gt;&nbsp;tag.</span></dd></dl>
+
+<dl><dt><a name="LoginForm-as_ul"><strong>as_ul</strong></a>(self)</dt><dd><span class="code">Render&nbsp;as&nbsp;&lt;li&gt;&nbsp;elements&nbsp;excluding&nbsp;the&nbsp;surrounding&nbsp;&lt;ul&gt;&nbsp;tag.</span></dd></dl>
+
+<hr>
+Methods inherited from <a href="django.forms.utils.html#RenderableMixin">django.forms.utils.RenderableMixin</a>:<br>
+<dl><dt><a name="LoginForm-__html__"><strong>__html__</strong></a> = <a href="#LoginForm-render">render</a>(self, template_name=None, context=None, renderer=None)</dt></dl>
+
+<dl><dt><a name="LoginForm-__str__"><strong>__str__</strong></a> = <a href="#LoginForm-render">render</a>(self, template_name=None, context=None, renderer=None)</dt></dl>
+
+<dl><dt><a name="LoginForm-render"><strong>render</strong></a>(self, template_name=None, context=None, renderer=None)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="django.forms.utils.html#RenderableMixin">django.forms.utils.RenderableMixin</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</span></dd>
+</dl>
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="ProductForm">class <strong>ProductForm</strong></a>(<a href="django.forms.models.html#ModelForm">django.forms.models.ModelForm</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#ProductForm">ProductForm</a>(data=None,&nbsp;files=None,&nbsp;auto_id='id_%s',&nbsp;prefix=None,&nbsp;initial=None,&nbsp;error_class=&amp;lt;class&nbsp;'django.forms.utils.ErrorList'&amp;gt;,&nbsp;label_suffix=None,&nbsp;empty_permitted=False,&nbsp;instance=None,&nbsp;use_required_attribute=None,&nbsp;renderer=None)<br>
+&nbsp;<br>
+<a href="django.forms.forms.html#Form">Form</a>&nbsp;for&nbsp;adding&nbsp;or&nbsp;editing&nbsp;product&nbsp;information.<br>
+&nbsp;<br>
+Fields:<br>
+-&nbsp;product_name&nbsp;(CharField):&nbsp;Product&nbsp;name.<br>
+-&nbsp;qte_unitaire&nbsp;(IntegerField):&nbsp;Unit&nbsp;quantity.<br>
+-&nbsp;unit_cost&nbsp;(DecimalField):&nbsp;Unit&nbsp;cost.<br>
+-&nbsp;fixed_command_cost&nbsp;(DecimalField):&nbsp;Fixed&nbsp;command&nbsp;cost.<br>
+-&nbsp;holding_rate&nbsp;(DecimalField):&nbsp;Holding&nbsp;rate.<br>
+-&nbsp;service_level&nbsp;(DecimalField):&nbsp;Service&nbsp;level.<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="principal.forms.html#ProductForm">ProductForm</a></dd>
+<dd><a href="django.forms.models.html#ModelForm">django.forms.models.ModelForm</a></dd>
+<dd><a href="django.forms.models.html#BaseModelForm">django.forms.models.BaseModelForm</a></dd>
+<dd><a href="django.forms.forms.html#BaseForm">django.forms.forms.BaseForm</a></dd>
+<dd><a href="django.forms.utils.html#RenderableFormMixin">django.forms.utils.RenderableFormMixin</a></dd>
+<dd><a href="django.forms.utils.html#RenderableMixin">django.forms.utils.RenderableMixin</a></dd>
+<dd><a href="django.db.models.utils.html#AltersData">django.db.models.utils.AltersData</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Readonly properties defined here:<br>
+<dl><dt><strong>media</strong></dt>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>Meta</strong> = &lt;class 'principal.forms.ProductForm.Meta'&gt;</dl>
+
+<dl><dt><strong>base_fields</strong> = {'fixed_command_cost': &lt;django.forms.fields.DecimalField object&gt;, 'holding_rate': &lt;django.forms.fields.DecimalField object&gt;, 'product_name': &lt;django.forms.fields.CharField object&gt;, 'qte_unitaire': &lt;django.forms.fields.IntegerField object&gt;, 'service_level': &lt;django.forms.fields.DecimalField object&gt;, 'unit_cost': &lt;django.forms.fields.DecimalField object&gt;}</dl>
+
+<dl><dt><strong>declared_fields</strong> = {'fixed_command_cost': &lt;django.forms.fields.DecimalField object&gt;, 'holding_rate': &lt;django.forms.fields.DecimalField object&gt;, 'product_name': &lt;django.forms.fields.CharField object&gt;, 'qte_unitaire': &lt;django.forms.fields.IntegerField object&gt;, 'service_level': &lt;django.forms.fields.DecimalField object&gt;, 'unit_cost': &lt;django.forms.fields.DecimalField object&gt;}</dl>
+
+<hr>
+Methods inherited from <a href="django.forms.models.html#BaseModelForm">django.forms.models.BaseModelForm</a>:<br>
+<dl><dt><a name="ProductForm-__init__"><strong>__init__</strong></a>(self, data=None, files=None, auto_id='id_%s', prefix=None, initial=None, error_class=&lt;class 'django.forms.utils.ErrorList'&gt;, label_suffix=None, empty_permitted=False, instance=None, use_required_attribute=None, renderer=None)</dt><dd><span class="code">Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</span></dd></dl>
+
+<dl><dt><a name="ProductForm-clean"><strong>clean</strong></a>(self)</dt><dd><span class="code">Hook&nbsp;for&nbsp;doing&nbsp;any&nbsp;extra&nbsp;form-wide&nbsp;cleaning&nbsp;after&nbsp;Field.<a href="#ProductForm-clean">clean</a>()&nbsp;has&nbsp;been<br>
+called&nbsp;on&nbsp;every&nbsp;field.&nbsp;Any&nbsp;ValidationError&nbsp;raised&nbsp;by&nbsp;this&nbsp;method&nbsp;will<br>
+not&nbsp;be&nbsp;associated&nbsp;with&nbsp;a&nbsp;particular&nbsp;field;&nbsp;it&nbsp;will&nbsp;have&nbsp;a&nbsp;special-case<br>
+association&nbsp;with&nbsp;the&nbsp;field&nbsp;named&nbsp;'__all__'.</span></dd></dl>
+
+<dl><dt><a name="ProductForm-save"><strong>save</strong></a>(self, commit=True)</dt><dd><span class="code">Save&nbsp;this&nbsp;form's&nbsp;self.<strong>instance</strong>&nbsp;object&nbsp;if&nbsp;commit=True.&nbsp;Otherwise,&nbsp;add<br>
+a&nbsp;save_m2m()&nbsp;method&nbsp;to&nbsp;the&nbsp;form&nbsp;which&nbsp;can&nbsp;be&nbsp;called&nbsp;after&nbsp;the&nbsp;instance<br>
+is&nbsp;saved&nbsp;manually&nbsp;at&nbsp;a&nbsp;later&nbsp;time.&nbsp;Return&nbsp;the&nbsp;model&nbsp;instance.</span></dd></dl>
+
+<dl><dt><a name="ProductForm-validate_unique"><strong>validate_unique</strong></a>(self)</dt><dd><span class="code">Call&nbsp;the&nbsp;instance's&nbsp;<a href="#ProductForm-validate_unique">validate_unique</a>()&nbsp;method&nbsp;and&nbsp;update&nbsp;the&nbsp;form's<br>
+validation&nbsp;errors&nbsp;if&nbsp;any&nbsp;were&nbsp;raised.</span></dd></dl>
+
+<hr>
+Methods inherited from <a href="django.forms.forms.html#BaseForm">django.forms.forms.BaseForm</a>:<br>
+<dl><dt><a name="ProductForm-__getitem__"><strong>__getitem__</strong></a>(self, name)</dt><dd><span class="code">Return&nbsp;a&nbsp;BoundField&nbsp;with&nbsp;the&nbsp;given&nbsp;name.</span></dd></dl>
+
+<dl><dt><a name="ProductForm-__iter__"><strong>__iter__</strong></a>(self)</dt><dd><span class="code">Yield&nbsp;the&nbsp;form's&nbsp;fields&nbsp;as&nbsp;BoundField&nbsp;objects.</span></dd></dl>
+
+<dl><dt><a name="ProductForm-__repr__"><strong>__repr__</strong></a>(self)</dt><dd><span class="code">Return&nbsp;repr(self).</span></dd></dl>
+
+<dl><dt><a name="ProductForm-add_error"><strong>add_error</strong></a>(self, field, error)</dt><dd><span class="code">Update&nbsp;the&nbsp;content&nbsp;of&nbsp;`self.<strong>_errors</strong>`.<br>
+&nbsp;<br>
+The&nbsp;`field`&nbsp;argument&nbsp;is&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;field&nbsp;to&nbsp;which&nbsp;the&nbsp;errors<br>
+should&nbsp;be&nbsp;added.&nbsp;If&nbsp;it's&nbsp;None,&nbsp;treat&nbsp;the&nbsp;errors&nbsp;as&nbsp;NON_FIELD_ERRORS.<br>
+&nbsp;<br>
+The&nbsp;`error`&nbsp;argument&nbsp;can&nbsp;be&nbsp;a&nbsp;single&nbsp;error,&nbsp;a&nbsp;list&nbsp;of&nbsp;errors,&nbsp;or&nbsp;a<br>
+dictionary&nbsp;that&nbsp;maps&nbsp;field&nbsp;names&nbsp;to&nbsp;lists&nbsp;of&nbsp;errors.&nbsp;An&nbsp;"error"&nbsp;can&nbsp;be<br>
+either&nbsp;a&nbsp;simple&nbsp;string&nbsp;or&nbsp;an&nbsp;instance&nbsp;of&nbsp;ValidationError&nbsp;with&nbsp;its<br>
+message&nbsp;attribute&nbsp;set&nbsp;and&nbsp;a&nbsp;"list&nbsp;or&nbsp;dictionary"&nbsp;can&nbsp;be&nbsp;an&nbsp;actual<br>
+`list`&nbsp;or&nbsp;`dict`&nbsp;or&nbsp;an&nbsp;instance&nbsp;of&nbsp;ValidationError&nbsp;with&nbsp;its<br>
+`error_list`&nbsp;or&nbsp;`error_dict`&nbsp;attribute&nbsp;set.<br>
+&nbsp;<br>
+If&nbsp;`error`&nbsp;is&nbsp;a&nbsp;dictionary,&nbsp;the&nbsp;`field`&nbsp;argument&nbsp;*must*&nbsp;be&nbsp;None&nbsp;and<br>
+errors&nbsp;will&nbsp;be&nbsp;added&nbsp;to&nbsp;the&nbsp;fields&nbsp;that&nbsp;correspond&nbsp;to&nbsp;the&nbsp;keys&nbsp;of&nbsp;the<br>
+dictionary.</span></dd></dl>
+
+<dl><dt><a name="ProductForm-add_initial_prefix"><strong>add_initial_prefix</strong></a>(self, field_name)</dt><dd><span class="code">Add&nbsp;an&nbsp;'initial'&nbsp;prefix&nbsp;for&nbsp;checking&nbsp;dynamic&nbsp;initial&nbsp;values.</span></dd></dl>
+
+<dl><dt><a name="ProductForm-add_prefix"><strong>add_prefix</strong></a>(self, field_name)</dt><dd><span class="code">Return&nbsp;the&nbsp;field&nbsp;name&nbsp;with&nbsp;a&nbsp;prefix&nbsp;appended,&nbsp;if&nbsp;this&nbsp;<a href="django.forms.forms.html#Form">Form</a>&nbsp;has&nbsp;a<br>
+prefix&nbsp;set.<br>
+&nbsp;<br>
+Subclasses&nbsp;may&nbsp;wish&nbsp;to&nbsp;override.</span></dd></dl>
+
+<strong>changed_data</strong> = &lt;django.utils.functional.cached_property object&gt;
+<dl><dt><a name="ProductForm-full_clean"><strong>full_clean</strong></a>(self)</dt><dd><span class="code">Clean&nbsp;all&nbsp;of&nbsp;self.<strong>data</strong>&nbsp;and&nbsp;populate&nbsp;self.<strong>_errors</strong>&nbsp;and&nbsp;self.<strong>cleaned_data</strong>.</span></dd></dl>
+
+<dl><dt><a name="ProductForm-get_context"><strong>get_context</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="ProductForm-get_initial_for_field"><strong>get_initial_for_field</strong></a>(self, field, field_name)</dt><dd><span class="code">Return&nbsp;initial&nbsp;data&nbsp;for&nbsp;field&nbsp;on&nbsp;form.&nbsp;Use&nbsp;initial&nbsp;data&nbsp;from&nbsp;the&nbsp;form<br>
+or&nbsp;the&nbsp;field,&nbsp;in&nbsp;that&nbsp;order.&nbsp;Evaluate&nbsp;callable&nbsp;values.</span></dd></dl>
+
+<dl><dt><a name="ProductForm-has_changed"><strong>has_changed</strong></a>(self)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;data&nbsp;differs&nbsp;from&nbsp;initial.</span></dd></dl>
+
+<dl><dt><a name="ProductForm-has_error"><strong>has_error</strong></a>(self, field, code=None)</dt></dl>
+
+<dl><dt><a name="ProductForm-hidden_fields"><strong>hidden_fields</strong></a>(self)</dt><dd><span class="code">Return&nbsp;a&nbsp;list&nbsp;of&nbsp;all&nbsp;the&nbsp;BoundField&nbsp;objects&nbsp;that&nbsp;are&nbsp;hidden&nbsp;fields.<br>
+Useful&nbsp;for&nbsp;manual&nbsp;form&nbsp;layout&nbsp;in&nbsp;templates.</span></dd></dl>
+
+<dl><dt><a name="ProductForm-is_multipart"><strong>is_multipart</strong></a>(self)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;form&nbsp;needs&nbsp;to&nbsp;be&nbsp;multipart-encoded,&nbsp;i.e.&nbsp;it&nbsp;has<br>
+FileInput,&nbsp;or&nbsp;False&nbsp;otherwise.</span></dd></dl>
+
+<dl><dt><a name="ProductForm-is_valid"><strong>is_valid</strong></a>(self)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;form&nbsp;has&nbsp;no&nbsp;errors,&nbsp;or&nbsp;False&nbsp;otherwise.</span></dd></dl>
+
+<dl><dt><a name="ProductForm-non_field_errors"><strong>non_field_errors</strong></a>(self)</dt><dd><span class="code">Return&nbsp;an&nbsp;ErrorList&nbsp;of&nbsp;errors&nbsp;that&nbsp;aren't&nbsp;associated&nbsp;with&nbsp;a&nbsp;particular<br>
+field&nbsp;--&nbsp;i.e.,&nbsp;from&nbsp;<a href="django.forms.forms.html#Form">Form</a>.<a href="#ProductForm-clean">clean</a>().&nbsp;Return&nbsp;an&nbsp;empty&nbsp;ErrorList&nbsp;if&nbsp;there<br>
+are&nbsp;none.</span></dd></dl>
+
+<dl><dt><a name="ProductForm-order_fields"><strong>order_fields</strong></a>(self, field_order)</dt><dd><span class="code">Rearrange&nbsp;the&nbsp;fields&nbsp;according&nbsp;to&nbsp;field_order.<br>
+&nbsp;<br>
+field_order&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;field&nbsp;names&nbsp;specifying&nbsp;the&nbsp;order.&nbsp;Append&nbsp;fields<br>
+not&nbsp;included&nbsp;in&nbsp;the&nbsp;list&nbsp;in&nbsp;the&nbsp;default&nbsp;order&nbsp;for&nbsp;backward&nbsp;compatibility<br>
+with&nbsp;subclasses&nbsp;not&nbsp;overriding&nbsp;field_order.&nbsp;If&nbsp;field_order&nbsp;is&nbsp;None,<br>
+keep&nbsp;all&nbsp;fields&nbsp;in&nbsp;the&nbsp;order&nbsp;defined&nbsp;in&nbsp;the&nbsp;class.&nbsp;Ignore&nbsp;unknown<br>
+fields&nbsp;in&nbsp;field_order&nbsp;to&nbsp;allow&nbsp;disabling&nbsp;fields&nbsp;in&nbsp;form&nbsp;subclasses<br>
+without&nbsp;redefining&nbsp;ordering.</span></dd></dl>
+
+<dl><dt><a name="ProductForm-visible_fields"><strong>visible_fields</strong></a>(self)</dt><dd><span class="code">Return&nbsp;a&nbsp;list&nbsp;of&nbsp;BoundField&nbsp;objects&nbsp;that&nbsp;aren't&nbsp;hidden&nbsp;fields.<br>
+The&nbsp;opposite&nbsp;of&nbsp;the&nbsp;<a href="#ProductForm-hidden_fields">hidden_fields</a>()&nbsp;method.</span></dd></dl>
+
+<hr>
+Readonly properties inherited from <a href="django.forms.forms.html#BaseForm">django.forms.forms.BaseForm</a>:<br>
+<dl><dt><strong>errors</strong></dt>
+<dd><span class="code">Return&nbsp;an&nbsp;ErrorDict&nbsp;for&nbsp;the&nbsp;data&nbsp;provided&nbsp;for&nbsp;the&nbsp;form.</span></dd>
+</dl>
+<dl><dt><strong>template_name</strong></dt>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="django.forms.forms.html#BaseForm">django.forms.forms.BaseForm</a>:<br>
+<dl><dt><strong>default_renderer</strong> = None</dl>
+
+<dl><dt><strong>field_order</strong> = None</dl>
+
+<dl><dt><strong>prefix</strong> = None</dl>
+
+<dl><dt><strong>template_name_div</strong> = 'django/forms/div.html'</dl>
+
+<dl><dt><strong>template_name_label</strong> = 'django/forms/label.html'</dl>
+
+<dl><dt><strong>template_name_p</strong> = 'django/forms/p.html'</dl>
+
+<dl><dt><strong>template_name_table</strong> = 'django/forms/table.html'</dl>
+
+<dl><dt><strong>template_name_ul</strong> = 'django/forms/ul.html'</dl>
+
+<dl><dt><strong>use_required_attribute</strong> = True</dl>
+
+<hr>
+Methods inherited from <a href="django.forms.utils.html#RenderableFormMixin">django.forms.utils.RenderableFormMixin</a>:<br>
+<dl><dt><a name="ProductForm-as_div"><strong>as_div</strong></a>(self)</dt><dd><span class="code">Render&nbsp;as&nbsp;&lt;div&gt;&nbsp;elements.</span></dd></dl>
+
+<dl><dt><a name="ProductForm-as_p"><strong>as_p</strong></a>(self)</dt><dd><span class="code">Render&nbsp;as&nbsp;&lt;p&gt;&nbsp;elements.</span></dd></dl>
+
+<dl><dt><a name="ProductForm-as_table"><strong>as_table</strong></a>(self)</dt><dd><span class="code">Render&nbsp;as&nbsp;&lt;tr&gt;&nbsp;elements&nbsp;excluding&nbsp;the&nbsp;surrounding&nbsp;&lt;table&gt;&nbsp;tag.</span></dd></dl>
+
+<dl><dt><a name="ProductForm-as_ul"><strong>as_ul</strong></a>(self)</dt><dd><span class="code">Render&nbsp;as&nbsp;&lt;li&gt;&nbsp;elements&nbsp;excluding&nbsp;the&nbsp;surrounding&nbsp;&lt;ul&gt;&nbsp;tag.</span></dd></dl>
+
+<hr>
+Methods inherited from <a href="django.forms.utils.html#RenderableMixin">django.forms.utils.RenderableMixin</a>:<br>
+<dl><dt><a name="ProductForm-__html__"><strong>__html__</strong></a> = <a href="#ProductForm-render">render</a>(self, template_name=None, context=None, renderer=None)</dt></dl>
+
+<dl><dt><a name="ProductForm-__str__"><strong>__str__</strong></a> = <a href="#ProductForm-render">render</a>(self, template_name=None, context=None, renderer=None)</dt></dl>
+
+<dl><dt><a name="ProductForm-render"><strong>render</strong></a>(self, template_name=None, context=None, renderer=None)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="django.forms.utils.html#RenderableMixin">django.forms.utils.RenderableMixin</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</span></dd>
+</dl>
+<hr>
+Class methods inherited from <a href="django.db.models.utils.html#AltersData">django.db.models.utils.AltersData</a>:<br>
+<dl><dt><a name="ProductForm-__init_subclass__"><strong>__init_subclass__</strong></a>(**kwargs)<span class="grey"><span class="heading-text"> from <a href="django.forms.models.html#ModelFormMetaclass">django.forms.models.ModelFormMetaclass</a></span></span></dt><dd><span class="code">This&nbsp;method&nbsp;is&nbsp;called&nbsp;when&nbsp;a&nbsp;class&nbsp;is&nbsp;subclassed.<br>
+&nbsp;<br>
+The&nbsp;default&nbsp;implementation&nbsp;does&nbsp;nothing.&nbsp;It&nbsp;may&nbsp;be<br>
+overridden&nbsp;to&nbsp;extend&nbsp;subclasses.</span></dd></dl>
+
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="ProductSelectionForm">class <strong>ProductSelectionForm</strong></a>(<a href="django.forms.forms.html#Form">django.forms.forms.Form</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#ProductSelectionForm">ProductSelectionForm</a>(data=None,&nbsp;files=None,&nbsp;auto_id='id_%s',&nbsp;prefix=None,&nbsp;initial=None,&nbsp;error_class=&amp;lt;class&nbsp;'django.forms.utils.ErrorList'&amp;gt;,&nbsp;label_suffix=None,&nbsp;empty_permitted=False,&nbsp;field_order=None,&nbsp;use_required_attribute=None,&nbsp;renderer=None)<br>
+&nbsp;<br>
+<a href="django.forms.forms.html#Form">Form</a>&nbsp;for&nbsp;product&nbsp;selection.<br>
+&nbsp;<br>
+Fields:<br>
+-&nbsp;product&nbsp;(ModelChoiceField):&nbsp;Select&nbsp;a&nbsp;product&nbsp;from&nbsp;available&nbsp;choices.<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="principal.forms.html#ProductSelectionForm">ProductSelectionForm</a></dd>
+<dd><a href="django.forms.forms.html#Form">django.forms.forms.Form</a></dd>
+<dd><a href="django.forms.forms.html#BaseForm">django.forms.forms.BaseForm</a></dd>
+<dd><a href="django.forms.utils.html#RenderableFormMixin">django.forms.utils.RenderableFormMixin</a></dd>
+<dd><a href="django.forms.utils.html#RenderableMixin">django.forms.utils.RenderableMixin</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Readonly properties defined here:<br>
+<dl><dt><strong>media</strong></dt>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>base_fields</strong> = {'product': &lt;django.forms.models.ModelChoiceField object&gt;}</dl>
+
+<dl><dt><strong>declared_fields</strong> = {'product': &lt;django.forms.models.ModelChoiceField object&gt;}</dl>
+
+<hr>
+Methods inherited from <a href="django.forms.forms.html#BaseForm">django.forms.forms.BaseForm</a>:<br>
+<dl><dt><a name="ProductSelectionForm-__getitem__"><strong>__getitem__</strong></a>(self, name)</dt><dd><span class="code">Return&nbsp;a&nbsp;BoundField&nbsp;with&nbsp;the&nbsp;given&nbsp;name.</span></dd></dl>
+
+<dl><dt><a name="ProductSelectionForm-__init__"><strong>__init__</strong></a>(self, data=None, files=None, auto_id='id_%s', prefix=None, initial=None, error_class=&lt;class 'django.forms.utils.ErrorList'&gt;, label_suffix=None, empty_permitted=False, field_order=None, use_required_attribute=None, renderer=None)</dt><dd><span class="code">Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</span></dd></dl>
+
+<dl><dt><a name="ProductSelectionForm-__iter__"><strong>__iter__</strong></a>(self)</dt><dd><span class="code">Yield&nbsp;the&nbsp;form's&nbsp;fields&nbsp;as&nbsp;BoundField&nbsp;objects.</span></dd></dl>
+
+<dl><dt><a name="ProductSelectionForm-__repr__"><strong>__repr__</strong></a>(self)</dt><dd><span class="code">Return&nbsp;repr(self).</span></dd></dl>
+
+<dl><dt><a name="ProductSelectionForm-add_error"><strong>add_error</strong></a>(self, field, error)</dt><dd><span class="code">Update&nbsp;the&nbsp;content&nbsp;of&nbsp;`self.<strong>_errors</strong>`.<br>
+&nbsp;<br>
+The&nbsp;`field`&nbsp;argument&nbsp;is&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;field&nbsp;to&nbsp;which&nbsp;the&nbsp;errors<br>
+should&nbsp;be&nbsp;added.&nbsp;If&nbsp;it's&nbsp;None,&nbsp;treat&nbsp;the&nbsp;errors&nbsp;as&nbsp;NON_FIELD_ERRORS.<br>
+&nbsp;<br>
+The&nbsp;`error`&nbsp;argument&nbsp;can&nbsp;be&nbsp;a&nbsp;single&nbsp;error,&nbsp;a&nbsp;list&nbsp;of&nbsp;errors,&nbsp;or&nbsp;a<br>
+dictionary&nbsp;that&nbsp;maps&nbsp;field&nbsp;names&nbsp;to&nbsp;lists&nbsp;of&nbsp;errors.&nbsp;An&nbsp;"error"&nbsp;can&nbsp;be<br>
+either&nbsp;a&nbsp;simple&nbsp;string&nbsp;or&nbsp;an&nbsp;instance&nbsp;of&nbsp;ValidationError&nbsp;with&nbsp;its<br>
+message&nbsp;attribute&nbsp;set&nbsp;and&nbsp;a&nbsp;"list&nbsp;or&nbsp;dictionary"&nbsp;can&nbsp;be&nbsp;an&nbsp;actual<br>
+`list`&nbsp;or&nbsp;`dict`&nbsp;or&nbsp;an&nbsp;instance&nbsp;of&nbsp;ValidationError&nbsp;with&nbsp;its<br>
+`error_list`&nbsp;or&nbsp;`error_dict`&nbsp;attribute&nbsp;set.<br>
+&nbsp;<br>
+If&nbsp;`error`&nbsp;is&nbsp;a&nbsp;dictionary,&nbsp;the&nbsp;`field`&nbsp;argument&nbsp;*must*&nbsp;be&nbsp;None&nbsp;and<br>
+errors&nbsp;will&nbsp;be&nbsp;added&nbsp;to&nbsp;the&nbsp;fields&nbsp;that&nbsp;correspond&nbsp;to&nbsp;the&nbsp;keys&nbsp;of&nbsp;the<br>
+dictionary.</span></dd></dl>
+
+<dl><dt><a name="ProductSelectionForm-add_initial_prefix"><strong>add_initial_prefix</strong></a>(self, field_name)</dt><dd><span class="code">Add&nbsp;an&nbsp;'initial'&nbsp;prefix&nbsp;for&nbsp;checking&nbsp;dynamic&nbsp;initial&nbsp;values.</span></dd></dl>
+
+<dl><dt><a name="ProductSelectionForm-add_prefix"><strong>add_prefix</strong></a>(self, field_name)</dt><dd><span class="code">Return&nbsp;the&nbsp;field&nbsp;name&nbsp;with&nbsp;a&nbsp;prefix&nbsp;appended,&nbsp;if&nbsp;this&nbsp;<a href="django.forms.forms.html#Form">Form</a>&nbsp;has&nbsp;a<br>
+prefix&nbsp;set.<br>
+&nbsp;<br>
+Subclasses&nbsp;may&nbsp;wish&nbsp;to&nbsp;override.</span></dd></dl>
+
+<strong>changed_data</strong> = &lt;django.utils.functional.cached_property object&gt;
+<dl><dt><a name="ProductSelectionForm-clean"><strong>clean</strong></a>(self)</dt><dd><span class="code">Hook&nbsp;for&nbsp;doing&nbsp;any&nbsp;extra&nbsp;form-wide&nbsp;cleaning&nbsp;after&nbsp;Field.<a href="#ProductSelectionForm-clean">clean</a>()&nbsp;has&nbsp;been<br>
+called&nbsp;on&nbsp;every&nbsp;field.&nbsp;Any&nbsp;ValidationError&nbsp;raised&nbsp;by&nbsp;this&nbsp;method&nbsp;will<br>
+not&nbsp;be&nbsp;associated&nbsp;with&nbsp;a&nbsp;particular&nbsp;field;&nbsp;it&nbsp;will&nbsp;have&nbsp;a&nbsp;special-case<br>
+association&nbsp;with&nbsp;the&nbsp;field&nbsp;named&nbsp;'__all__'.</span></dd></dl>
+
+<dl><dt><a name="ProductSelectionForm-full_clean"><strong>full_clean</strong></a>(self)</dt><dd><span class="code">Clean&nbsp;all&nbsp;of&nbsp;self.<strong>data</strong>&nbsp;and&nbsp;populate&nbsp;self.<strong>_errors</strong>&nbsp;and&nbsp;self.<strong>cleaned_data</strong>.</span></dd></dl>
+
+<dl><dt><a name="ProductSelectionForm-get_context"><strong>get_context</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="ProductSelectionForm-get_initial_for_field"><strong>get_initial_for_field</strong></a>(self, field, field_name)</dt><dd><span class="code">Return&nbsp;initial&nbsp;data&nbsp;for&nbsp;field&nbsp;on&nbsp;form.&nbsp;Use&nbsp;initial&nbsp;data&nbsp;from&nbsp;the&nbsp;form<br>
+or&nbsp;the&nbsp;field,&nbsp;in&nbsp;that&nbsp;order.&nbsp;Evaluate&nbsp;callable&nbsp;values.</span></dd></dl>
+
+<dl><dt><a name="ProductSelectionForm-has_changed"><strong>has_changed</strong></a>(self)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;data&nbsp;differs&nbsp;from&nbsp;initial.</span></dd></dl>
+
+<dl><dt><a name="ProductSelectionForm-has_error"><strong>has_error</strong></a>(self, field, code=None)</dt></dl>
+
+<dl><dt><a name="ProductSelectionForm-hidden_fields"><strong>hidden_fields</strong></a>(self)</dt><dd><span class="code">Return&nbsp;a&nbsp;list&nbsp;of&nbsp;all&nbsp;the&nbsp;BoundField&nbsp;objects&nbsp;that&nbsp;are&nbsp;hidden&nbsp;fields.<br>
+Useful&nbsp;for&nbsp;manual&nbsp;form&nbsp;layout&nbsp;in&nbsp;templates.</span></dd></dl>
+
+<dl><dt><a name="ProductSelectionForm-is_multipart"><strong>is_multipart</strong></a>(self)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;form&nbsp;needs&nbsp;to&nbsp;be&nbsp;multipart-encoded,&nbsp;i.e.&nbsp;it&nbsp;has<br>
+FileInput,&nbsp;or&nbsp;False&nbsp;otherwise.</span></dd></dl>
+
+<dl><dt><a name="ProductSelectionForm-is_valid"><strong>is_valid</strong></a>(self)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;form&nbsp;has&nbsp;no&nbsp;errors,&nbsp;or&nbsp;False&nbsp;otherwise.</span></dd></dl>
+
+<dl><dt><a name="ProductSelectionForm-non_field_errors"><strong>non_field_errors</strong></a>(self)</dt><dd><span class="code">Return&nbsp;an&nbsp;ErrorList&nbsp;of&nbsp;errors&nbsp;that&nbsp;aren't&nbsp;associated&nbsp;with&nbsp;a&nbsp;particular<br>
+field&nbsp;--&nbsp;i.e.,&nbsp;from&nbsp;<a href="django.forms.forms.html#Form">Form</a>.<a href="#ProductSelectionForm-clean">clean</a>().&nbsp;Return&nbsp;an&nbsp;empty&nbsp;ErrorList&nbsp;if&nbsp;there<br>
+are&nbsp;none.</span></dd></dl>
+
+<dl><dt><a name="ProductSelectionForm-order_fields"><strong>order_fields</strong></a>(self, field_order)</dt><dd><span class="code">Rearrange&nbsp;the&nbsp;fields&nbsp;according&nbsp;to&nbsp;field_order.<br>
+&nbsp;<br>
+field_order&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;field&nbsp;names&nbsp;specifying&nbsp;the&nbsp;order.&nbsp;Append&nbsp;fields<br>
+not&nbsp;included&nbsp;in&nbsp;the&nbsp;list&nbsp;in&nbsp;the&nbsp;default&nbsp;order&nbsp;for&nbsp;backward&nbsp;compatibility<br>
+with&nbsp;subclasses&nbsp;not&nbsp;overriding&nbsp;field_order.&nbsp;If&nbsp;field_order&nbsp;is&nbsp;None,<br>
+keep&nbsp;all&nbsp;fields&nbsp;in&nbsp;the&nbsp;order&nbsp;defined&nbsp;in&nbsp;the&nbsp;class.&nbsp;Ignore&nbsp;unknown<br>
+fields&nbsp;in&nbsp;field_order&nbsp;to&nbsp;allow&nbsp;disabling&nbsp;fields&nbsp;in&nbsp;form&nbsp;subclasses<br>
+without&nbsp;redefining&nbsp;ordering.</span></dd></dl>
+
+<dl><dt><a name="ProductSelectionForm-visible_fields"><strong>visible_fields</strong></a>(self)</dt><dd><span class="code">Return&nbsp;a&nbsp;list&nbsp;of&nbsp;BoundField&nbsp;objects&nbsp;that&nbsp;aren't&nbsp;hidden&nbsp;fields.<br>
+The&nbsp;opposite&nbsp;of&nbsp;the&nbsp;<a href="#ProductSelectionForm-hidden_fields">hidden_fields</a>()&nbsp;method.</span></dd></dl>
+
+<hr>
+Readonly properties inherited from <a href="django.forms.forms.html#BaseForm">django.forms.forms.BaseForm</a>:<br>
+<dl><dt><strong>errors</strong></dt>
+<dd><span class="code">Return&nbsp;an&nbsp;ErrorDict&nbsp;for&nbsp;the&nbsp;data&nbsp;provided&nbsp;for&nbsp;the&nbsp;form.</span></dd>
+</dl>
+<dl><dt><strong>template_name</strong></dt>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="django.forms.forms.html#BaseForm">django.forms.forms.BaseForm</a>:<br>
+<dl><dt><strong>default_renderer</strong> = None</dl>
+
+<dl><dt><strong>field_order</strong> = None</dl>
+
+<dl><dt><strong>prefix</strong> = None</dl>
+
+<dl><dt><strong>template_name_div</strong> = 'django/forms/div.html'</dl>
+
+<dl><dt><strong>template_name_label</strong> = 'django/forms/label.html'</dl>
+
+<dl><dt><strong>template_name_p</strong> = 'django/forms/p.html'</dl>
+
+<dl><dt><strong>template_name_table</strong> = 'django/forms/table.html'</dl>
+
+<dl><dt><strong>template_name_ul</strong> = 'django/forms/ul.html'</dl>
+
+<dl><dt><strong>use_required_attribute</strong> = True</dl>
+
+<hr>
+Methods inherited from <a href="django.forms.utils.html#RenderableFormMixin">django.forms.utils.RenderableFormMixin</a>:<br>
+<dl><dt><a name="ProductSelectionForm-as_div"><strong>as_div</strong></a>(self)</dt><dd><span class="code">Render&nbsp;as&nbsp;&lt;div&gt;&nbsp;elements.</span></dd></dl>
+
+<dl><dt><a name="ProductSelectionForm-as_p"><strong>as_p</strong></a>(self)</dt><dd><span class="code">Render&nbsp;as&nbsp;&lt;p&gt;&nbsp;elements.</span></dd></dl>
+
+<dl><dt><a name="ProductSelectionForm-as_table"><strong>as_table</strong></a>(self)</dt><dd><span class="code">Render&nbsp;as&nbsp;&lt;tr&gt;&nbsp;elements&nbsp;excluding&nbsp;the&nbsp;surrounding&nbsp;&lt;table&gt;&nbsp;tag.</span></dd></dl>
+
+<dl><dt><a name="ProductSelectionForm-as_ul"><strong>as_ul</strong></a>(self)</dt><dd><span class="code">Render&nbsp;as&nbsp;&lt;li&gt;&nbsp;elements&nbsp;excluding&nbsp;the&nbsp;surrounding&nbsp;&lt;ul&gt;&nbsp;tag.</span></dd></dl>
+
+<hr>
+Methods inherited from <a href="django.forms.utils.html#RenderableMixin">django.forms.utils.RenderableMixin</a>:<br>
+<dl><dt><a name="ProductSelectionForm-__html__"><strong>__html__</strong></a> = <a href="#ProductSelectionForm-render">render</a>(self, template_name=None, context=None, renderer=None)</dt></dl>
+
+<dl><dt><a name="ProductSelectionForm-__str__"><strong>__str__</strong></a> = <a href="#ProductSelectionForm-render">render</a>(self, template_name=None, context=None, renderer=None)</dt></dl>
+
+<dl><dt><a name="ProductSelectionForm-render"><strong>render</strong></a>(self, template_name=None, context=None, renderer=None)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="django.forms.utils.html#RenderableMixin">django.forms.utils.RenderableMixin</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</span></dd>
+</dl>
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="RegistrationForm">class <strong>RegistrationForm</strong></a>(<a href="django.forms.forms.html#Form">django.forms.forms.Form</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#RegistrationForm">RegistrationForm</a>(data=None,&nbsp;files=None,&nbsp;auto_id='id_%s',&nbsp;prefix=None,&nbsp;initial=None,&nbsp;error_class=&amp;lt;class&nbsp;'django.forms.utils.ErrorList'&amp;gt;,&nbsp;label_suffix=None,&nbsp;empty_permitted=False,&nbsp;field_order=None,&nbsp;use_required_attribute=None,&nbsp;renderer=None)<br>
+&nbsp;<br>
+<a href="django.forms.forms.html#Form">Form</a>&nbsp;for&nbsp;user&nbsp;registration.<br>
+&nbsp;<br>
+Fields:<br>
+-&nbsp;name&nbsp;(CharField):&nbsp;User's&nbsp;name.<br>
+-&nbsp;password&nbsp;(CharField):&nbsp;User's&nbsp;password&nbsp;(masked).<br>
+-&nbsp;email&nbsp;(EmailField):&nbsp;User's&nbsp;email&nbsp;address.<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="principal.forms.html#RegistrationForm">RegistrationForm</a></dd>
+<dd><a href="django.forms.forms.html#Form">django.forms.forms.Form</a></dd>
+<dd><a href="django.forms.forms.html#BaseForm">django.forms.forms.BaseForm</a></dd>
+<dd><a href="django.forms.utils.html#RenderableFormMixin">django.forms.utils.RenderableFormMixin</a></dd>
+<dd><a href="django.forms.utils.html#RenderableMixin">django.forms.utils.RenderableMixin</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Readonly properties defined here:<br>
+<dl><dt><strong>media</strong></dt>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>base_fields</strong> = {'email': &lt;django.forms.fields.EmailField object&gt;, 'name': &lt;django.forms.fields.CharField object&gt;, 'password': &lt;django.forms.fields.CharField object&gt;}</dl>
+
+<dl><dt><strong>declared_fields</strong> = {'email': &lt;django.forms.fields.EmailField object&gt;, 'name': &lt;django.forms.fields.CharField object&gt;, 'password': &lt;django.forms.fields.CharField object&gt;}</dl>
+
+<hr>
+Methods inherited from <a href="django.forms.forms.html#BaseForm">django.forms.forms.BaseForm</a>:<br>
+<dl><dt><a name="RegistrationForm-__getitem__"><strong>__getitem__</strong></a>(self, name)</dt><dd><span class="code">Return&nbsp;a&nbsp;BoundField&nbsp;with&nbsp;the&nbsp;given&nbsp;name.</span></dd></dl>
+
+<dl><dt><a name="RegistrationForm-__init__"><strong>__init__</strong></a>(self, data=None, files=None, auto_id='id_%s', prefix=None, initial=None, error_class=&lt;class 'django.forms.utils.ErrorList'&gt;, label_suffix=None, empty_permitted=False, field_order=None, use_required_attribute=None, renderer=None)</dt><dd><span class="code">Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</span></dd></dl>
+
+<dl><dt><a name="RegistrationForm-__iter__"><strong>__iter__</strong></a>(self)</dt><dd><span class="code">Yield&nbsp;the&nbsp;form's&nbsp;fields&nbsp;as&nbsp;BoundField&nbsp;objects.</span></dd></dl>
+
+<dl><dt><a name="RegistrationForm-__repr__"><strong>__repr__</strong></a>(self)</dt><dd><span class="code">Return&nbsp;repr(self).</span></dd></dl>
+
+<dl><dt><a name="RegistrationForm-add_error"><strong>add_error</strong></a>(self, field, error)</dt><dd><span class="code">Update&nbsp;the&nbsp;content&nbsp;of&nbsp;`self.<strong>_errors</strong>`.<br>
+&nbsp;<br>
+The&nbsp;`field`&nbsp;argument&nbsp;is&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;field&nbsp;to&nbsp;which&nbsp;the&nbsp;errors<br>
+should&nbsp;be&nbsp;added.&nbsp;If&nbsp;it's&nbsp;None,&nbsp;treat&nbsp;the&nbsp;errors&nbsp;as&nbsp;NON_FIELD_ERRORS.<br>
+&nbsp;<br>
+The&nbsp;`error`&nbsp;argument&nbsp;can&nbsp;be&nbsp;a&nbsp;single&nbsp;error,&nbsp;a&nbsp;list&nbsp;of&nbsp;errors,&nbsp;or&nbsp;a<br>
+dictionary&nbsp;that&nbsp;maps&nbsp;field&nbsp;names&nbsp;to&nbsp;lists&nbsp;of&nbsp;errors.&nbsp;An&nbsp;"error"&nbsp;can&nbsp;be<br>
+either&nbsp;a&nbsp;simple&nbsp;string&nbsp;or&nbsp;an&nbsp;instance&nbsp;of&nbsp;ValidationError&nbsp;with&nbsp;its<br>
+message&nbsp;attribute&nbsp;set&nbsp;and&nbsp;a&nbsp;"list&nbsp;or&nbsp;dictionary"&nbsp;can&nbsp;be&nbsp;an&nbsp;actual<br>
+`list`&nbsp;or&nbsp;`dict`&nbsp;or&nbsp;an&nbsp;instance&nbsp;of&nbsp;ValidationError&nbsp;with&nbsp;its<br>
+`error_list`&nbsp;or&nbsp;`error_dict`&nbsp;attribute&nbsp;set.<br>
+&nbsp;<br>
+If&nbsp;`error`&nbsp;is&nbsp;a&nbsp;dictionary,&nbsp;the&nbsp;`field`&nbsp;argument&nbsp;*must*&nbsp;be&nbsp;None&nbsp;and<br>
+errors&nbsp;will&nbsp;be&nbsp;added&nbsp;to&nbsp;the&nbsp;fields&nbsp;that&nbsp;correspond&nbsp;to&nbsp;the&nbsp;keys&nbsp;of&nbsp;the<br>
+dictionary.</span></dd></dl>
+
+<dl><dt><a name="RegistrationForm-add_initial_prefix"><strong>add_initial_prefix</strong></a>(self, field_name)</dt><dd><span class="code">Add&nbsp;an&nbsp;'initial'&nbsp;prefix&nbsp;for&nbsp;checking&nbsp;dynamic&nbsp;initial&nbsp;values.</span></dd></dl>
+
+<dl><dt><a name="RegistrationForm-add_prefix"><strong>add_prefix</strong></a>(self, field_name)</dt><dd><span class="code">Return&nbsp;the&nbsp;field&nbsp;name&nbsp;with&nbsp;a&nbsp;prefix&nbsp;appended,&nbsp;if&nbsp;this&nbsp;<a href="django.forms.forms.html#Form">Form</a>&nbsp;has&nbsp;a<br>
+prefix&nbsp;set.<br>
+&nbsp;<br>
+Subclasses&nbsp;may&nbsp;wish&nbsp;to&nbsp;override.</span></dd></dl>
+
+<strong>changed_data</strong> = &lt;django.utils.functional.cached_property object&gt;
+<dl><dt><a name="RegistrationForm-clean"><strong>clean</strong></a>(self)</dt><dd><span class="code">Hook&nbsp;for&nbsp;doing&nbsp;any&nbsp;extra&nbsp;form-wide&nbsp;cleaning&nbsp;after&nbsp;Field.<a href="#RegistrationForm-clean">clean</a>()&nbsp;has&nbsp;been<br>
+called&nbsp;on&nbsp;every&nbsp;field.&nbsp;Any&nbsp;ValidationError&nbsp;raised&nbsp;by&nbsp;this&nbsp;method&nbsp;will<br>
+not&nbsp;be&nbsp;associated&nbsp;with&nbsp;a&nbsp;particular&nbsp;field;&nbsp;it&nbsp;will&nbsp;have&nbsp;a&nbsp;special-case<br>
+association&nbsp;with&nbsp;the&nbsp;field&nbsp;named&nbsp;'__all__'.</span></dd></dl>
+
+<dl><dt><a name="RegistrationForm-full_clean"><strong>full_clean</strong></a>(self)</dt><dd><span class="code">Clean&nbsp;all&nbsp;of&nbsp;self.<strong>data</strong>&nbsp;and&nbsp;populate&nbsp;self.<strong>_errors</strong>&nbsp;and&nbsp;self.<strong>cleaned_data</strong>.</span></dd></dl>
+
+<dl><dt><a name="RegistrationForm-get_context"><strong>get_context</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="RegistrationForm-get_initial_for_field"><strong>get_initial_for_field</strong></a>(self, field, field_name)</dt><dd><span class="code">Return&nbsp;initial&nbsp;data&nbsp;for&nbsp;field&nbsp;on&nbsp;form.&nbsp;Use&nbsp;initial&nbsp;data&nbsp;from&nbsp;the&nbsp;form<br>
+or&nbsp;the&nbsp;field,&nbsp;in&nbsp;that&nbsp;order.&nbsp;Evaluate&nbsp;callable&nbsp;values.</span></dd></dl>
+
+<dl><dt><a name="RegistrationForm-has_changed"><strong>has_changed</strong></a>(self)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;data&nbsp;differs&nbsp;from&nbsp;initial.</span></dd></dl>
+
+<dl><dt><a name="RegistrationForm-has_error"><strong>has_error</strong></a>(self, field, code=None)</dt></dl>
+
+<dl><dt><a name="RegistrationForm-hidden_fields"><strong>hidden_fields</strong></a>(self)</dt><dd><span class="code">Return&nbsp;a&nbsp;list&nbsp;of&nbsp;all&nbsp;the&nbsp;BoundField&nbsp;objects&nbsp;that&nbsp;are&nbsp;hidden&nbsp;fields.<br>
+Useful&nbsp;for&nbsp;manual&nbsp;form&nbsp;layout&nbsp;in&nbsp;templates.</span></dd></dl>
+
+<dl><dt><a name="RegistrationForm-is_multipart"><strong>is_multipart</strong></a>(self)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;form&nbsp;needs&nbsp;to&nbsp;be&nbsp;multipart-encoded,&nbsp;i.e.&nbsp;it&nbsp;has<br>
+FileInput,&nbsp;or&nbsp;False&nbsp;otherwise.</span></dd></dl>
+
+<dl><dt><a name="RegistrationForm-is_valid"><strong>is_valid</strong></a>(self)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;form&nbsp;has&nbsp;no&nbsp;errors,&nbsp;or&nbsp;False&nbsp;otherwise.</span></dd></dl>
+
+<dl><dt><a name="RegistrationForm-non_field_errors"><strong>non_field_errors</strong></a>(self)</dt><dd><span class="code">Return&nbsp;an&nbsp;ErrorList&nbsp;of&nbsp;errors&nbsp;that&nbsp;aren't&nbsp;associated&nbsp;with&nbsp;a&nbsp;particular<br>
+field&nbsp;--&nbsp;i.e.,&nbsp;from&nbsp;<a href="django.forms.forms.html#Form">Form</a>.<a href="#RegistrationForm-clean">clean</a>().&nbsp;Return&nbsp;an&nbsp;empty&nbsp;ErrorList&nbsp;if&nbsp;there<br>
+are&nbsp;none.</span></dd></dl>
+
+<dl><dt><a name="RegistrationForm-order_fields"><strong>order_fields</strong></a>(self, field_order)</dt><dd><span class="code">Rearrange&nbsp;the&nbsp;fields&nbsp;according&nbsp;to&nbsp;field_order.<br>
+&nbsp;<br>
+field_order&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;field&nbsp;names&nbsp;specifying&nbsp;the&nbsp;order.&nbsp;Append&nbsp;fields<br>
+not&nbsp;included&nbsp;in&nbsp;the&nbsp;list&nbsp;in&nbsp;the&nbsp;default&nbsp;order&nbsp;for&nbsp;backward&nbsp;compatibility<br>
+with&nbsp;subclasses&nbsp;not&nbsp;overriding&nbsp;field_order.&nbsp;If&nbsp;field_order&nbsp;is&nbsp;None,<br>
+keep&nbsp;all&nbsp;fields&nbsp;in&nbsp;the&nbsp;order&nbsp;defined&nbsp;in&nbsp;the&nbsp;class.&nbsp;Ignore&nbsp;unknown<br>
+fields&nbsp;in&nbsp;field_order&nbsp;to&nbsp;allow&nbsp;disabling&nbsp;fields&nbsp;in&nbsp;form&nbsp;subclasses<br>
+without&nbsp;redefining&nbsp;ordering.</span></dd></dl>
+
+<dl><dt><a name="RegistrationForm-visible_fields"><strong>visible_fields</strong></a>(self)</dt><dd><span class="code">Return&nbsp;a&nbsp;list&nbsp;of&nbsp;BoundField&nbsp;objects&nbsp;that&nbsp;aren't&nbsp;hidden&nbsp;fields.<br>
+The&nbsp;opposite&nbsp;of&nbsp;the&nbsp;<a href="#RegistrationForm-hidden_fields">hidden_fields</a>()&nbsp;method.</span></dd></dl>
+
+<hr>
+Readonly properties inherited from <a href="django.forms.forms.html#BaseForm">django.forms.forms.BaseForm</a>:<br>
+<dl><dt><strong>errors</strong></dt>
+<dd><span class="code">Return&nbsp;an&nbsp;ErrorDict&nbsp;for&nbsp;the&nbsp;data&nbsp;provided&nbsp;for&nbsp;the&nbsp;form.</span></dd>
+</dl>
+<dl><dt><strong>template_name</strong></dt>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="django.forms.forms.html#BaseForm">django.forms.forms.BaseForm</a>:<br>
+<dl><dt><strong>default_renderer</strong> = None</dl>
+
+<dl><dt><strong>field_order</strong> = None</dl>
+
+<dl><dt><strong>prefix</strong> = None</dl>
+
+<dl><dt><strong>template_name_div</strong> = 'django/forms/div.html'</dl>
+
+<dl><dt><strong>template_name_label</strong> = 'django/forms/label.html'</dl>
+
+<dl><dt><strong>template_name_p</strong> = 'django/forms/p.html'</dl>
+
+<dl><dt><strong>template_name_table</strong> = 'django/forms/table.html'</dl>
+
+<dl><dt><strong>template_name_ul</strong> = 'django/forms/ul.html'</dl>
+
+<dl><dt><strong>use_required_attribute</strong> = True</dl>
+
+<hr>
+Methods inherited from <a href="django.forms.utils.html#RenderableFormMixin">django.forms.utils.RenderableFormMixin</a>:<br>
+<dl><dt><a name="RegistrationForm-as_div"><strong>as_div</strong></a>(self)</dt><dd><span class="code">Render&nbsp;as&nbsp;&lt;div&gt;&nbsp;elements.</span></dd></dl>
+
+<dl><dt><a name="RegistrationForm-as_p"><strong>as_p</strong></a>(self)</dt><dd><span class="code">Render&nbsp;as&nbsp;&lt;p&gt;&nbsp;elements.</span></dd></dl>
+
+<dl><dt><a name="RegistrationForm-as_table"><strong>as_table</strong></a>(self)</dt><dd><span class="code">Render&nbsp;as&nbsp;&lt;tr&gt;&nbsp;elements&nbsp;excluding&nbsp;the&nbsp;surrounding&nbsp;&lt;table&gt;&nbsp;tag.</span></dd></dl>
+
+<dl><dt><a name="RegistrationForm-as_ul"><strong>as_ul</strong></a>(self)</dt><dd><span class="code">Render&nbsp;as&nbsp;&lt;li&gt;&nbsp;elements&nbsp;excluding&nbsp;the&nbsp;surrounding&nbsp;&lt;ul&gt;&nbsp;tag.</span></dd></dl>
+
+<hr>
+Methods inherited from <a href="django.forms.utils.html#RenderableMixin">django.forms.utils.RenderableMixin</a>:<br>
+<dl><dt><a name="RegistrationForm-__html__"><strong>__html__</strong></a> = <a href="#RegistrationForm-render">render</a>(self, template_name=None, context=None, renderer=None)</dt></dl>
+
+<dl><dt><a name="RegistrationForm-__str__"><strong>__str__</strong></a> = <a href="#RegistrationForm-render">render</a>(self, template_name=None, context=None, renderer=None)</dt></dl>
+
+<dl><dt><a name="RegistrationForm-render"><strong>render</strong></a>(self, template_name=None, context=None, renderer=None)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="django.forms.utils.html#RenderableMixin">django.forms.utils.RenderableMixin</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</span></dd>
+</dl>
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="SaleForm">class <strong>SaleForm</strong></a>(<a href="django.forms.models.html#ModelForm">django.forms.models.ModelForm</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#SaleForm">SaleForm</a>(*args,&nbsp;**kwargs)<br>
+&nbsp;<br>
+<a href="django.forms.forms.html#Form">Form</a>&nbsp;for&nbsp;adding&nbsp;or&nbsp;editing&nbsp;sale&nbsp;information.<br>
+&nbsp;<br>
+Fields:<br>
+-&nbsp;quantity&nbsp;(IntegerField):&nbsp;Sale&nbsp;quantity.<br>
+-&nbsp;date&nbsp;(DateField):&nbsp;Sale&nbsp;date.<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="principal.forms.html#SaleForm">SaleForm</a></dd>
+<dd><a href="django.forms.models.html#ModelForm">django.forms.models.ModelForm</a></dd>
+<dd><a href="django.forms.models.html#BaseModelForm">django.forms.models.BaseModelForm</a></dd>
+<dd><a href="django.forms.forms.html#BaseForm">django.forms.forms.BaseForm</a></dd>
+<dd><a href="django.forms.utils.html#RenderableFormMixin">django.forms.utils.RenderableFormMixin</a></dd>
+<dd><a href="django.forms.utils.html#RenderableMixin">django.forms.utils.RenderableMixin</a></dd>
+<dd><a href="django.db.models.utils.html#AltersData">django.db.models.utils.AltersData</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="SaleForm-__init__"><strong>__init__</strong></a>(self, *args, **kwargs)</dt><dd><span class="code">Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</span></dd></dl>
+
+<hr>
+Readonly properties defined here:<br>
+<dl><dt><strong>media</strong></dt>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>Meta</strong> = &lt;class 'principal.forms.SaleForm.Meta'&gt;</dl>
+
+<dl><dt><strong>base_fields</strong> = {'date': &lt;django.forms.fields.DateField object&gt;, 'quantity': &lt;django.forms.fields.IntegerField object&gt;, 'ref': &lt;django.forms.models.ModelChoiceField object&gt;}</dl>
+
+<dl><dt><strong>declared_fields</strong> = {'date': &lt;django.forms.fields.DateField object&gt;, 'quantity': &lt;django.forms.fields.IntegerField object&gt;}</dl>
+
+<hr>
+Methods inherited from <a href="django.forms.models.html#BaseModelForm">django.forms.models.BaseModelForm</a>:<br>
+<dl><dt><a name="SaleForm-clean"><strong>clean</strong></a>(self)</dt><dd><span class="code">Hook&nbsp;for&nbsp;doing&nbsp;any&nbsp;extra&nbsp;form-wide&nbsp;cleaning&nbsp;after&nbsp;Field.<a href="#SaleForm-clean">clean</a>()&nbsp;has&nbsp;been<br>
+called&nbsp;on&nbsp;every&nbsp;field.&nbsp;Any&nbsp;ValidationError&nbsp;raised&nbsp;by&nbsp;this&nbsp;method&nbsp;will<br>
+not&nbsp;be&nbsp;associated&nbsp;with&nbsp;a&nbsp;particular&nbsp;field;&nbsp;it&nbsp;will&nbsp;have&nbsp;a&nbsp;special-case<br>
+association&nbsp;with&nbsp;the&nbsp;field&nbsp;named&nbsp;'__all__'.</span></dd></dl>
+
+<dl><dt><a name="SaleForm-save"><strong>save</strong></a>(self, commit=True)</dt><dd><span class="code">Save&nbsp;this&nbsp;form's&nbsp;self.<strong>instance</strong>&nbsp;object&nbsp;if&nbsp;commit=True.&nbsp;Otherwise,&nbsp;add<br>
+a&nbsp;save_m2m()&nbsp;method&nbsp;to&nbsp;the&nbsp;form&nbsp;which&nbsp;can&nbsp;be&nbsp;called&nbsp;after&nbsp;the&nbsp;instance<br>
+is&nbsp;saved&nbsp;manually&nbsp;at&nbsp;a&nbsp;later&nbsp;time.&nbsp;Return&nbsp;the&nbsp;model&nbsp;instance.</span></dd></dl>
+
+<dl><dt><a name="SaleForm-validate_unique"><strong>validate_unique</strong></a>(self)</dt><dd><span class="code">Call&nbsp;the&nbsp;instance's&nbsp;<a href="#SaleForm-validate_unique">validate_unique</a>()&nbsp;method&nbsp;and&nbsp;update&nbsp;the&nbsp;form's<br>
+validation&nbsp;errors&nbsp;if&nbsp;any&nbsp;were&nbsp;raised.</span></dd></dl>
+
+<hr>
+Methods inherited from <a href="django.forms.forms.html#BaseForm">django.forms.forms.BaseForm</a>:<br>
+<dl><dt><a name="SaleForm-__getitem__"><strong>__getitem__</strong></a>(self, name)</dt><dd><span class="code">Return&nbsp;a&nbsp;BoundField&nbsp;with&nbsp;the&nbsp;given&nbsp;name.</span></dd></dl>
+
+<dl><dt><a name="SaleForm-__iter__"><strong>__iter__</strong></a>(self)</dt><dd><span class="code">Yield&nbsp;the&nbsp;form's&nbsp;fields&nbsp;as&nbsp;BoundField&nbsp;objects.</span></dd></dl>
+
+<dl><dt><a name="SaleForm-__repr__"><strong>__repr__</strong></a>(self)</dt><dd><span class="code">Return&nbsp;repr(self).</span></dd></dl>
+
+<dl><dt><a name="SaleForm-add_error"><strong>add_error</strong></a>(self, field, error)</dt><dd><span class="code">Update&nbsp;the&nbsp;content&nbsp;of&nbsp;`self.<strong>_errors</strong>`.<br>
+&nbsp;<br>
+The&nbsp;`field`&nbsp;argument&nbsp;is&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;field&nbsp;to&nbsp;which&nbsp;the&nbsp;errors<br>
+should&nbsp;be&nbsp;added.&nbsp;If&nbsp;it's&nbsp;None,&nbsp;treat&nbsp;the&nbsp;errors&nbsp;as&nbsp;NON_FIELD_ERRORS.<br>
+&nbsp;<br>
+The&nbsp;`error`&nbsp;argument&nbsp;can&nbsp;be&nbsp;a&nbsp;single&nbsp;error,&nbsp;a&nbsp;list&nbsp;of&nbsp;errors,&nbsp;or&nbsp;a<br>
+dictionary&nbsp;that&nbsp;maps&nbsp;field&nbsp;names&nbsp;to&nbsp;lists&nbsp;of&nbsp;errors.&nbsp;An&nbsp;"error"&nbsp;can&nbsp;be<br>
+either&nbsp;a&nbsp;simple&nbsp;string&nbsp;or&nbsp;an&nbsp;instance&nbsp;of&nbsp;ValidationError&nbsp;with&nbsp;its<br>
+message&nbsp;attribute&nbsp;set&nbsp;and&nbsp;a&nbsp;"list&nbsp;or&nbsp;dictionary"&nbsp;can&nbsp;be&nbsp;an&nbsp;actual<br>
+`list`&nbsp;or&nbsp;`dict`&nbsp;or&nbsp;an&nbsp;instance&nbsp;of&nbsp;ValidationError&nbsp;with&nbsp;its<br>
+`error_list`&nbsp;or&nbsp;`error_dict`&nbsp;attribute&nbsp;set.<br>
+&nbsp;<br>
+If&nbsp;`error`&nbsp;is&nbsp;a&nbsp;dictionary,&nbsp;the&nbsp;`field`&nbsp;argument&nbsp;*must*&nbsp;be&nbsp;None&nbsp;and<br>
+errors&nbsp;will&nbsp;be&nbsp;added&nbsp;to&nbsp;the&nbsp;fields&nbsp;that&nbsp;correspond&nbsp;to&nbsp;the&nbsp;keys&nbsp;of&nbsp;the<br>
+dictionary.</span></dd></dl>
+
+<dl><dt><a name="SaleForm-add_initial_prefix"><strong>add_initial_prefix</strong></a>(self, field_name)</dt><dd><span class="code">Add&nbsp;an&nbsp;'initial'&nbsp;prefix&nbsp;for&nbsp;checking&nbsp;dynamic&nbsp;initial&nbsp;values.</span></dd></dl>
+
+<dl><dt><a name="SaleForm-add_prefix"><strong>add_prefix</strong></a>(self, field_name)</dt><dd><span class="code">Return&nbsp;the&nbsp;field&nbsp;name&nbsp;with&nbsp;a&nbsp;prefix&nbsp;appended,&nbsp;if&nbsp;this&nbsp;<a href="django.forms.forms.html#Form">Form</a>&nbsp;has&nbsp;a<br>
+prefix&nbsp;set.<br>
+&nbsp;<br>
+Subclasses&nbsp;may&nbsp;wish&nbsp;to&nbsp;override.</span></dd></dl>
+
+<strong>changed_data</strong> = &lt;django.utils.functional.cached_property object&gt;
+<dl><dt><a name="SaleForm-full_clean"><strong>full_clean</strong></a>(self)</dt><dd><span class="code">Clean&nbsp;all&nbsp;of&nbsp;self.<strong>data</strong>&nbsp;and&nbsp;populate&nbsp;self.<strong>_errors</strong>&nbsp;and&nbsp;self.<strong>cleaned_data</strong>.</span></dd></dl>
+
+<dl><dt><a name="SaleForm-get_context"><strong>get_context</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SaleForm-get_initial_for_field"><strong>get_initial_for_field</strong></a>(self, field, field_name)</dt><dd><span class="code">Return&nbsp;initial&nbsp;data&nbsp;for&nbsp;field&nbsp;on&nbsp;form.&nbsp;Use&nbsp;initial&nbsp;data&nbsp;from&nbsp;the&nbsp;form<br>
+or&nbsp;the&nbsp;field,&nbsp;in&nbsp;that&nbsp;order.&nbsp;Evaluate&nbsp;callable&nbsp;values.</span></dd></dl>
+
+<dl><dt><a name="SaleForm-has_changed"><strong>has_changed</strong></a>(self)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;data&nbsp;differs&nbsp;from&nbsp;initial.</span></dd></dl>
+
+<dl><dt><a name="SaleForm-has_error"><strong>has_error</strong></a>(self, field, code=None)</dt></dl>
+
+<dl><dt><a name="SaleForm-hidden_fields"><strong>hidden_fields</strong></a>(self)</dt><dd><span class="code">Return&nbsp;a&nbsp;list&nbsp;of&nbsp;all&nbsp;the&nbsp;BoundField&nbsp;objects&nbsp;that&nbsp;are&nbsp;hidden&nbsp;fields.<br>
+Useful&nbsp;for&nbsp;manual&nbsp;form&nbsp;layout&nbsp;in&nbsp;templates.</span></dd></dl>
+
+<dl><dt><a name="SaleForm-is_multipart"><strong>is_multipart</strong></a>(self)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;form&nbsp;needs&nbsp;to&nbsp;be&nbsp;multipart-encoded,&nbsp;i.e.&nbsp;it&nbsp;has<br>
+FileInput,&nbsp;or&nbsp;False&nbsp;otherwise.</span></dd></dl>
+
+<dl><dt><a name="SaleForm-is_valid"><strong>is_valid</strong></a>(self)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;form&nbsp;has&nbsp;no&nbsp;errors,&nbsp;or&nbsp;False&nbsp;otherwise.</span></dd></dl>
+
+<dl><dt><a name="SaleForm-non_field_errors"><strong>non_field_errors</strong></a>(self)</dt><dd><span class="code">Return&nbsp;an&nbsp;ErrorList&nbsp;of&nbsp;errors&nbsp;that&nbsp;aren't&nbsp;associated&nbsp;with&nbsp;a&nbsp;particular<br>
+field&nbsp;--&nbsp;i.e.,&nbsp;from&nbsp;<a href="django.forms.forms.html#Form">Form</a>.<a href="#SaleForm-clean">clean</a>().&nbsp;Return&nbsp;an&nbsp;empty&nbsp;ErrorList&nbsp;if&nbsp;there<br>
+are&nbsp;none.</span></dd></dl>
+
+<dl><dt><a name="SaleForm-order_fields"><strong>order_fields</strong></a>(self, field_order)</dt><dd><span class="code">Rearrange&nbsp;the&nbsp;fields&nbsp;according&nbsp;to&nbsp;field_order.<br>
+&nbsp;<br>
+field_order&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;field&nbsp;names&nbsp;specifying&nbsp;the&nbsp;order.&nbsp;Append&nbsp;fields<br>
+not&nbsp;included&nbsp;in&nbsp;the&nbsp;list&nbsp;in&nbsp;the&nbsp;default&nbsp;order&nbsp;for&nbsp;backward&nbsp;compatibility<br>
+with&nbsp;subclasses&nbsp;not&nbsp;overriding&nbsp;field_order.&nbsp;If&nbsp;field_order&nbsp;is&nbsp;None,<br>
+keep&nbsp;all&nbsp;fields&nbsp;in&nbsp;the&nbsp;order&nbsp;defined&nbsp;in&nbsp;the&nbsp;class.&nbsp;Ignore&nbsp;unknown<br>
+fields&nbsp;in&nbsp;field_order&nbsp;to&nbsp;allow&nbsp;disabling&nbsp;fields&nbsp;in&nbsp;form&nbsp;subclasses<br>
+without&nbsp;redefining&nbsp;ordering.</span></dd></dl>
+
+<dl><dt><a name="SaleForm-visible_fields"><strong>visible_fields</strong></a>(self)</dt><dd><span class="code">Return&nbsp;a&nbsp;list&nbsp;of&nbsp;BoundField&nbsp;objects&nbsp;that&nbsp;aren't&nbsp;hidden&nbsp;fields.<br>
+The&nbsp;opposite&nbsp;of&nbsp;the&nbsp;<a href="#SaleForm-hidden_fields">hidden_fields</a>()&nbsp;method.</span></dd></dl>
+
+<hr>
+Readonly properties inherited from <a href="django.forms.forms.html#BaseForm">django.forms.forms.BaseForm</a>:<br>
+<dl><dt><strong>errors</strong></dt>
+<dd><span class="code">Return&nbsp;an&nbsp;ErrorDict&nbsp;for&nbsp;the&nbsp;data&nbsp;provided&nbsp;for&nbsp;the&nbsp;form.</span></dd>
+</dl>
+<dl><dt><strong>template_name</strong></dt>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="django.forms.forms.html#BaseForm">django.forms.forms.BaseForm</a>:<br>
+<dl><dt><strong>default_renderer</strong> = None</dl>
+
+<dl><dt><strong>field_order</strong> = None</dl>
+
+<dl><dt><strong>prefix</strong> = None</dl>
+
+<dl><dt><strong>template_name_div</strong> = 'django/forms/div.html'</dl>
+
+<dl><dt><strong>template_name_label</strong> = 'django/forms/label.html'</dl>
+
+<dl><dt><strong>template_name_p</strong> = 'django/forms/p.html'</dl>
+
+<dl><dt><strong>template_name_table</strong> = 'django/forms/table.html'</dl>
+
+<dl><dt><strong>template_name_ul</strong> = 'django/forms/ul.html'</dl>
+
+<dl><dt><strong>use_required_attribute</strong> = True</dl>
+
+<hr>
+Methods inherited from <a href="django.forms.utils.html#RenderableFormMixin">django.forms.utils.RenderableFormMixin</a>:<br>
+<dl><dt><a name="SaleForm-as_div"><strong>as_div</strong></a>(self)</dt><dd><span class="code">Render&nbsp;as&nbsp;&lt;div&gt;&nbsp;elements.</span></dd></dl>
+
+<dl><dt><a name="SaleForm-as_p"><strong>as_p</strong></a>(self)</dt><dd><span class="code">Render&nbsp;as&nbsp;&lt;p&gt;&nbsp;elements.</span></dd></dl>
+
+<dl><dt><a name="SaleForm-as_table"><strong>as_table</strong></a>(self)</dt><dd><span class="code">Render&nbsp;as&nbsp;&lt;tr&gt;&nbsp;elements&nbsp;excluding&nbsp;the&nbsp;surrounding&nbsp;&lt;table&gt;&nbsp;tag.</span></dd></dl>
+
+<dl><dt><a name="SaleForm-as_ul"><strong>as_ul</strong></a>(self)</dt><dd><span class="code">Render&nbsp;as&nbsp;&lt;li&gt;&nbsp;elements&nbsp;excluding&nbsp;the&nbsp;surrounding&nbsp;&lt;ul&gt;&nbsp;tag.</span></dd></dl>
+
+<hr>
+Methods inherited from <a href="django.forms.utils.html#RenderableMixin">django.forms.utils.RenderableMixin</a>:<br>
+<dl><dt><a name="SaleForm-__html__"><strong>__html__</strong></a> = <a href="#SaleForm-render">render</a>(self, template_name=None, context=None, renderer=None)</dt></dl>
+
+<dl><dt><a name="SaleForm-__str__"><strong>__str__</strong></a> = <a href="#SaleForm-render">render</a>(self, template_name=None, context=None, renderer=None)</dt></dl>
+
+<dl><dt><a name="SaleForm-render"><strong>render</strong></a>(self, template_name=None, context=None, renderer=None)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="django.forms.utils.html#RenderableMixin">django.forms.utils.RenderableMixin</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</span></dd>
+</dl>
+<hr>
+Class methods inherited from <a href="django.db.models.utils.html#AltersData">django.db.models.utils.AltersData</a>:<br>
+<dl><dt><a name="SaleForm-__init_subclass__"><strong>__init_subclass__</strong></a>(**kwargs)<span class="grey"><span class="heading-text"> from <a href="django.forms.models.html#ModelFormMetaclass">django.forms.models.ModelFormMetaclass</a></span></span></dt><dd><span class="code">This&nbsp;method&nbsp;is&nbsp;called&nbsp;when&nbsp;a&nbsp;class&nbsp;is&nbsp;subclassed.<br>
+&nbsp;<br>
+The&nbsp;default&nbsp;implementation&nbsp;does&nbsp;nothing.&nbsp;It&nbsp;may&nbsp;be<br>
+overridden&nbsp;to&nbsp;extend&nbsp;subclasses.</span></dd></dl>
+
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="ScenarioForm">class <strong>ScenarioForm</strong></a>(<a href="django.forms.forms.html#Form">django.forms.forms.Form</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#ScenarioForm">ScenarioForm</a>(data=None,&nbsp;files=None,&nbsp;auto_id='id_%s',&nbsp;prefix=None,&nbsp;initial=None,&nbsp;error_class=&amp;lt;class&nbsp;'django.forms.utils.ErrorList'&amp;gt;,&nbsp;label_suffix=None,&nbsp;empty_permitted=False,&nbsp;field_order=None,&nbsp;use_required_attribute=None,&nbsp;renderer=None)<br>
+&nbsp;<br>
+<a href="django.forms.forms.html#Form">Form</a>&nbsp;for&nbsp;selecting&nbsp;a&nbsp;scenario.<br>
+&nbsp;<br>
+Fields:<br>
+-&nbsp;scenario&nbsp;(ChoiceField):&nbsp;Choose&nbsp;a&nbsp;scenario&nbsp;from&nbsp;predefined&nbsp;options.<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="principal.forms.html#ScenarioForm">ScenarioForm</a></dd>
+<dd><a href="django.forms.forms.html#Form">django.forms.forms.Form</a></dd>
+<dd><a href="django.forms.forms.html#BaseForm">django.forms.forms.BaseForm</a></dd>
+<dd><a href="django.forms.utils.html#RenderableFormMixin">django.forms.utils.RenderableFormMixin</a></dd>
+<dd><a href="django.forms.utils.html#RenderableMixin">django.forms.utils.RenderableMixin</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Readonly properties defined here:<br>
+<dl><dt><strong>media</strong></dt>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>SCENARIO_CHOICES</strong> = [('scenario1', 'Scenario 1'), ('scenario2', 'Scenario 2'), ('scenario3', 'Scenario 3'), ('scenario4', 'Scenario 4')]</dl>
+
+<dl><dt><strong>base_fields</strong> = {'scenario': &lt;django.forms.fields.ChoiceField object&gt;}</dl>
+
+<dl><dt><strong>declared_fields</strong> = {'scenario': &lt;django.forms.fields.ChoiceField object&gt;}</dl>
+
+<hr>
+Methods inherited from <a href="django.forms.forms.html#BaseForm">django.forms.forms.BaseForm</a>:<br>
+<dl><dt><a name="ScenarioForm-__getitem__"><strong>__getitem__</strong></a>(self, name)</dt><dd><span class="code">Return&nbsp;a&nbsp;BoundField&nbsp;with&nbsp;the&nbsp;given&nbsp;name.</span></dd></dl>
+
+<dl><dt><a name="ScenarioForm-__init__"><strong>__init__</strong></a>(self, data=None, files=None, auto_id='id_%s', prefix=None, initial=None, error_class=&lt;class 'django.forms.utils.ErrorList'&gt;, label_suffix=None, empty_permitted=False, field_order=None, use_required_attribute=None, renderer=None)</dt><dd><span class="code">Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</span></dd></dl>
+
+<dl><dt><a name="ScenarioForm-__iter__"><strong>__iter__</strong></a>(self)</dt><dd><span class="code">Yield&nbsp;the&nbsp;form's&nbsp;fields&nbsp;as&nbsp;BoundField&nbsp;objects.</span></dd></dl>
+
+<dl><dt><a name="ScenarioForm-__repr__"><strong>__repr__</strong></a>(self)</dt><dd><span class="code">Return&nbsp;repr(self).</span></dd></dl>
+
+<dl><dt><a name="ScenarioForm-add_error"><strong>add_error</strong></a>(self, field, error)</dt><dd><span class="code">Update&nbsp;the&nbsp;content&nbsp;of&nbsp;`self.<strong>_errors</strong>`.<br>
+&nbsp;<br>
+The&nbsp;`field`&nbsp;argument&nbsp;is&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;field&nbsp;to&nbsp;which&nbsp;the&nbsp;errors<br>
+should&nbsp;be&nbsp;added.&nbsp;If&nbsp;it's&nbsp;None,&nbsp;treat&nbsp;the&nbsp;errors&nbsp;as&nbsp;NON_FIELD_ERRORS.<br>
+&nbsp;<br>
+The&nbsp;`error`&nbsp;argument&nbsp;can&nbsp;be&nbsp;a&nbsp;single&nbsp;error,&nbsp;a&nbsp;list&nbsp;of&nbsp;errors,&nbsp;or&nbsp;a<br>
+dictionary&nbsp;that&nbsp;maps&nbsp;field&nbsp;names&nbsp;to&nbsp;lists&nbsp;of&nbsp;errors.&nbsp;An&nbsp;"error"&nbsp;can&nbsp;be<br>
+either&nbsp;a&nbsp;simple&nbsp;string&nbsp;or&nbsp;an&nbsp;instance&nbsp;of&nbsp;ValidationError&nbsp;with&nbsp;its<br>
+message&nbsp;attribute&nbsp;set&nbsp;and&nbsp;a&nbsp;"list&nbsp;or&nbsp;dictionary"&nbsp;can&nbsp;be&nbsp;an&nbsp;actual<br>
+`list`&nbsp;or&nbsp;`dict`&nbsp;or&nbsp;an&nbsp;instance&nbsp;of&nbsp;ValidationError&nbsp;with&nbsp;its<br>
+`error_list`&nbsp;or&nbsp;`error_dict`&nbsp;attribute&nbsp;set.<br>
+&nbsp;<br>
+If&nbsp;`error`&nbsp;is&nbsp;a&nbsp;dictionary,&nbsp;the&nbsp;`field`&nbsp;argument&nbsp;*must*&nbsp;be&nbsp;None&nbsp;and<br>
+errors&nbsp;will&nbsp;be&nbsp;added&nbsp;to&nbsp;the&nbsp;fields&nbsp;that&nbsp;correspond&nbsp;to&nbsp;the&nbsp;keys&nbsp;of&nbsp;the<br>
+dictionary.</span></dd></dl>
+
+<dl><dt><a name="ScenarioForm-add_initial_prefix"><strong>add_initial_prefix</strong></a>(self, field_name)</dt><dd><span class="code">Add&nbsp;an&nbsp;'initial'&nbsp;prefix&nbsp;for&nbsp;checking&nbsp;dynamic&nbsp;initial&nbsp;values.</span></dd></dl>
+
+<dl><dt><a name="ScenarioForm-add_prefix"><strong>add_prefix</strong></a>(self, field_name)</dt><dd><span class="code">Return&nbsp;the&nbsp;field&nbsp;name&nbsp;with&nbsp;a&nbsp;prefix&nbsp;appended,&nbsp;if&nbsp;this&nbsp;<a href="django.forms.forms.html#Form">Form</a>&nbsp;has&nbsp;a<br>
+prefix&nbsp;set.<br>
+&nbsp;<br>
+Subclasses&nbsp;may&nbsp;wish&nbsp;to&nbsp;override.</span></dd></dl>
+
+<strong>changed_data</strong> = &lt;django.utils.functional.cached_property object&gt;
+<dl><dt><a name="ScenarioForm-clean"><strong>clean</strong></a>(self)</dt><dd><span class="code">Hook&nbsp;for&nbsp;doing&nbsp;any&nbsp;extra&nbsp;form-wide&nbsp;cleaning&nbsp;after&nbsp;Field.<a href="#ScenarioForm-clean">clean</a>()&nbsp;has&nbsp;been<br>
+called&nbsp;on&nbsp;every&nbsp;field.&nbsp;Any&nbsp;ValidationError&nbsp;raised&nbsp;by&nbsp;this&nbsp;method&nbsp;will<br>
+not&nbsp;be&nbsp;associated&nbsp;with&nbsp;a&nbsp;particular&nbsp;field;&nbsp;it&nbsp;will&nbsp;have&nbsp;a&nbsp;special-case<br>
+association&nbsp;with&nbsp;the&nbsp;field&nbsp;named&nbsp;'__all__'.</span></dd></dl>
+
+<dl><dt><a name="ScenarioForm-full_clean"><strong>full_clean</strong></a>(self)</dt><dd><span class="code">Clean&nbsp;all&nbsp;of&nbsp;self.<strong>data</strong>&nbsp;and&nbsp;populate&nbsp;self.<strong>_errors</strong>&nbsp;and&nbsp;self.<strong>cleaned_data</strong>.</span></dd></dl>
+
+<dl><dt><a name="ScenarioForm-get_context"><strong>get_context</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="ScenarioForm-get_initial_for_field"><strong>get_initial_for_field</strong></a>(self, field, field_name)</dt><dd><span class="code">Return&nbsp;initial&nbsp;data&nbsp;for&nbsp;field&nbsp;on&nbsp;form.&nbsp;Use&nbsp;initial&nbsp;data&nbsp;from&nbsp;the&nbsp;form<br>
+or&nbsp;the&nbsp;field,&nbsp;in&nbsp;that&nbsp;order.&nbsp;Evaluate&nbsp;callable&nbsp;values.</span></dd></dl>
+
+<dl><dt><a name="ScenarioForm-has_changed"><strong>has_changed</strong></a>(self)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;data&nbsp;differs&nbsp;from&nbsp;initial.</span></dd></dl>
+
+<dl><dt><a name="ScenarioForm-has_error"><strong>has_error</strong></a>(self, field, code=None)</dt></dl>
+
+<dl><dt><a name="ScenarioForm-hidden_fields"><strong>hidden_fields</strong></a>(self)</dt><dd><span class="code">Return&nbsp;a&nbsp;list&nbsp;of&nbsp;all&nbsp;the&nbsp;BoundField&nbsp;objects&nbsp;that&nbsp;are&nbsp;hidden&nbsp;fields.<br>
+Useful&nbsp;for&nbsp;manual&nbsp;form&nbsp;layout&nbsp;in&nbsp;templates.</span></dd></dl>
+
+<dl><dt><a name="ScenarioForm-is_multipart"><strong>is_multipart</strong></a>(self)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;form&nbsp;needs&nbsp;to&nbsp;be&nbsp;multipart-encoded,&nbsp;i.e.&nbsp;it&nbsp;has<br>
+FileInput,&nbsp;or&nbsp;False&nbsp;otherwise.</span></dd></dl>
+
+<dl><dt><a name="ScenarioForm-is_valid"><strong>is_valid</strong></a>(self)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;form&nbsp;has&nbsp;no&nbsp;errors,&nbsp;or&nbsp;False&nbsp;otherwise.</span></dd></dl>
+
+<dl><dt><a name="ScenarioForm-non_field_errors"><strong>non_field_errors</strong></a>(self)</dt><dd><span class="code">Return&nbsp;an&nbsp;ErrorList&nbsp;of&nbsp;errors&nbsp;that&nbsp;aren't&nbsp;associated&nbsp;with&nbsp;a&nbsp;particular<br>
+field&nbsp;--&nbsp;i.e.,&nbsp;from&nbsp;<a href="django.forms.forms.html#Form">Form</a>.<a href="#ScenarioForm-clean">clean</a>().&nbsp;Return&nbsp;an&nbsp;empty&nbsp;ErrorList&nbsp;if&nbsp;there<br>
+are&nbsp;none.</span></dd></dl>
+
+<dl><dt><a name="ScenarioForm-order_fields"><strong>order_fields</strong></a>(self, field_order)</dt><dd><span class="code">Rearrange&nbsp;the&nbsp;fields&nbsp;according&nbsp;to&nbsp;field_order.<br>
+&nbsp;<br>
+field_order&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;field&nbsp;names&nbsp;specifying&nbsp;the&nbsp;order.&nbsp;Append&nbsp;fields<br>
+not&nbsp;included&nbsp;in&nbsp;the&nbsp;list&nbsp;in&nbsp;the&nbsp;default&nbsp;order&nbsp;for&nbsp;backward&nbsp;compatibility<br>
+with&nbsp;subclasses&nbsp;not&nbsp;overriding&nbsp;field_order.&nbsp;If&nbsp;field_order&nbsp;is&nbsp;None,<br>
+keep&nbsp;all&nbsp;fields&nbsp;in&nbsp;the&nbsp;order&nbsp;defined&nbsp;in&nbsp;the&nbsp;class.&nbsp;Ignore&nbsp;unknown<br>
+fields&nbsp;in&nbsp;field_order&nbsp;to&nbsp;allow&nbsp;disabling&nbsp;fields&nbsp;in&nbsp;form&nbsp;subclasses<br>
+without&nbsp;redefining&nbsp;ordering.</span></dd></dl>
+
+<dl><dt><a name="ScenarioForm-visible_fields"><strong>visible_fields</strong></a>(self)</dt><dd><span class="code">Return&nbsp;a&nbsp;list&nbsp;of&nbsp;BoundField&nbsp;objects&nbsp;that&nbsp;aren't&nbsp;hidden&nbsp;fields.<br>
+The&nbsp;opposite&nbsp;of&nbsp;the&nbsp;<a href="#ScenarioForm-hidden_fields">hidden_fields</a>()&nbsp;method.</span></dd></dl>
+
+<hr>
+Readonly properties inherited from <a href="django.forms.forms.html#BaseForm">django.forms.forms.BaseForm</a>:<br>
+<dl><dt><strong>errors</strong></dt>
+<dd><span class="code">Return&nbsp;an&nbsp;ErrorDict&nbsp;for&nbsp;the&nbsp;data&nbsp;provided&nbsp;for&nbsp;the&nbsp;form.</span></dd>
+</dl>
+<dl><dt><strong>template_name</strong></dt>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="django.forms.forms.html#BaseForm">django.forms.forms.BaseForm</a>:<br>
+<dl><dt><strong>default_renderer</strong> = None</dl>
+
+<dl><dt><strong>field_order</strong> = None</dl>
+
+<dl><dt><strong>prefix</strong> = None</dl>
+
+<dl><dt><strong>template_name_div</strong> = 'django/forms/div.html'</dl>
+
+<dl><dt><strong>template_name_label</strong> = 'django/forms/label.html'</dl>
+
+<dl><dt><strong>template_name_p</strong> = 'django/forms/p.html'</dl>
+
+<dl><dt><strong>template_name_table</strong> = 'django/forms/table.html'</dl>
+
+<dl><dt><strong>template_name_ul</strong> = 'django/forms/ul.html'</dl>
+
+<dl><dt><strong>use_required_attribute</strong> = True</dl>
+
+<hr>
+Methods inherited from <a href="django.forms.utils.html#RenderableFormMixin">django.forms.utils.RenderableFormMixin</a>:<br>
+<dl><dt><a name="ScenarioForm-as_div"><strong>as_div</strong></a>(self)</dt><dd><span class="code">Render&nbsp;as&nbsp;&lt;div&gt;&nbsp;elements.</span></dd></dl>
+
+<dl><dt><a name="ScenarioForm-as_p"><strong>as_p</strong></a>(self)</dt><dd><span class="code">Render&nbsp;as&nbsp;&lt;p&gt;&nbsp;elements.</span></dd></dl>
+
+<dl><dt><a name="ScenarioForm-as_table"><strong>as_table</strong></a>(self)</dt><dd><span class="code">Render&nbsp;as&nbsp;&lt;tr&gt;&nbsp;elements&nbsp;excluding&nbsp;the&nbsp;surrounding&nbsp;&lt;table&gt;&nbsp;tag.</span></dd></dl>
+
+<dl><dt><a name="ScenarioForm-as_ul"><strong>as_ul</strong></a>(self)</dt><dd><span class="code">Render&nbsp;as&nbsp;&lt;li&gt;&nbsp;elements&nbsp;excluding&nbsp;the&nbsp;surrounding&nbsp;&lt;ul&gt;&nbsp;tag.</span></dd></dl>
+
+<hr>
+Methods inherited from <a href="django.forms.utils.html#RenderableMixin">django.forms.utils.RenderableMixin</a>:<br>
+<dl><dt><a name="ScenarioForm-__html__"><strong>__html__</strong></a> = <a href="#ScenarioForm-render">render</a>(self, template_name=None, context=None, renderer=None)</dt></dl>
+
+<dl><dt><a name="ScenarioForm-__str__"><strong>__str__</strong></a> = <a href="#ScenarioForm-render">render</a>(self, template_name=None, context=None, renderer=None)</dt></dl>
+
+<dl><dt><a name="ScenarioForm-render"><strong>render</strong></a>(self, template_name=None, context=None, renderer=None)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="django.forms.utils.html#RenderableMixin">django.forms.utils.RenderableMixin</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</span></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
+    
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-validate_file_extension"><strong>validate_file_extension</strong></a>(value)</dt><dd><span class="code">Custom&nbsp;validator&nbsp;for&nbsp;file&nbsp;upload&nbsp;forms.<br>
+&nbsp;<br>
+Args:<br>
+-&nbsp;value&nbsp;(File):&nbsp;Uploaded&nbsp;file.<br>
+&nbsp;<br>
+Raises:<br>
+-&nbsp;ValidationError:&nbsp;If&nbsp;the&nbsp;file&nbsp;extension&nbsp;is&nbsp;not&nbsp;.xlsx&nbsp;or&nbsp;.csv.</span></dd></dl>
+</td></tr></table>
+</body></html>
