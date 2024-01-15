@@ -57,7 +57,7 @@
                     <span class="highlight"></span><span class="bar"></span>
                     <label for="service-level">Service Level</label>
                 </div>
-                <input class="col-md-3 custom-btn add-button" type="submit" value="Update">
+                <input onclick="submit_update()" class="col-md-3 custom-btn add-button" type="submit" value="Update">
             </form>
         </div>
     <div class="dashboard">
@@ -80,4 +80,38 @@
 {% block scripts %}
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="{% static 'js/dashboard.js' %}"></script>
+<script>
+    function submit_update() {
+        var product_name = document.getElementById("product-name").value;
+        var qte_unitaire = document.getElementById("qte-unitaire").value;
+        var unit_cost = document.getElementById("unit-cost").value;
+        var fixed_command_cost = document.getElementById("fixed-command-cost").value;
+        var holding_rate = document.getElementById("holding-rate").value;
+        var service_level = document.getElementById("service-level").value;
+    
+        var data = {
+            'product_name': product_name,
+            'qte_unitaire': qte_unitaire,
+            'unit_cost': unit_cost,
+            'fixed_command_cost': fixed_command_cost,
+            'holding_rate': holding_rate,
+            'service_level': service_level
+        };
+    
+        fetch('/update_product_url/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                // Include any other headers your server requires
+            },
+            body: JSON.stringify(data)
+        }).then(response => {
+            if (response.ok) {
+                alert('Product updated successfully');
+            } else {
+                alert('Error updating product');
+            }
+        });
+    }
+    </script>
 {% endblock %}

@@ -29,7 +29,14 @@ const ctx = document.getElementById('chart1');
                 borderColor: 'rgba(255, 99, 132, 1)',
                 borderWidth: 2,
                 fill: false,
-            }],
+            },
+            {
+              label: 'Quantité commandé',
+              data: [0],
+              borderColor: 'rgba(255, 99, 132, 1)',
+              borderWidth: 2,
+              fill: false,
+          }],
         },
         options: {
             scales: {
@@ -70,16 +77,8 @@ const ctx = document.getElementById('chart1');
         chart2.data.labels = data.date;
         chart2.data.datasets[0].data = data.quantité;
         chart2.data.datasets[0].label = "quantité " + productName;
-
-        // Ajouter une nouvelle courbe
-        chart2.data.datasets.push({
-            label: "stock",
-            data: data.order,
-            borderColor: 'rgba(0, 240, 100, 1)',
-            borderWidth: 2,
-            fill: false,
-        });
-
+        chart2.data.datasets[1].data = data.order;
+        chart2.data.datasets[0].label = "quantité commandé " + productName;
         chart2.update();
     });
   });
@@ -121,4 +120,38 @@ $(document).ready(function() {
       chart.update();
   }
 });
+
+
+function submit_update() {
+  var product_name = document.getElementById("product-name").value;
+  var qte_unitaire = document.getElementById("qte-unitaire").value;
+  var unit_cost = document.getElementById("unit-cost").value;
+  var fixed_command_cost = document.getElementById("fixed-command-cost").value;
+  var holding_rate = document.getElementById("holding-rate").value;
+  var service_level = document.getElementById("service-level").value;
+
+  var data = {
+      'product_name': product_name,
+      'qte_unitaire': qte_unitaire,
+      'unit_cost': unit_cost,
+      'fixed_command_cost': fixed_command_cost,
+      'holding_rate': holding_rate,
+      'service_level': service_level
+  };
+
+  fetch('/handle_update_product/', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+          // Include any other headers your server requires
+      },
+      body: JSON.stringify(data)
+  }).then(response => {
+      if (response.ok) {
+          alert('Product updated successfully');
+      } else {
+          alert('Error updating product');
+      }
+  });
+};
 

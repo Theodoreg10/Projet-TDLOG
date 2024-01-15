@@ -12,11 +12,13 @@ from .forms import FileUploadForm, ProductSelectionForm, ContactForm
 from .forms import ScenarioForm
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
+from django.views.decorators.csrf import csrf_exempt
 import pandas as pd
 from stock_package import django_to_df
 import stock_package as st
 from datetime import date
 import numpy as np
+import json
 
 
 # Create your views here.
@@ -190,6 +192,28 @@ def add_product(request):
         }
     return render(request, 'data.html', context)
 
+@csrf_exempt
+def handle_update_product(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        product_name = data.get('product_name')
+        qte_unitaire = data.get('qte_unitaire')
+        unit_cost = data.get('unit_cost')
+        fixed_command_cost = data.get('fixed_command_cost')
+        holding_rate = data.get('holding_rate')
+        service_level = data.get('service_level')
+
+        product = Product.objects.get(name=product_name)
+        product.qte_unitaire = qte_unitaire
+        product.unit_cost = unit_cost
+        product.fixed_command_cost = fixed_command_cost
+        product.holding_rate = holding_rate
+        product.service_level = service_level
+        product.save()
+
+        return JsonResponse({'status': 'success'})
+    else:
+        return JsonResponse({'status': 'error'})
 
 @login_required(login_url='login')
 def add_sale(request):
@@ -275,7 +299,8 @@ def handle_file_sales_upload(request):
                 df = pd.read_excel(file)
             df['Date'] = pd.to_datetime(df['Date']).dt.strftime('%Y-%m-%d')
             for _, row in df.iterrows():
-                product = Product.objects.get(product_name=row['Ref'])
+                product = Product.objects.get(product_name=row['Ref'],
+                                              user=request.user)
                 Sale.objects.create(
                     date=row['Date'],
                     quantity=row['Quantity'],
@@ -288,6 +313,7 @@ def handle_file_sales_upload(request):
     return render(request, 'data.html', {'form': form})
 
 def get_product_details(request, product_name):
+<<<<<<< HEAD
     """
     Returns product details in JSON format.
 
@@ -299,6 +325,9 @@ def get_product_details(request, product_name):
         JsonResponse: JSON response containing product details.
     """
     product = Product.objects.get(product_name=product_name)
+=======
+    product = Product.objects.get(product_name=product_name, user=request.user)
+>>>>>>> 311c758786f5a48941a672c7a916a16c85c1b217
     return JsonResponse({
         'product_name': product.product_name,
         'qte_unitaire': product.qte_unitaire,
@@ -394,37 +423,30 @@ def handle_scenario2(request, product_name, period=date.today().year):
                               product=product_name, is_product=False)
     product_data = django_to_df(Product, request.user,
                                 product=product_name, is_product=True)
-    sales_data['date'] = pd.to_datetime(sales_data['date'])
-    sales_in_year = sales_data[sales_data['date'].dt.year == period]
-    sales_in_year = sales_in_year.sort_values(by='date', ascending=True)
-    demand = sales_in_year['quantity'].sum()
-    date = sales_data["date"]
-    unit_cost = product_data.at[0, "unit_cost"]
-    fixed_cost = product_data.at[0, "fixed_command_cost"]
-    holding_rate = product_data.at[0, "holding_rate"]
-    qte_unitaire = product_data.at[0, "qte_unitaire"]
-    qty_economic = st.scenario2(demand, unit_cost, fixed_cost, holding_rate)
-    stock_level = np.zeros(len(sales_in_year))
-    order = np.zeros(len(sales_in_year))
-    if qte_unitaire - sales_in_year.iloc[0]['quantity'] < 0:
-        order[0] = qty_economic * (
-            ((sales_in_year.iloc[0]['quantity'] - qte_unitaire)
-             // qty_economic)
-            + 1
-        )
-    stock_level[0] = (
-        qte_unitaire - sales_in_year.iloc[0]['quantity'] + order[0]
-    )
-    for i in range(1, len(sales_in_year)):
-        if stock_level[i-1] - sales_in_year.iloc[i]['quantity'] < 0:
-            order[i] = qty_economic * (
-                ((sales_in_year.iloc[i]['quantity'] - stock_level[i-1])
-                 // qty_economic)
+    if sales_data is not None:
+        sales_data['date'] = pd.to_datetime(sales_data['date'])
+        sales_in_year = sales_data[sales_data['date'].dt.year == period]
+        sales_in_year = sales_in_year.sort_values(by='date', ascending=True)
+        demand = sales_in_year['quantity'].sum()
+        date = sales_data["date"]
+        unit_cost = product_data.at[0, "unit_cost"]
+        fixed_cost = product_data.at[0, "fixed_command_cost"]
+        holding_rate = product_data.at[0, "holding_rate"]
+        qte_unitaire = product_data.at[0, "qte_unitaire"]
+        qty_economic = st.scenario2(
+            demand, unit_cost, fixed_cost, holding_rate)
+        stock_level = np.zeros(len(sales_in_year))
+        order = np.zeros(len(sales_in_year))
+        if qte_unitaire - sales_in_year.iloc[0]['quantity'] < 0:
+            order[0] = qty_economic * (
+                ((sales_in_year.iloc[0]['quantity'] - qte_unitaire)
+                // qty_economic)
                 + 1
-                )
-        stock_level[i] = (
-            stock_level[i-1] - sales_in_year.iloc[i]['quantity'] + order[i]
+            )
+        stock_level[0] = (
+            qte_unitaire - sales_in_year.iloc[0]['quantity'] + order[0]
         )
+<<<<<<< HEAD
     sales_in_year['stock_level'] = stock_level
     sales_in_year['order'] = order
     date = sales_in_year["date"]
@@ -434,5 +456,32 @@ def handle_scenario2(request, product_name, period=date.today().year):
         "stock_level": list(sales_in_year['stock_level']),
         "order": list(sales_in_year['order'])
     }
+=======
+        for i in range(1, len(sales_in_year)):
+            if stock_level[i-1] - sales_in_year.iloc[i]['quantity'] < 0:
+                order[i] = qty_economic * (
+                    ((sales_in_year.iloc[i]['quantity'] - stock_level[i-1]) // qty_economic)
+                    + 1
+                    )
+            stock_level[i] = (
+                stock_level[i-1] - sales_in_year.iloc[i]['quantity'] + order[i]
+            )
+        sales_in_year['stock_level'] = stock_level
+        sales_in_year['order'] = order
+        date = sales_in_year["date"]
+        data = {
+            "date": list(date),
+            "quantité": list(sales_in_year['quantity']),
+            "stock_level": list(sales_in_year['stock_level']),
+            "order": list(sales_in_year['order'])
+        }
+    else:
+        data = {
+            "date": [0],
+            "quantité": ["No data"],
+            "stock_level": ["No data"],
+            "order":  ["No data"]
+        }
+>>>>>>> 311c758786f5a48941a672c7a916a16c85c1b217
     return JsonResponse(data, safe=False)
 
