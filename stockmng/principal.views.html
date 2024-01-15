@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module principal.views</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title"><a href="principal.html" class="white">principal</a>.views</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Couali%5Cprojet-tdlog%5Cstockmng%5Cprincipal%5Cviews.py">c:\users\ouali\projet-tdlog\stockmng\principal\views.py</a></td></tr></table>
+    <p><span class="code">Django&nbsp;views&nbsp;for&nbsp;handling&nbsp;various&nbsp;pages&nbsp;and&nbsp;scenarios&nbsp;in&nbsp;the&nbsp;application.</span></p>
+<p>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Modules</strong></td></tr>
+    
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="numpy.html">numpy</a><br>
+</td><td class="multicolumn"><a href="pandas.html">pandas</a><br>
+</td><td class="multicolumn"><a href="stock_package.html">stock_package</a><br>
+</td><td class="multicolumn"></td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
+    
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-add_product"><strong>add_product</strong></a>(request)</dt><dd><span class="code">Adds&nbsp;a&nbsp;product&nbsp;and&nbsp;renders&nbsp;the&nbsp;data&nbsp;page.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Request:&nbsp;Http&nbsp;Request.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Rendered&nbsp;data&nbsp;page.</span></dd></dl>
+ <dl><dt><a name="-add_sale"><strong>add_sale</strong></a>(request)</dt><dd><span class="code">Adds&nbsp;a&nbsp;sale&nbsp;and&nbsp;renders&nbsp;the&nbsp;data&nbsp;page.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Request:&nbsp;Http&nbsp;Request.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Rendered&nbsp;data&nbsp;page.</span></dd></dl>
+ <dl><dt><a name="-get_product_details"><strong>get_product_details</strong></a>(request, product_name)</dt><dd><span class="code">Returns&nbsp;product&nbsp;details&nbsp;in&nbsp;JSON&nbsp;format.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;request:&nbsp;The&nbsp;HTTP&nbsp;request&nbsp;object.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;product_name:&nbsp;The&nbsp;name&nbsp;of&nbsp;the&nbsp;product.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;JsonResponse:&nbsp;JSON&nbsp;response&nbsp;containing&nbsp;product&nbsp;details.</span></dd></dl>
+ <dl><dt><a name="-handle_about_page"><strong>handle_about_page</strong></a>(request)</dt></dl>
+ <dl><dt><a name="-handle_contact_page"><strong>handle_contact_page</strong></a>(request)</dt><dd><span class="code">Handles&nbsp;the&nbsp;submission&nbsp;of&nbsp;the&nbsp;contact&nbsp;form&nbsp;and&nbsp;sends&nbsp;an&nbsp;email.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;request:&nbsp;The&nbsp;HTTP&nbsp;request&nbsp;object.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;HttpResponse:&nbsp;Redirects&nbsp;to&nbsp;the&nbsp;'contact'&nbsp;page&nbsp;upon&nbsp;successful&nbsp;form&nbsp;submission.</span></dd></dl>
+ <dl><dt><a name="-handle_dashboard_page"><strong>handle_dashboard_page</strong></a>(request)</dt><dd><span class="code">View&nbsp;function&nbsp;for&nbsp;handling&nbsp;the&nbsp;dashboard&nbsp;page.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Request:&nbsp;Http&nbsp;Request.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Rendered&nbsp;dashboard&nbsp;page.</span></dd></dl>
+ <dl><dt><a name="-handle_data_page"><strong>handle_data_page</strong></a>(request)</dt><dd><span class="code">Renders&nbsp;the&nbsp;data&nbsp;page&nbsp;for&nbsp;logged&nbsp;in&nbsp;users.&nbsp;Shows&nbsp;products&nbsp;and&nbsp;sales&nbsp;related&nbsp;to&nbsp;the&nbsp;user.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Request:&nbsp;Http&nbsp;Request.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Rendered&nbsp;data&nbsp;page&nbsp;containing&nbsp;products,&nbsp;sales,&nbsp;and&nbsp;forms.</span></dd></dl>
+ <dl><dt><a name="-handle_file_product_upload"><strong>handle_file_product_upload</strong></a>(request)</dt><dd><span class="code">Handles&nbsp;file&nbsp;upload&nbsp;of&nbsp;product&nbsp;data&nbsp;and&nbsp;renders&nbsp;the&nbsp;data&nbsp;page.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Request:&nbsp;Http&nbsp;Request.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Rendered&nbsp;data&nbsp;page.</span></dd></dl>
+ <dl><dt><a name="-handle_file_sales_upload"><strong>handle_file_sales_upload</strong></a>(request)</dt><dd><span class="code">Handles&nbsp;the&nbsp;download&nbsp;of&nbsp;sales&nbsp;data&nbsp;from&nbsp;a&nbsp;file&nbsp;uploaded&nbsp;by&nbsp;the&nbsp;user,&nbsp;and&nbsp;updates&nbsp;the&nbsp;database.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;request:&nbsp;The&nbsp;HTTP&nbsp;request&nbsp;object.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;HttpResponse:&nbsp;Redirects&nbsp;to&nbsp;the&nbsp;'data'&nbsp;page&nbsp;upon&nbsp;successful&nbsp;upload.</span></dd></dl>
+ <dl><dt><a name="-handle_home_page"><strong>handle_home_page</strong></a>(request)</dt><dd><span class="code">Renders&nbsp;the&nbsp;home&nbsp;page.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Request:&nbsp;Http&nbsp;Request.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;rendered&nbsp;home&nbsp;page.</span></dd></dl>
+ <dl><dt><a name="-handle_login_page"><strong>handle_login_page</strong></a>(request)</dt><dd><span class="code">View&nbsp;function&nbsp;for&nbsp;the&nbsp;login&nbsp;page&nbsp;and&nbsp;handling&nbsp;login&nbsp;actions.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Request:&nbsp;Http&nbsp;Request.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Rendered&nbsp;login&nbsp;page.</span></dd></dl>
+ <dl><dt><a name="-handle_logout_view"><strong>handle_logout_view</strong></a>(request)</dt><dd><span class="code">Logs&nbsp;the&nbsp;user&nbsp;out&nbsp;and&nbsp;redirects&nbsp;to&nbsp;the&nbsp;login&nbsp;page.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Request:&nbsp;Http&nbsp;Request.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Redirected&nbsp;login&nbsp;page.</span></dd></dl>
+ <dl><dt><a name="-handle_register_page"><strong>handle_register_page</strong></a>(request)</dt><dd><span class="code">Renders&nbsp;the&nbsp;registration&nbsp;page&nbsp;and&nbsp;handles&nbsp;user&nbsp;registration.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Request:&nbsp;Http&nbsp;Request.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Rendered&nbsp;registration&nbsp;page.</span></dd></dl>
+ <dl><dt><a name="-handle_scenario"><strong>handle_scenario</strong></a>(request)</dt><dd><span class="code">Handles&nbsp;a&nbsp;scenario&nbsp;by&nbsp;querying&nbsp;product&nbsp;and&nbsp;sales&nbsp;data,&nbsp;and&nbsp;displaying&nbsp;DataFrames.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;request:&nbsp;The&nbsp;HTTP&nbsp;request&nbsp;object.</span></dd></dl>
+ <dl><dt><a name="-handle_scenario1"><strong>handle_scenario1</strong></a>(request, product_name)</dt><dd><span class="code">Handles&nbsp;scenario&nbsp;1&nbsp;by&nbsp;returning&nbsp;sales&nbsp;data&nbsp;for&nbsp;a&nbsp;specific&nbsp;product&nbsp;in&nbsp;JSON&nbsp;format.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;request:&nbsp;The&nbsp;HTTP&nbsp;request&nbsp;object.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;product_name:&nbsp;The&nbsp;name&nbsp;of&nbsp;the&nbsp;product.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;JsonResponse:&nbsp;JSON&nbsp;response&nbsp;containing&nbsp;sales&nbsp;data.</span></dd></dl>
+ <dl><dt><a name="-handle_scenario2"><strong>handle_scenario2</strong></a>(request, product_name, period=2024)</dt><dd><span class="code">Handles&nbsp;scenario&nbsp;2&nbsp;by&nbsp;returning&nbsp;calculated&nbsp;stock&nbsp;levels&nbsp;and&nbsp;orders&nbsp;in&nbsp;JSON&nbsp;format.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;request:&nbsp;The&nbsp;HTTP&nbsp;request&nbsp;object.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;product_name:&nbsp;The&nbsp;name&nbsp;of&nbsp;the&nbsp;product.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;period:&nbsp;The&nbsp;year&nbsp;for&nbsp;which&nbsp;to&nbsp;calculate.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;JsonResponse:&nbsp;JSON&nbsp;response&nbsp;containing&nbsp;calculated&nbsp;data.</span></dd></dl>
+</td></tr></table>
+</body></html>

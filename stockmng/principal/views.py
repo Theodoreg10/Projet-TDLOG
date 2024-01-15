@@ -1,3 +1,7 @@
+"""
+Django views for handling various pages and scenarios in the application.
+"""
+
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.contrib.auth import authenticate, login, logout
@@ -21,11 +25,29 @@ import json
 
 
 def handle_home_page(request):
+    """
+    Renders the home page.
+
+    Args:
+        Request: Http Request.
+
+    Returns:
+        The rendered home page.
+    """
     return render(request, "home.html")
 
 
 @login_required(login_url='login')
 def handle_data_page(request):
+    """
+    Renders the data page for logged in users. Shows products and sales related to the user.
+
+    Args:
+        Request: Http Request.
+
+    Returns:
+        Rendered data page containing products, sales, and forms.
+    """
     products = Product.objects.filter(user=request.user)
     sales = Sale.objects.filter(user=request.user)
     form_product = ProductForm()
@@ -46,6 +68,15 @@ def handle_about_page(request):
 
 @login_required(login_url='login')
 def handle_dashboard_page(request):
+    """
+    View function for handling the dashboard page.
+
+    Args:
+        Request: Http Request.
+
+    Returns:
+        Rendered dashboard page.
+    """
     product_selection_form = ProductSelectionForm()
     scenario_form = ScenarioForm()
     context = {
@@ -56,6 +87,16 @@ def handle_dashboard_page(request):
 
 
 def handle_login_page(request):
+    """
+    View function for the login page and handling login actions.
+
+    Args:
+        Request: Http Request.
+
+    Returns:
+        Rendered login page.
+    """
+  
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
@@ -75,11 +116,30 @@ def handle_login_page(request):
 
 
 def handle_logout_view(request):
+    """
+    Logs the user out and redirects to the login page.
+
+    Args:
+        Request: Http Request.
+
+    Returns:
+        Redirected login page.
+    """
+
     logout(request)
     return redirect('login')
 
 
 def handle_register_page(request):
+    """
+    Renders the registration page and handles user registration.
+
+    Args:
+        Request: Http Request.
+
+    Returns:
+        Rendered registration page.
+    """
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():
@@ -107,6 +167,15 @@ def handle_register_page(request):
 
 @login_required(login_url='login')
 def add_product(request):
+    """
+    Adds a product and renders the data page.
+
+    Args:
+        Request: Http Request.
+
+    Returns:
+        Rendered data page.
+    """
     if request.method == 'POST':
         form = ProductForm(request.POST)
         if form.is_valid():
@@ -148,6 +217,15 @@ def handle_update_product(request):
 
 @login_required(login_url='login')
 def add_sale(request):
+    """
+    Adds a sale and renders the data page.
+
+    Args:
+        Request: Http Request.
+
+    Returns:
+        Rendered data page.
+    """
     if request.method == 'POST':
         form = SaleForm(request.POST)
         if form.is_valid():
@@ -166,6 +244,15 @@ def add_sale(request):
 
 
 def handle_file_product_upload(request):
+    """
+    Handles file upload of product data and renders the data page.
+
+    Args:
+        Request: Http Request.
+
+    Returns:
+        Rendered data page.
+    """
     if request.method == 'POST':
         form = FileUploadForm(request.POST, request.FILES)
         if form.is_valid():
@@ -191,7 +278,17 @@ def handle_file_product_upload(request):
     return render(request, 'data.html', {'form': form})
 
 
+@login_required(login_url='login')
 def handle_file_sales_upload(request):
+    """
+    Handles the download of sales data from a file uploaded by the user, and updates the database.
+
+    Args:
+        request: The HTTP request object.
+
+    Returns:
+        HttpResponse: Redirects to the 'data' page upon successful upload.
+    """
     if request.method == 'POST':
         form = FileUploadForm(request.POST, request.FILES)
         if form.is_valid():
@@ -215,9 +312,22 @@ def handle_file_sales_upload(request):
         form = FileUploadForm()
     return render(request, 'data.html', {'form': form})
 
-
 def get_product_details(request, product_name):
+<<<<<<< HEAD
+    """
+    Returns product details in JSON format.
+
+    Args:
+        request: The HTTP request object.
+        product_name: The name of the product.
+
+    Returns:
+        JsonResponse: JSON response containing product details.
+    """
+    product = Product.objects.get(product_name=product_name)
+=======
     product = Product.objects.get(product_name=product_name, user=request.user)
+>>>>>>> 311c758786f5a48941a672c7a916a16c85c1b217
     return JsonResponse({
         'product_name': product.product_name,
         'qte_unitaire': product.qte_unitaire,
@@ -227,9 +337,17 @@ def get_product_details(request, product_name):
         'service_level': str(product.service_level),
     })
 
-
 @login_required(login_url='login')
 def handle_contact_page(request):
+    """
+    Handles the submission of the contact form and sends an email.
+
+    Args:
+        request: The HTTP request object.
+
+    Returns:
+        HttpResponse: Redirects to the 'contact' page upon successful form submission.
+    """
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
@@ -244,39 +362,63 @@ def handle_contact_page(request):
         form = ContactForm()
     return render(request, 'contact.html', {'contact_form': form})
 
-
 def handle_scenario(request):
+    """
+    Handles a scenario by querying product and sales data, and displaying DataFrames.
+
+    Args:
+        request: The HTTP request object.
+    """
     products_query = Product.objects.all()
-    sales_query = Sale.objects.all()  
+    sales_query = Sale.objects.all()
     products_dataframe = django_to_df(products_query)
     sales_dataframe = django_to_df(sales_query)
 
-    # Affichez les DataFrames
+    # Display DataFrames
     print("Products DataFrame:")
     print(products_dataframe)
 
     print("\nSales DataFrame:")
     print(sales_dataframe)
 
-
 def handle_scenario1(request, product_name):
+    """
+    Handles scenario 1 by returning sales data for a specific product in JSON format.
+
+    Args:
+        request: The HTTP request object.
+        product_name: The name of the product.
+
+    Returns:
+        JsonResponse: JSON response containing sales data.
+    """
     sales_data = django_to_df(Sale, product=product_name, is_product=False)
     if sales_data is None:
         data = {
             "date": ["No data"],
-            "quantité": [0]
+            "quantity": [0]
         }
     else:
         date = sales_data["date"]
-        qte = sales_data["quantity"]
+        quantity = sales_data["quantity"]
         data = {
             "date": list(date),
-            "quantité": list(qte)
+            "quantity": list(quantity)
         }
     return JsonResponse(data, safe=False)
 
-
 def handle_scenario2(request, product_name, period=date.today().year):
+    """
+    Handles scenario 2 by returning calculated stock levels and orders in JSON format.
+
+    Args:
+        request: The HTTP request object.
+        product_name: The name of the product.
+        period: The year for which to calculate.
+
+    Returns:
+        JsonResponse: JSON response containing calculated data.
+    """
     sales_data = django_to_df(Sale, request.user,
                               product=product_name, is_product=False)
     product_data = django_to_df(Product, request.user,
@@ -304,6 +446,17 @@ def handle_scenario2(request, product_name, period=date.today().year):
         stock_level[0] = (
             qte_unitaire - sales_in_year.iloc[0]['quantity'] + order[0]
         )
+<<<<<<< HEAD
+    sales_in_year['stock_level'] = stock_level
+    sales_in_year['order'] = order
+    date = sales_in_year["date"]
+    data = {
+        "date": list(date),
+        "quantity": list(sales_in_year['quantity']),
+        "stock_level": list(sales_in_year['stock_level']),
+        "order": list(sales_in_year['order'])
+    }
+=======
         for i in range(1, len(sales_in_year)):
             if stock_level[i-1] - sales_in_year.iloc[i]['quantity'] < 0:
                 order[i] = qty_economic * (
@@ -329,10 +482,6 @@ def handle_scenario2(request, product_name, period=date.today().year):
             "stock_level": ["No data"],
             "order":  ["No data"]
         }
+>>>>>>> 311c758786f5a48941a672c7a916a16c85c1b217
     return JsonResponse(data, safe=False)
 
-
-def handle_scenario3(request, product):
-    sales_data = django_to_df(Sale, product=product, date=date)
-    date = sales_data["date"]
-    qte = sales_data["quantity"]
