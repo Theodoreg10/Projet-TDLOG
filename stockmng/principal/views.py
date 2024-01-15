@@ -8,11 +8,13 @@ from .forms import FileUploadForm, ProductSelectionForm, ContactForm
 from .forms import ScenarioForm
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
+from django.views.decorators.csrf import csrf_exempt
 import pandas as pd
 from stock_package import django_to_df
 import stock_package as st
 from datetime import date
 import numpy as np
+import json
 
 
 # Create your views here.
@@ -121,6 +123,28 @@ def add_product(request):
         }
     return render(request, 'data.html', context)
 
+@csrf_exempt
+def handle_update_product(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        product_name = data.get('product_name')
+        qte_unitaire = data.get('qte_unitaire')
+        unit_cost = data.get('unit_cost')
+        fixed_command_cost = data.get('fixed_command_cost')
+        holding_rate = data.get('holding_rate')
+        service_level = data.get('service_level')
+
+        product = Product.objects.get(name=product_name)
+        product.qte_unitaire = qte_unitaire
+        product.unit_cost = unit_cost
+        product.fixed_command_cost = fixed_command_cost
+        product.holding_rate = holding_rate
+        product.service_level = service_level
+        product.save()
+
+        return JsonResponse({'status': 'success'})
+    else:
+        return JsonResponse({'status': 'error'})
 
 @login_required(login_url='login')
 def add_sale(request):
@@ -193,7 +217,7 @@ def handle_file_sales_upload(request):
 
 
 def get_product_details(request, product_name):
-    product = Product.objects.get(product_name=product_name)
+    product = Product.objects.get(product_name=product_name, user=request.user)
     return JsonResponse({
         'product_name': product.product_name,
         'qte_unitaire': product.qte_unitaire,
