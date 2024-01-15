@@ -266,7 +266,8 @@ def handle_scenario2(request, product_name, period=date.today().year):
         fixed_cost = product_data.at[0, "fixed_command_cost"]
         holding_rate = product_data.at[0, "holding_rate"]
         qte_unitaire = product_data.at[0, "qte_unitaire"]
-        qty_economic = st.scenario2(demand, unit_cost, fixed_cost, holding_rate)
+        qty_economic = st.scenario2(
+            demand, unit_cost, fixed_cost, holding_rate)
         stock_level = np.zeros(len(sales_in_year))
         order = np.zeros(len(sales_in_year))
         if qte_unitaire - sales_in_year.iloc[0]['quantity'] < 0:
@@ -281,8 +282,7 @@ def handle_scenario2(request, product_name, period=date.today().year):
         for i in range(1, len(sales_in_year)):
             if stock_level[i-1] - sales_in_year.iloc[i]['quantity'] < 0:
                 order[i] = qty_economic * (
-                    ((sales_in_year.iloc[i]['quantity'] - stock_level[i-1])
-                    // qty_economic)
+                    ((sales_in_year.iloc[i]['quantity'] - stock_level[i-1]) // qty_economic)
                     + 1
                     )
             stock_level[i] = (
@@ -304,7 +304,7 @@ def handle_scenario2(request, product_name, period=date.today().year):
             "stock_level": ["No data"],
             "order":  ["No data"]
         }
-        return JsonResponse(data, safe=False)
+    return JsonResponse(data, safe=False)
 
 
 def handle_scenario3(request, product):
