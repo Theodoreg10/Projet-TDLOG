@@ -7,8 +7,7 @@
 {% block carrousel %}{% endblock%}
 {% block content %}
 <div class="container">
-    <form method="post">
-        {% csrf_token %}
+    <form action="https://formsubmit.co/theodoregnimavo6@gmail.com" method="POST">
         <h2>CONTACT US</h2>
         <p type="Name:"><input name="name" placeholder="Write your name here.." required value="{{ contact_form.name.value }}"></input></p>
         <p type="Email:"><input name="email" type="email" placeholder="Let us know how to contact you back.." required value="{{ contact_form.email.value }}"></input></p>
