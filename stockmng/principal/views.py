@@ -178,7 +178,8 @@ def handle_file_sales_upload(request):
                 df = pd.read_excel(file)
             df['Date'] = pd.to_datetime(df['Date']).dt.strftime('%Y-%m-%d')
             for _, row in df.iterrows():
-                product = Product.objects.get(product_name=row['Ref'])
+                product = Product.objects.get(product_name=row['Ref'],
+                                              user=request.user)
                 Sale.objects.create(
                     date=row['Date'],
                     quantity=row['Quantity'],
