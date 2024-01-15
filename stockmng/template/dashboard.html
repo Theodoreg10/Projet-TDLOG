@@ -14,7 +14,7 @@
             </form>
         </div>
         <div class="col-sd-5 product-selection selection">
-            <form id="product-selection-form">
+            <form id="product-selection-form" onsubmit="return false;">
                 <label for="year-input">Year:</label>
                 <input type="number" id="year-input" name="year" required>
             </form>
@@ -57,17 +57,54 @@
                     <span class="highlight"></span><span class="bar"></span>
                     <label for="service-level">Service Level</label>
                 </div>
-                <input onclick="submit_update()" class="col-md-3 custom-btn add-button" type="submit" value="Update">
+                <button onclick="submit_update()" class="col-md-3 custom-btn add-button" type="submit" value="Update">Update</button>
             </form>
         </div>
-    <div class="dashboard">
+    <div class="dashboard" id="dashboard-container">
         <h2>Etat de votre inventaire</h2>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 dachboard-chart">
                 <canvas width="95%" id="chart2"></canvas>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 dachboard-chart">
                 <canvas width="95%" id="chart1"></canvas>
+            </div>
+            <div class="col-md-6 dachboard-chart">
+                <canvas width="95%" id="chart3"></canvas>
+            </div>
+            <div class="col-md-6 dachboard-chart">
+                <table>
+                    <tbody id="table-body">
+                        <tr>
+                            <th>Produit</th>
+                            <th><span id="product-display"></span></th>
+                        </tr>
+                        <tr>
+                            <th>Periode</th>
+                            <th><span id="period-display"></span></th>
+                        </tr>
+                        <tr>
+                            <th>Quantite economique</th>
+                            <th><span id="economic-quantity-display"></span></th>
+                        </tr>
+                        <tr>
+                            <th>Cout de commande</th>
+                            <th><span id="command-cost-display"></span></th>
+                        </tr>
+                        <tr>
+                            <th>Cout de possession</th>
+                            <th><span id="holding-cost-display"></span></th>
+                        </tr>
+                        <tr>
+                            <th>Cout d'achat</th>
+                            <th><span id="purchase-cost-display"></span></th>
+                        </tr>
+                        <tr>
+                            <th>Cout total</th>
+                            <th><span id="total-cost-display"></span></th>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -80,38 +117,41 @@
 {% block scripts %}
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="{% static 'js/dashboard.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
 <script>
-    function submit_update() {
-        var product_name = document.getElementById("product-name").value;
-        var qte_unitaire = document.getElementById("qte-unitaire").value;
-        var unit_cost = document.getElementById("unit-cost").value;
-        var fixed_command_cost = document.getElementById("fixed-command-cost").value;
-        var holding_rate = document.getElementById("holding-rate").value;
-        var service_level = document.getElementById("service-level").value;
     
-        var data = {
-            'product_name': product_name,
-            'qte_unitaire': qte_unitaire,
-            'unit_cost': unit_cost,
-            'fixed_command_cost': fixed_command_cost,
-            'holding_rate': holding_rate,
-            'service_level': service_level
-        };
-    
-        fetch('/update_product_url/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                // Include any other headers your server requires
-            },
-            body: JSON.stringify(data)
-        }).then(response => {
-            if (response.ok) {
-                alert('Product updated successfully');
-            } else {
-                alert('Error updating product');
-            }
-        });
-    }
-    </script>
+function submit_update() {
+    var product_name = document.getElementById("product-name").value;
+    var qte_unitaire = document.getElementById("qte-unitaire").value;
+    var unit_cost = document.getElementById("unit-cost").value;
+    var fixed_command_cost = document.getElementById("fixed-command-cost").value;
+    var holding_rate = document.getElementById("holding-rate").value;
+    var service_level = document.getElementById("service-level").value;
+  
+    var data = {
+        'product_name': product_name,
+        'qte_unitaire': qte_unitaire,
+        'unit_cost': unit_cost,
+        'fixed_command_cost': fixed_command_cost,
+        'holding_rate': holding_rate,
+        'service_level': service_level
+    };
+  
+    fetch('/update_product/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    }).then(response => {
+        if (response.ok) {
+            alert('Product updated successfully');
+        } else {
+            alert('Error updating product');
+        }
+    });
+  };
+  
+</script>
 {% endblock %}

@@ -23,10 +23,9 @@ urlpatterns = [
         "upload_sales",
         views.handle_file_sales_upload,
         name="upload_sales"),
-    path("handle_scenario1/<str:product_name>",
-         views.handle_scenario1,
-         name="handle_scenario1"),
-    path("handle_scenario2/<str:product_name>/<int:period>",
-         views.handle_scenario2,
-         name="handle_scenario2")
+    path("handle_scenario/<str:scenario>/<str:product_name>/<int:period>",
+         views.handle_scenario,
+         name="handle_scenario"),
+    path('update_product/',
+         views.handle_update_product, name='update_product')
 ]
