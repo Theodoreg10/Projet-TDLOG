@@ -156,5 +156,6 @@ class ScenarioForm(forms.Form):
         ('scenario1', 'Scenario 1'),
         ('scenario2', 'Scenario 2'),
         ('scenario3', 'Scenario 3'),
+        ('scenario4', 'Scenario 4'),
     ]
     scenario = forms.ChoiceField(choices=SCENARIO_CHOICES, label='Scenario')
