@@ -141,7 +141,7 @@ function submit_update() {
         'holding_rate': holding_rate,
         'service_level': service_level
     };
-  
+    event.preventDefault();
     fetch('/update_product/', {
         method: 'POST',
         headers: {
