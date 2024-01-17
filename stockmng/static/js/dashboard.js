@@ -4,10 +4,10 @@ const ctx = document.getElementById('chart1');
     var chart1 = new Chart(ctx, {
       type: 'line',
       data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        labels: ["No data"],
         datasets: [{
           label: '# of Votes',
-          data: [12, 19, 3, 5, 2, 3],
+          data: [0],
           borderWidth: 1
         }]
       }
@@ -91,8 +91,14 @@ const ctx = document.getElementById('chart1');
         document.getElementById('fixed-command-cost').value = data.fixed_command_cost;
         document.getElementById('holding-rate').value = data.holding_rate;
         document.getElementById('service-level').value = data.service_level;
-        document.getElementById('product-display').textContent = data.product_name;
-        document.getElementById('period-display').textContent = yearName;
+        document.getElementById('product-display').textContent = "Attendez un instant";
+        document.getElementById('period-display').textContent = "Attendez un instant";
+        document.getElementById('command-cost-display').textContent = "Attendez un instant";
+        document.getElementById('holding-cost-display').textContent = "Attendez un instant";
+        document.getElementById('purchase-cost-display').textContent = "Attendez un instant";
+        document.getElementById('total-cost-display').textContent = "Attendez un instant";
+        document.getElementById('economic-quantity-display').textContent = "Attendez un instant";
+        document.getElementById('without-budget-display').textContent = "Attendez un instant";
 
         // Deuxième requête Fetch dans la chaîne
         return fetch('/handle_scenario/'+ scenario + "/" + productName + "/" + yearName);
@@ -113,6 +119,8 @@ const ctx = document.getElementById('chart1');
       chart3.data.labels = data.product_names;
       chart3.data.datasets[0].data = data.demand_all_product;
       chart3.update();
+      document.getElementById('product-display').textContent = data.product_name;
+      document.getElementById('period-display').textContent = yearName;
       document.getElementById('command-cost-display').textContent = data.command_cost;
       document.getElementById('holding-cost-display').textContent = data.inventory_cost;
       document.getElementById('purchase-cost-display').textContent = data.buying_cost;
