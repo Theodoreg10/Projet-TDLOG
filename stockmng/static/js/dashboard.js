@@ -118,7 +118,7 @@ const ctx = document.getElementById('chart1');
       document.getElementById('purchase-cost-display').textContent = data.buying_cost;
       document.getElementById('total-cost-display').textContent = data.total_cost;
       document.getElementById('economic-quantity-display').textContent = data.eoq;
-      
+      document.getElementById('without-budget-display').textContent = data.without_budget;
   });
 }
 

@@ -20,7 +20,9 @@ import locale
 from datetime import date
 import numpy as np
 import json
-from pulp import *
+from pulp import (
+    LpVariable, LpProblem, LpMinimize, LpBinary, lpSum, value, PULP_CBC_CMD
+)
 locale.setlocale(locale.LC_TIME, "fr_FR.UTF-8")
 
 
@@ -501,8 +503,6 @@ def handle_scenario(request, scenario, product_name, period):
             order_df = order_df.fillna(0)
             order = list(order_df['Order'])
             order_df['date'] = order_df['Date']
-            print("ok", order_df)
-            print("bon", demand)
             sales_in_year = order_df.drop('Order', axis=1)
             sales_in_year = sales_in_year.sort_values(by="date",
                                                       ascending=True)
@@ -522,34 +522,34 @@ def handle_scenario(request, scenario, product_name, period):
                                        end=f'{period}-12-31')
             data_sales = pd.DataFrame(columns=['Date'])
             data_sales['Date'] = date_range
-            print(date_range)
             data_sales = data_sales.merge(sales_in_year, left_on='Date',
                                           right_on='date', how='left')
             data_sales['date'] = data_sales['Date']
             data_sales = data_sales.fillna(0)
-            print(data_sales)
             data_sales = data_sales[['date', 'quantity']]
             n = len(data_sales)
             demande_journaliere = list(data_sales['quantity'])
-            x = LpVariable.dicts("Quantite_commandee", range(n), lowBound=0) 
-            s = LpVariable.dicts("Stock", range(n), lowBound=0) 
+            x = LpVariable.dicts("Quantite_commandee", range(n), lowBound=0)
+            s = LpVariable.dicts("Stock", range(n), lowBound=0)
             probleme = LpProblem("Probleme_EOQ", LpMinimize)
             z = LpVariable.dicts("z", range(n), cat=LpBinary)
-            probleme += (holding_rate/100)*unit_cost*lpSum(s[j] for j in range(n)) / n + fixed_cost*lpSum(z[j] for j in range(n)) + unit_cost*lpSum(x[j] for j in range(n)), "Moyenne_x"
+            probleme += (
+                (holding_rate/100)*unit_cost*lpSum(s[j] for j in range(n)) / n
+                + fixed_cost*lpSum(z[j] for j in range(n))
+                + unit_cost*lpSum(x[j] for j in range(n)), "Moyenne_x")
             for j in range(n):
-                probleme += x[j] >= 0  # q[i] >= 0 pour tous les i
+                probleme += x[j] >= 0
                 probleme += x[j] <= z[j] * demand
                 probleme += s[j] >= 0
-            probleme += s[0] == x[0] + qte_unitaire -demande_journaliere[j]
+            probleme += s[0] == x[0] + qte_unitaire - demande_journaliere[0]
             for j in range(1, n):
                 probleme += s[j] == s[j-1] + x[j] - demande_journaliere[j]
-            probleme.solve()
+            probleme.solve(PULP_CBC_CMD(msg=1, timeLimit=20))
             sales_in_year = pd.DataFrame(columns=['date'])
             sales_in_year['date'] = data_sales['date']
-            print(data_sales)
             sales_in_year['date'] = pd.to_datetime(sales_in_year['date'])
             sales_in_year['quantity'] = demande_journaliere
-            order = ([value(var) for var in x])
+            order = ([value(x[var]) for var in x])
             stock_level = np.zeros(n)
             stock_level[0] = (
                 qte_unitaire - sales_in_year.iloc[0]["quantity"] + order[0]
@@ -600,11 +600,12 @@ def handle_scenario(request, scenario, product_name, period):
             "order": list(sales_data_grouped["order"]),
             "demand_all_product": list(completes_Sales["quantity"]),
             "product_names": list(completes_Sales["product_name"]),
-            "command_cost": command_cost,
-            "buying_cost": buying_cost,
-            "inventory_cost": inventory_cost,
-            "total_cost": command_cost + buying_cost + inventory_cost,
-            "eoq": eoq
+            "command_cost": round(command_cost),
+            "buying_cost": round(buying_cost),
+            "inventory_cost": round(inventory_cost),
+            "without_budget": round(command_cost + inventory_cost),
+            "total_cost": round(command_cost + buying_cost + inventory_cost),
+            "eoq": round(eoq, 1)
         }
     else:
         data = {
@@ -617,6 +618,7 @@ def handle_scenario(request, scenario, product_name, period):
             "command_cost": 0,
             "buying_cost": 0,
             "inventory_cost": 0,
+            "without_budget": 0,
             "total_cost": 0,
             "eoq": 0
         }
