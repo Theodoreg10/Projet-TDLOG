@@ -1,4 +1,7 @@
 django
 numpy
-reportlab
 pandas
+pulp
+datetime
+json
+math
