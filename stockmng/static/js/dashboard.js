@@ -132,29 +132,3 @@ const ctx = document.getElementById('chart1');
 document.getElementById('id_product').addEventListener('change', updateData);
 document.getElementById('year-input').addEventListener('change', updateData);
 document.getElementById('id_scenario').addEventListener('change', updateData);
-
-function generatePDF() {
-  var pdf = new jsPDF();
-  var charts = ['chart1', 'chart2', 'chart3'];
-
-  var promises = charts.map(function(chartId) {
-      return new Promise(function(resolve, reject) {
-          var chartElement = document.getElementById(chartId);
-          html2canvas(chartElement).then(function(canvas) {
-              var imgData = canvas.toDataURL('image/png');
-              resolve(imgData);
-          });
-      });
-  });
-
-  Promise.all(promises).then(function(images) {
-      images.forEach(function(imgData, index) {
-          pdf.addImage(imgData, 'PNG', 15, 40 + (index * 80), 180, 60);
-          if (index < charts.length - 1) {
-              pdf.addPage();
-          }
-      });
-
-      pdf.save('dashboard.pdf');
-  });
-}
