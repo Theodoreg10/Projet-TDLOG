@@ -108,6 +108,7 @@ def handle_login_page(request):
                 return redirect("Accueil")
             else:
                 error_message = "Invalid login credentials"
+                messages.error(request, 'Invalid login credentials')
     else:
         form = LoginForm()
         error_message = None
