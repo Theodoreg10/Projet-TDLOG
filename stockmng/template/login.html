@@ -17,6 +17,11 @@
                 <button type="submit">Se connecter</button>
                 <p><a href="register">Créer un compte</a></p>
             </form>
+            {% if error_messages %}
+            <ul class="messages">
+                <p style="color: crimson;"> {{error_messages}}</p>
+            </ul>
+            {% endif %}
         </div>
     </div>
 {% endblock %}
