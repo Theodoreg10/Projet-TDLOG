@@ -11,6 +11,7 @@ from .forms import LoginForm, RegistrationForm, ProductForm, SaleForm
 from .forms import FileUploadForm, ProductSelectionForm, ContactForm
 from .forms import ScenarioForm
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from django.core.mail import send_mail
 from django.views.decorators.csrf import csrf_exempt
 import pandas as pd
@@ -32,10 +33,8 @@ locale.setlocale(locale.LC_TIME, "fr_FR.UTF-8")
 def handle_home_page(request):
     """
     Renders the home page.
-
     Args:
         Request: Http Request.
-
     Returns:
         The rendered home page.
     """
@@ -148,16 +147,23 @@ def handle_register_page(request):
             password = form.cleaned_data["password"]
             email = form.cleaned_data["email"]
 
-            # Create a new user
-            user = User.objects.create_user(
-                username=name, password=password, email=email
-            )
+            if User.objects.filter(username=name).exists():
+                messages.error(request, 'Username already exists')
+                return redirect('register')  # or your view name
+            elif User.objects.filter(email=email).exists():
+                messages.error(request, 'Email already exists')
+                return redirect('register')  # or your view name
+            else:
+                # Create a new user
+                user = User.objects.create_user(
+                    username=name, password=password, email=email
+                )
 
-            # Log in the new user
-            user = authenticate(request, username=name, password=password)
-            login(request, user)
+                # Log in the new user
+                user = authenticate(request, username=name, password=password)
+                login(request, user)
 
-            return redirect("Accueil")
+                return redirect("Accueil")
 
     else:
         form = RegistrationForm()

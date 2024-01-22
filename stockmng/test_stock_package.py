@@ -1,5 +1,6 @@
-import pytest
-from stock_package import *
+from stock_package import (
+    scenario2, scenario3, scenario4, security_stock_simple,
+    security_stock_probabilistic, stock_final, stock_alert)
 
 
 def test_scenario2():
@@ -40,7 +41,7 @@ def test_scenario4():
     """Verify that the result is as expected
     """
     assert (result - expected_result < 1e-3)
-    
+
 
 def test_security_stock_simple():
     """Test the security_stock_simple function with specific inputs
