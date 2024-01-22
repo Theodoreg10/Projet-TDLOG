@@ -363,17 +363,23 @@ def get_product_details(request, product_name):
     Returns:
         JsonResponse: JSON response containing product details.
     """
-    product = Product.objects.get(product_name=product_name, user=request.user)
-    return JsonResponse(
-        {
-            "product_name": product.product_name,
-            "qte_unitaire": product.qte_unitaire,
-            "unit_cost": str(product.unit_cost),
-            "fixed_command_cost": str(product.fixed_command_cost),
-            "holding_rate": str(product.holding_rate),
-            "service_level": str(product.service_level),
-        }
-    )
+    try:
+        product = Product.objects.get(product_name=product_name,
+                                      user=request.user)
+        return JsonResponse(
+            {
+                "product_name": product.product_name,
+                "qte_unitaire": product.qte_unitaire,
+                "unit_cost": str(product.unit_cost),
+                "fixed_command_cost": str(product.fixed_command_cost),
+                "holding_rate": str(product.holding_rate),
+                "service_level": str(product.service_level),
+            }
+        )
+    except ObjectDoesNotExist:
+        return JsonResponse({"error": "Product does not exist"}, status=404)
+    except Exception as e:
+        return JsonResponse({"error": str(e)}, status=500)
 
 
 @login_required(login_url='login')

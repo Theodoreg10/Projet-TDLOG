@@ -82,9 +82,13 @@ const ctx = document.getElementById('chart1');
     var yearName = document.getElementById('year-input').value;
 
     // Première requête Fetch
+    event.preventDefault();
     fetch('/get_product_details/' + productName)
     .then(response => response.json())
     .then(data => {
+        if (data.error) {
+          alert(data.error);
+      } else {
         document.getElementById('product-name').value = data.product_name;
         document.getElementById('qte-unitaire').value = data.qte_unitaire;
         document.getElementById('unit-cost').value = data.unit_cost;
@@ -99,7 +103,7 @@ const ctx = document.getElementById('chart1');
         document.getElementById('total-cost-display').textContent = "Attendez un instant";
         document.getElementById('economic-quantity-display').textContent = "Attendez un instant";
         document.getElementById('without-budget-display').textContent = "Attendez un instant";
-
+      }
         // Deuxième requête Fetch dans la chaîne
         return fetch('/handle_scenario/'+ scenario + "/" + productName + "/" + yearName);
     })
