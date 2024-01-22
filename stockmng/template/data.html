@@ -56,6 +56,13 @@
             <button class="col-md-3 custom-btn add-button" type="submit">Add Product</button>
         </form>
     </div>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <p {% if message.tags %} class="{{ message.tags }}"{% endif %} style="color: rgb(20, 83, 220);">{{ message }}</p>
+        {% endfor %}
+    </ul>
+    {% endif %}
     <div class="table_display">
         <table>
             <tr>

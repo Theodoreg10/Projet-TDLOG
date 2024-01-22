@@ -165,12 +165,14 @@ function submit_update() {
     var select = document.getElementById("year-input");
     var currentYear = new Date().getFullYear();
 
-    for (var year = 2010; year <= currentYear; year++) {
+    for (var year = 2011; year <= currentYear; year++) {
         var option = document.createElement("option");
         option.value = year;
         option.text = year;
         select.appendChild(option);
+        
     }
+    select.value = currentYear;
 }
 </script>
 {% endblock %}

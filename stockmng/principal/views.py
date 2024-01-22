@@ -14,6 +14,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.core.mail import send_mail
 from django.views.decorators.csrf import csrf_exempt
+from django.core.exceptions import ObjectDoesNotExist
+from django.db import IntegrityError
 import pandas as pd
 from stock_package import django_to_df
 import stock_package as st
@@ -188,7 +190,15 @@ def add_product(request):
         if form.is_valid():
             product = form.save(commit=False)
             product.user = request.user
-            product.save()
+            try:
+                product.save()
+            except IntegrityError:
+                messages.error(request, 'Product already exists')
+                sale_form = SaleForm(user=request.user)
+                product_form = ProductForm()
+                context = {"form_sale": sale_form,
+                           "form_product": product_form}
+                return render(request, "data.html", context)
             return redirect("data")
     else:
         sale_form = SaleForm(user=request.user)
@@ -207,19 +217,25 @@ def handle_update_product(request):
         fixed_command_cost = data.get("fixed_command_cost")
         holding_rate = data.get("holding_rate")
         service_level = data.get("service_level")
-        product = Product.objects.get(
-            product_name=product_name,
-            user=request.user)
-        product.qte_unitaire = qte_unitaire
-        product.unit_cost = unit_cost
-        product.fixed_command_cost = fixed_command_cost
-        product.holding_rate = holding_rate
-        product.service_level = service_level
-        product.save()
-
-        return JsonResponse({"status": "success"})
+        try:
+            product = Product.objects.get(
+                product_name=product_name,
+                user=request.user)
+            product.qte_unitaire = qte_unitaire
+            product.unit_cost = unit_cost
+            product.fixed_command_cost = fixed_command_cost
+            product.holding_rate = holding_rate
+            product.service_level = service_level
+            product.save()
+            return JsonResponse({"status": "success"})
+        except ObjectDoesNotExist:
+            return JsonResponse({"status": "error",
+                                 "message": "Product does not exist"})
+        except Exception as e:
+            return JsonResponse({"status": "error", "message": str(e)})
     else:
-        return JsonResponse({"status": "error"})
+        return JsonResponse({"status": "error",
+                             "message": "Invalid request method"})
 
 
 @login_required(login_url="login")
@@ -267,15 +283,22 @@ def handle_file_product_upload(request):
                 df = pd.read_excel(file)
 
             for _, row in df.iterrows():
-                Product.objects.create(
-                    product_name=row["Product name"],
-                    qte_unitaire=row["Qte unitaire"],
-                    unit_cost=row["Unit cost"],
-                    fixed_command_cost=row["Fixed command cost"],
-                    holding_rate=row["Holding rate"],
-                    service_level=row["Service level"],
-                    user=request.user,
-                )
+                try:
+                    Product.objects.create(
+                        product_name=row["Product name"],
+                        qte_unitaire=row["Qte unitaire"],
+                        unit_cost=row["Unit cost"],
+                        fixed_command_cost=row["Fixed command cost"],
+                        holding_rate=row["Holding rate"],
+                        service_level=row["Service level"],
+                        user=request.user,
+                    )
+                except IntegrityError:
+                    messages.error(
+                        request,
+                        f'Error creating product {row["Product name"]}.'
+                        )
+                    continue
             return redirect("data")
     else:
         form = FileUploadForm()
@@ -304,15 +327,25 @@ def handle_file_sales_upload(request):
                 df = pd.read_excel(file)
             df["Date"] = pd.to_datetime(df["Date"]).dt.strftime("%Y-%m-%d")
             for _, row in df.iterrows():
-                product = Product.objects.get(
-                    product_name=row["Ref"], user=request.user
-                )
-                Sale.objects.create(
-                    date=row["Date"],
-                    quantity=row["Quantity"],
-                    ref=product,
-                    user=request.user,
-                )
+                try:
+                    product = Product.objects.get(
+                        product_name=row["Ref"], user=request.user
+                    )
+                    Sale.objects.create(
+                        date=row["Date"],
+                        quantity=row["Quantity"],
+                        ref=product,
+                        user=request.user,
+                    )
+                except ObjectDoesNotExist:
+                    messages.error(request,
+                                   f'Product {row["Ref"]} does not exist.')
+                    continue
+                except Exception:
+                    messages.error(
+                        request,
+                        f'Error creating sale for product {row["Ref"]}')
+                    continue
             return redirect("data")
     else:
         form = FileUploadForm()
@@ -375,7 +408,7 @@ def handle_contact_page(request):
     return render(request, "contact.html", {"contact_form": form})
 
 
-def handle_scenario(request, scenario, product_name, period):
+def handle_scenario(request, scenario, product_name, period=date.today().year):
     """
     Handles a scenario by querying product and sales data,
     and displaying DataFrames.
@@ -628,95 +661,5 @@ def handle_scenario(request, scenario, product_name, period):
             "without_budget": 0,
             "total_cost": 0,
             "eoq": 0
-        }
-    return JsonResponse(data, safe=False)
-
-
-def handle_scenario2(request, product_name, period=date.today().year):
-    sales_data = django_to_df(
-        Sale, request.user, product=product_name, is_product=False
-    )
-
-    product_data = django_to_df(
-        Product, request.user, product=product_name, is_product=True
-    )
-    completes_Sales = django_to_df(Sale, request.user, is_product=False)
-    completes_products = django_to_df(
-        Product, request.user, is_product=True)
-    completes_Sales = completes_Sales.merge(
-        completes_products[["id", "product_name"]],
-        left_on="ref_id",
-        right_on="id",
-        how="left",
-    )
-    completes_Sales["date"] = pd.to_datetime(completes_Sales["date"])
-    completes_Sales = (completes_Sales[completes_Sales["date"]
-                                       .dt.year == period])
-    completes_Sales = (
-        completes_Sales[["product_name", "quantity"]]
-        .groupby("product_name")
-        .sum()
-        .reset_index()
-    )
-    if sales_data is not None:
-        sales_data["date"] = pd.to_datetime(sales_data["date"])
-        sales_in_year = sales_data[sales_data["date"].dt.year == period]
-        sales_in_year = sales_in_year.sort_values(by="date", ascending=True)
-        demand = sales_in_year["quantity"].sum()
-        unit_cost = product_data.at[0, "unit_cost"]
-        fixed_cost = product_data.at[0, "fixed_command_cost"]
-        holding_rate = product_data.at[0, "holding_rate"]
-        qte_unitaire = product_data.at[0, "qte_unitaire"]
-        qty_economic = st.scenario2(demand, unit_cost, fixed_cost,
-                                    holding_rate)
-        stock_level = np.zeros(len(sales_in_year))
-        order = np.zeros(len(sales_in_year))
-        if qte_unitaire - sales_in_year.iloc[0]["quantity"] < 0:
-            order[0] = qty_economic * (
-                ((sales_in_year.iloc[0]["quantity"]
-                  - qte_unitaire) // qty_economic)
-                + 1
-            )
-        stock_level[0] = (
-            qte_unitaire - sales_in_year.iloc[0]["quantity"] + order[0]
-        )
-        for i in range(1, len(sales_in_year)):
-            if stock_level[i - 1] - sales_in_year.iloc[i]["quantity"] < 0:
-                order[i] = qty_economic * (
-                    (
-                        (sales_in_year.iloc[i]["quantity"]
-                         - stock_level[i - 1])
-                        // qty_economic
-                    )
-                    + 1
-                )
-            stock_level[i] = (
-                stock_level[i - 1]
-                - sales_in_year.iloc[i]["quantity"] + order[i]
-            )
-        sales_in_year["stock_level"] = stock_level
-        sales_in_year["order"] = order
-        sales_in_year["month"] = sales_in_year["date"].dt.to_period("M")
-        sales_data_grouped = (
-            sales_in_year.drop("date", axis=1)
-            .groupby("month").sum().reset_index()
-        )
-        sales_data_grouped["month"] = sales_data_grouped["month"].astype(str)
-        data = {
-            "date": list(sales_data_grouped["month"]),
-            "quantité": list(sales_data_grouped["quantity"]),
-            "stock_level": list(sales_data_grouped["stock_level"]),
-            "order": list(sales_data_grouped["order"]),
-            "demand_all_product": list(completes_Sales["quantity"]),
-            "product_names": list(completes_Sales["product_name"]),
-        }
-    else:
-        data = {
-            "date": [0],
-            "quantité": ["No data"],
-            "stock_level": ["No data"],
-            "order": ["No data"],
-            "demand_all_product": list(completes_Sales["quantity"]),
-            "product_names": list(completes_Sales["product_name"]),
         }
     return JsonResponse(data, safe=False)
