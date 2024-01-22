@@ -17,9 +17,9 @@
                 <button type="submit">Se connecter</button>
                 <p><a href="register">Créer un compte</a></p>
             </form>
-            {% if error_messages %}
+            {% if error_messages not None %}
             <ul class="messages">
-                <p style="color: crimson;"> {{error_messages}}</p>
+                <p style="color: crimson;"> Ok {{error_messages}}</p>
             </ul>
             {% endif %}
         </div>
