@@ -18,6 +18,13 @@
                 {{ form.email }}
                 <button type="submit">Créer</button>
                 <p><a href="login">j'ai déjà un compte, me connecter</a></p>
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
             </form>
         </div>
     </div>
