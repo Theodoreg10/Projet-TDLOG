@@ -40,5 +40,5 @@ Projet-TDLOG/stockmng> python manage.py runserver
 
 
 ---
-layout: docs
+layout: default
 ---
