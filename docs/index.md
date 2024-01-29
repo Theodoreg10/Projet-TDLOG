@@ -30,4 +30,4 @@ Projet-TDLOG/stockmng> python manage.py runserver
 
 [templates](templates.md)
 
-[forms](principal.forms.html)
+[forms](forms.md)
