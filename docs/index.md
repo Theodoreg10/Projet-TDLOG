@@ -24,6 +24,6 @@ Projet-TDLOG> cd stockmng
 Projet-TDLOG/stockmng> python manage.py runserver
 ```
 
-see the complete docummentaion at 
+## Contents
 
 [structure](structure.md)
