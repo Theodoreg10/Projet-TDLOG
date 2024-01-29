@@ -29,3 +29,5 @@ Projet-TDLOG/stockmng> python manage.py runserver
 [structure](structure.md)
 
 [templates](templates.md)
+
+[forms](principal.forms.html)
