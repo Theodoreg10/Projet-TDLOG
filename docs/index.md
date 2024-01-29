@@ -26,4 +26,4 @@ Projet-TDLOG/stockmng> python manage.py runserver
 
 see the complete docummentaion at 
 
-[structure](structure)
+[structure](structure.md)
