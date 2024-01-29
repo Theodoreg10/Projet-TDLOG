@@ -37,3 +37,5 @@ Projet-TDLOG/stockmng> python manage.py runserver
 [urls](urls.md)
 
 [views](views.md)
+
+{% include structure.md %}
