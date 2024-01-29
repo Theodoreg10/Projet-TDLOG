@@ -38,4 +38,8 @@ Projet-TDLOG/stockmng> python manage.py runserver
 
 [views](views.md)
 
+
+---
+layout: default
+---
 {% include structure.md %}
