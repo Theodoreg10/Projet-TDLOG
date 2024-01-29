@@ -24,6 +24,6 @@ Projet-TDLOG> cd stockmng
 Projet-TDLOG/stockmng> python manage.py runserver
 ```
 
-see the complete docummentaion at 
+see the complete docummentaion at [https://theodoreg10.github.io/Projet-TDLOG/](https://theodoreg10.github.io/Projet-TDLOG/)
 
 **Note**: 
