@@ -33,3 +33,5 @@ Projet-TDLOG/stockmng> python manage.py runserver
 [forms](forms.md)
 
 [Models](models.md)
+
+[urls](urls.md)
