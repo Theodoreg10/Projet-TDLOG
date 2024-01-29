@@ -7,6 +7,7 @@ main template for all the page
   <summary>Expand to see the full code</summary>
 
   ```django
+
 {% load static %}
 <!DOCTYPE html>
 <html>
