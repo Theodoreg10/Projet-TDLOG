@@ -10,19 +10,20 @@ from django.core.exceptions import ValidationError
 ### class
 ##### LoginForm:
   form responsible for the user login
-  <details>
-    <summary>See the code</summary>
-  Form for user login.
-    
+  
   Fields:
   - username (CharField): User's username.
-  - password (CharField): User's password (masked).
+  - password (CharField): User's password (masked)
+  <details>
+    <summary>See the code</summary>.
 
     ```python
+    <div markdown="1">
     class LoginForm(forms.Form):
         username = forms.CharField(label="Username")
         password = forms.CharField(widget=forms.PasswordInput, label="Password")
     ```
+    </div>
   </details>
   
 ##### RegistrationForm
