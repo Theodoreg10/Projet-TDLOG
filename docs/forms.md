@@ -19,9 +19,9 @@ from django.core.exceptions import ValidationError
   - password (CharField): User's password (masked).
 
     ```python
-class LoginForm(forms.Form):
-    username = forms.CharField(label="Username")
-    password = forms.CharField(widget=forms.PasswordInput, label="Password")
+    class LoginForm(forms.Form):
+        username = forms.CharField(label="Username")
+        password = forms.CharField(widget=forms.PasswordInput, label="Password")
     ```
   </details>
 #####
