@@ -39,6 +39,7 @@ from django.core.exceptions import ValidationError
   </summary>
   
   ```python
+  <!-- -->
   class RegistrationForm(forms.Form):
       name = forms.CharField()
       password = forms.CharField(widget=forms.PasswordInput)
