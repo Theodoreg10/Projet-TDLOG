@@ -35,3 +35,5 @@ Projet-TDLOG/stockmng> python manage.py runserver
 [Models](models.md)
 
 [urls](urls.md)
+
+[views](views.md)
