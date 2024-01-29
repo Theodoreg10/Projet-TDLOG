@@ -23,6 +23,7 @@ from django.core.exceptions import ValidationError
         username = forms.CharField(label="Username")
         password = forms.CharField(widget=forms.PasswordInput, label="Password")
     ```
+    
     </div>
   </details>
   
