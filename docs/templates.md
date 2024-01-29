@@ -8,7 +8,7 @@ main template for all the page
 
   ```django
 
-{% load static %}
+{% #load# static %}
 <!DOCTYPE html>
 <html>
 
