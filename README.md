@@ -1,7 +1,7 @@
 # Projet-TDLOG
 Site web De gestion de stock
 
-[![Dev](https://img.shields.io/badge/docs-dev-blue.svg)](https://BatyLeo.github.io/KIRO2023.jl/dev/)
+[![Dev](https://img.shields.io/badge/docs-dev-blue.svg)](https://theodoreg10.github.io/Projet-TDLOG/)
 [![Code Style: Blue](https://img.shields.io/badge/code%20style-blue-4495d1.svg)](https://github.com/Theodoreg10/Projet-TDLOG)
 
 This repository contains a django app for inventory management.
