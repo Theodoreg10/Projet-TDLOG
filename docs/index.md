@@ -27,4 +27,5 @@ Projet-TDLOG/stockmng> python manage.py runserver
 ## Contents
 
 [structure](structure.md)
+
 [templates](templates.md)
