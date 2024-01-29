@@ -41,4 +41,6 @@ Projet-TDLOG/stockmng> python manage.py runserver
 
 ---
 layout: default
+title: My Page
+toc: true
 ---
