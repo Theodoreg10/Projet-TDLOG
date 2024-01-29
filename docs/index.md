@@ -39,8 +39,4 @@ Projet-TDLOG/stockmng> python manage.py runserver
 [views](views.md)
 
 
----
-layout: default
-title: My Page
-toc: true
----
+{:toc}
