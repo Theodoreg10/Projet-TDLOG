@@ -12,17 +12,14 @@ from django.core.exceptions import ValidationError
   form responsible for the user login
   <details>
     <summary>See the code</summary>
+  Form for user login.
+    
+  Fields:
+  - username (CharField): User's username.
+  - password (CharField): User's password (masked).
 
     ```python
 class LoginForm(forms.Form):
-    """
-    Form for user login.
-
-    Fields:
-    - username (CharField): User's username.
-    - password (CharField): User's password (masked).
-
-    """
     username = forms.CharField(label="Username")
     password = forms.CharField(widget=forms.PasswordInput, label="Password")
     ```
