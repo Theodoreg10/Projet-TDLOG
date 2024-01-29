@@ -44,6 +44,14 @@ here the user can login
     {% block footer %}
     {% endblock %}
   ```
+
+### logout page
+### register page
+### home page
+### about page
+### data page
+### daashboard page
+### contact page
   
 
 </details>
