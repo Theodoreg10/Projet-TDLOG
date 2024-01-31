@@ -142,7 +142,7 @@ Fields:
 - email (EmailField): User's email address.
 - message (CharField): Message to send.
 
-  ```python
+```python
 class ContactForm(forms.Form):
     name = forms.CharField(max_length=100)
     email = forms.EmailField()
