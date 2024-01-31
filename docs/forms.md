@@ -14,18 +14,12 @@ from django.core.exceptions import ValidationError
   Fields:
   - username (CharField): User's username.
   - password (CharField): User's password (masked)
-  <details>
-    <summary>See the code</summary>.
-    <div markdown="1">
-      
+    
     ```python
     class LoginForm(forms.Form):
         username = forms.CharField(label="Username")
         password = forms.CharField(widget=forms.PasswordInput, label="Password")
     ```
-    
-    </div>
-  </details>
   
 ##### RegistrationForm
   Form for user registration.
@@ -35,18 +29,12 @@ from django.core.exceptions import ValidationError
   - password (CharField): User's password (masked).
   - email (EmailField): User's email address.
 
-<details>
-  <summary>
-    full code
-  </summary>
-  
   ```python
   class RegistrationForm(forms.Form):
       name = forms.CharField()
       password = forms.CharField(widget=forms.PasswordInput)
       email = forms.EmailField()
   ```
-</details>
 
 ##### ProductForm
 Form for adding or editing product information.
@@ -58,11 +46,7 @@ Fields:
 - fixed_command_cost (DecimalField): Fixed command cost.
 - holding_rate (DecimalField): Holding rate.
 - service_level (DecimalField): Service level.
-  
-<details>
-  <summary>
-    full code
-  </summary>
+
   
   ```python
     class ProductForm(forms.ModelForm):
@@ -83,7 +67,6 @@ Fields:
                 "service_level",
             ]
   ```
-</details>
 
 ##### SaleForm
   Form for adding or editing sale information.
@@ -91,10 +74,6 @@ Fields:
   Fields:
   - quantity (IntegerField): Sale quantity.
   - date (DateField): Sale date.
-<details>
-  <summary>
-    full code
-  </summary>
 
   ```python
 class SaleForm(forms.ModelForm):
@@ -113,7 +92,6 @@ class SaleForm(forms.ModelForm):
         if user:
             self.fields["ref"].queryset = Product.objects.filter(user=user)
 ```
-</details>
 
 ##### function validate_file_extension
 Custom validator for file upload forms.
@@ -123,44 +101,30 @@ Args:
 
 Raises:
 - ValidationError: If the file extension is not .xlsx or .csv.
-<details>
-  <summary>
-    full code
-  </summary>
 
 ```python
 def validate_file_extension(value):
     if not value.name.endswith(".xlsx") and not value.name.endswith(".csv"):
         raise ValidationError("Only .xlsx and .csv files are allowed.")
 ```
-</details>
 
 ##### FileUploadForm
 Form for uploading files using the file extension validator.
 
 Fields:
 - file (FileField): Uploaded file.
-<details>
-  <summary>
-    full code
-  </summary>
 
   ```python
 class FileUploadForm(forms.Form):
     file = forms.FileField(validators=[validate_file_extension])
 ```
 
-</details>
 
 ##### ProductSelectionForm
 Form for product selection.
 
 Fields:
 - product (ModelChoiceField): Select a product from available choices.
-<details>
-  <summary>
-    full code
-  </summary>
 
   ```python
 class ProductSelectionForm(forms.Form):
@@ -169,7 +133,6 @@ class ProductSelectionForm(forms.Form):
         to_field_name="product_name"
         )
 ```
-</details>
 
 ##### ContactForm
 Form for contacting support or users.
@@ -178,8 +141,6 @@ Fields:
 - name (CharField): User's name.
 - email (EmailField): User's email address.
 - message (CharField): Message to send.
-<details>
-  <summary>Full code</summary>
 
   ```python
 class ContactForm(forms.Form):
@@ -187,15 +148,12 @@ class ContactForm(forms.Form):
     email = forms.EmailField()
     message = forms.CharField(widget=forms.Textarea)
 ```
-</details>
 
 ##### ScenarioForm
 Form for selecting a scenario.
 
 Fields:
 - scenario (ChoiceField): Choose a scenario from predefined options.
-<details>
-  <summary>full code</summary>
 
 ```python
 class ScenarioForm(forms.Form):
@@ -207,4 +165,3 @@ class ScenarioForm(forms.Form):
     ]
     scenario = forms.ChoiceField(choices=SCENARIO_CHOICES, label='Scenario')
 ```
-</details>
